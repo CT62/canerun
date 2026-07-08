@@ -3,11 +3,11 @@ import { create } from 'zustand';
 export const useCart = create((set) => ({
   cart: [],
   addToCart: (product) => set((state) => {
-    const existing = state.cart.find((item) => item.id === product.id);
+    const existing = state.cart.find((item) => item.id === product.id && item.weightOz === product.weightOz);
     if (existing) {
       return {
         cart: state.cart.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item === existing ? { ...item, quantity: item.quantity + 1 } : item
         ),
       };
     }
