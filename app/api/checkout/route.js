@@ -1,10 +1,9 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
 export async function POST(req) {
   try {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
     const { items, fulfillment } = await req.json();
     const isPickup = fulfillment === 'pickup';
     const origin = req.headers.get('origin') || 'http://localhost:3000';
