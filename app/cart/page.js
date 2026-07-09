@@ -1,31 +1,96 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/store/useCart';
 import { ArrowLeftIcon, TrashIcon, CreditCardIcon, ShoppingCartIcon, TruckIcon, BuildingStorefrontIcon } from '@heroicons/react/24/outline';
+
+const EMPTY_ADDRESS = {
+  name: '',
+  phone: '',
+  addressLine1: '',
+  addressLine2: '',
+  cityLocality: '',
+  stateProvince: '',
+  postalCode: '',
+  countryCode: 'US',
+};
+const REQUIRED_ADDRESS_FIELDS = ['name', 'phone', 'addressLine1', 'cityLocality', 'stateProvince', 'postalCode', 'countryCode'];
 
 export default function CartPage() {
   const { cart, removeFromCart } = useCart();
   const [loading, setLoading] = useState(false);
   const [fulfillment, setFulfillment] = useState('ship');
+  const [shipTo, setShipTo] = useState(EMPTY_ADDRESS);
+  const [shippingLoading, setShippingLoading] = useState(false);
+  // Keyed by the address/weight it was fetched for, so a stale response never gets
+  // shown against a since-edited address without needing to reset state in an effect.
+  const [rateResult, setRateResult] = useState(null);
 
   const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const totalOunces = cart.reduce((sum, item) => sum + (item.weightOz || 0) * item.quantity, 0);
+
+  const addressComplete = REQUIRED_ADDRESS_FIELDS.every((field) => shipTo[field]?.trim());
+  const rateKey = fulfillment === 'ship' && cart.length > 0 && addressComplete
+    ? `${totalOunces}|${JSON.stringify(shipTo)}`
+    : null;
+
+  const shippingRate = rateResult?.key === rateKey ? rateResult.rate : null;
+  const shippingError = rateResult?.key === rateKey ? rateResult.error : null;
+  const shippingPending = Boolean(rateKey) && shippingLoading && rateResult?.key !== rateKey;
+  const grandTotal = totalPrice + (fulfillment === 'ship' && shippingRate ? shippingRate.amount : 0);
+
+  // Quote a live shipping rate from ShipEngine once the address is complete, debounced
+  // so we're not firing a request on every keystroke.
+  useEffect(() => {
+    if (!rateKey) return;
+    let cancelled = false;
+    const timer = setTimeout(async () => {
+      setShippingLoading(true);
+      try {
+        const res = await fetch('/api/shipping/rate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ shipTo, totalOunces }),
+        });
+        const data = await res.json();
+        if (!cancelled) {
+          setRateResult({ key: rateKey, rate: data.rate || null, error: data.rate ? null : (data.error || 'Could not calculate shipping for this address.') });
+        }
+      } catch (err) {
+        console.error(err);
+        if (!cancelled) {
+          setRateResult({ key: rateKey, rate: null, error: 'Could not calculate shipping for this address.' });
+        }
+      } finally {
+        if (!cancelled) setShippingLoading(false);
+      }
+    }, 600);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [rateKey, shipTo, totalOunces]);
 
   const handleCheckout = async () => {
     if (cart.length === 0) return;
+    if (fulfillment === 'ship' && !shippingRate) return;
     setLoading(true);
 
     try {
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items: cart, fulfillment }), // Send the whole multi-item array over
+        body: JSON.stringify({
+          items: cart,
+          fulfillment,
+          ...(fulfillment === 'ship' ? { shipTo } : {}),
+        }),
       });
       const data = await res.json();
       if (data.url) {
         window.location.href = data.url;
       } else {
-        alert('Checkout error');
+        alert(data.error || 'Checkout error');
         setLoading(false);
       }
     } catch (err) {
@@ -33,6 +98,12 @@ export default function CartPage() {
       setLoading(false);
     }
   };
+
+  const updateAddress = (field) => (e) => setShipTo((prev) => ({ ...prev, [field]: e.target.value }));
+
+  const inputClass = 'w-full px-3 py-2.5 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500';
+
+  const checkoutDisabled = loading || (fulfillment === 'ship' && (!shippingRate || shippingPending));
 
   return (
     <main className="min-h-screen bg-slate-50 py-12 px-6">
@@ -105,16 +176,62 @@ export default function CartPage() {
                     <p className="mt-1">Placeholder hours — Mon–Fri, 8am–5pm. We&apos;ll email you when your batch is ready. [ADD TEXT HERE]</p>
                   </div>
                 )}
+
+                {fulfillment === 'ship' && (
+                  <div className="mt-4 p-4 rounded-xl bg-slate-50 space-y-3">
+                    <p className="font-bold text-slate-900 text-xs mb-1">Shipping Address</p>
+                    <div className="grid grid-cols-2 gap-2">
+                      <input className={inputClass} placeholder="Full name" value={shipTo.name} onChange={updateAddress('name')} />
+                      <input className={inputClass} placeholder="Phone" value={shipTo.phone} onChange={updateAddress('phone')} />
+                    </div>
+                    <input className={inputClass} placeholder="Address line 1" value={shipTo.addressLine1} onChange={updateAddress('addressLine1')} />
+                    <input className={inputClass} placeholder="Address line 2 (optional)" value={shipTo.addressLine2} onChange={updateAddress('addressLine2')} />
+                    <div className="grid grid-cols-3 gap-2">
+                      <input className={inputClass} placeholder="City" value={shipTo.cityLocality} onChange={updateAddress('cityLocality')} />
+                      <input className={inputClass} placeholder="State" value={shipTo.stateProvince} onChange={updateAddress('stateProvince')} />
+                      <input className={inputClass} placeholder="ZIP" value={shipTo.postalCode} onChange={updateAddress('postalCode')} />
+                    </div>
+                    <select className={inputClass} value={shipTo.countryCode} onChange={updateAddress('countryCode')}>
+                      <option value="US">United States</option>
+                      <option value="CA">Canada</option>
+                    </select>
+
+                    <div className="pt-1 text-xs">
+                      {shippingPending && <span className="text-slate-500">Calculating shipping…</span>}
+                      {!shippingPending && shippingError && <span className="text-red-500 font-bold">{shippingError}</span>}
+                      {!shippingPending && !shippingError && shippingRate && (
+                        <span className="text-emerald-600 font-bold">
+                          {shippingRate.carrierFriendlyName} {shippingRate.serviceType} — ${shippingRate.amount.toFixed(2)}
+                        </span>
+                      )}
+                      {!shippingPending && !shippingError && !shippingRate && (
+                        <span className="text-slate-400">Enter your address above to calculate shipping.</span>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
 
-              <div className="flex justify-between items-center mb-8">
-                <span className="text-sm font-bold text-slate-500 uppercase tracking-wide">Subtotal</span>
-                <span className="text-3xl font-black text-slate-900">${totalPrice.toFixed(2)}</span>
+              <div className="space-y-2 mb-8">
+                <div className="flex justify-between items-center">
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wide">Subtotal</span>
+                  <span className="text-sm font-bold text-slate-700">${totalPrice.toFixed(2)}</span>
+                </div>
+                {fulfillment === 'ship' && (
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs font-bold text-slate-500 uppercase tracking-wide">Shipping</span>
+                    <span className="text-sm font-bold text-slate-700">{shippingRate ? `$${shippingRate.amount.toFixed(2)}` : '—'}</span>
+                  </div>
+                )}
+                <div className="flex justify-between items-center pt-2 border-t border-slate-100">
+                  <span className="text-sm font-bold text-slate-500 uppercase tracking-wide">Total</span>
+                  <span className="text-3xl font-black text-slate-900">${grandTotal.toFixed(2)}</span>
+                </div>
               </div>
 
               <button
                 onClick={handleCheckout}
-                disabled={loading}
+                disabled={checkoutDisabled}
                 className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-300 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-emerald-500/30"
               >
                 {fulfillment === 'pickup' ? <BuildingStorefrontIcon className="w-4 h-4" /> : <CreditCardIcon className="w-4 h-4" />}

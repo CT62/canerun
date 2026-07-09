@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
+import { getCheapestRate } from '@/lib/shipengine';
 
 export async function POST(req) {
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-    const { items, fulfillment } = await req.json();
+    const { items, fulfillment, shipTo } = await req.json();
     const isPickup = fulfillment === 'pickup';
     const origin = req.headers.get('origin') || 'http://localhost:3000';
 
@@ -22,13 +23,40 @@ export async function POST(req) {
       quantity: item.quantity,
     }));
 
+    const totalOunces = items.reduce((sum, item) => sum + (item.weightOz || 0) * item.quantity, 0);
+
+    let shippingOptions;
+    let shippingMetadata = {};
+    if (!isPickup) {
+      if (!shipTo) {
+        return NextResponse.json({ error: 'A shipping address is required.' }, { status: 400 });
+      }
+
+      // Re-quote server-side rather than trusting a client-supplied dollar amount —
+      // the price charged must come from ShipEngine, not from the request body.
+      const rate = await getCheapestRate({ shipTo, totalOunces });
+
+      shippingOptions = [{
+        shipping_rate_data: {
+          type: 'fixed_amount',
+          fixed_amount: { amount: Math.round(rate.amount * 100), currency: 'usd' },
+          display_name: `${rate.carrierFriendlyName} ${rate.serviceType}`,
+        },
+      }];
+
+      shippingMetadata = {
+        shipTo: JSON.stringify(shipTo),
+        shipRateId: rate.rateId,
+        totalOunces: String(totalOunces),
+      };
+    }
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: lineItems,
       mode: 'payment',
-      metadata: { fulfillment: isPickup ? 'pickup' : 'ship' },
-      // Pickup orders skip shipping address collection entirely — nothing to ship.
-      ...(isPickup ? {} : { shipping_address_collection: { allowed_countries: ['US', 'CA'] } }),
+      metadata: { fulfillment: isPickup ? 'pickup' : 'ship', ...shippingMetadata },
+      ...(shippingOptions ? { shipping_options: shippingOptions } : {}),
       success_url: `${origin}/success?fulfillment=${isPickup ? 'pickup' : 'ship'}`,
       cancel_url: `${origin}/cart`,
     });

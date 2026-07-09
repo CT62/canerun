@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
+import { purchaseLabelForOrder } from '@/lib/shipengine';
+import { sendOrderConfirmationEmail } from '@/lib/email';
 
 export async function POST(req) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -21,41 +23,43 @@ export async function POST(req) {
         expand: ['data.price.product'],
       });
 
+      const items = lineItems.data.map((item) => ({
+        name: item.price?.product?.name || item.description,
+        quantity: item.quantity,
+        amount: (item.amount_total || 0) / 100,
+      }));
+
       // Sum the configured bag weights (in oz) carried in each line item's product metadata
       const totalOunces = lineItems.data.reduce((sum, item) => {
         const weightOz = parseFloat(item.price?.product?.metadata?.weightOz) || 0;
         return sum + weightOz * item.quantity;
       }, 0);
 
-      // Pickup orders have nothing to ship — skip ShipEngine entirely.
-      // Otherwise, shipment creation is opt-in: only attempt it once ShipEngine + a
-      // ship-from address are configured via env vars, so we never guess at real warehouse details.
-      if (session.metadata?.fulfillment !== 'pickup' && process.env.SHIPENGINE_API_KEY && process.env.SHIP_FROM_ADDRESS_JSON) {
-        const { default: ShipEngine } = await import('shipengine');
-        const shipengine = new ShipEngine(process.env.SHIPENGINE_API_KEY);
-        const shipFrom = JSON.parse(process.env.SHIP_FROM_ADDRESS_JSON);
-        const shipTo = session.shipping_details?.address;
+      const isPickup = session.metadata?.fulfillment === 'pickup';
+      let tracking = null;
 
-        if (shipTo) {
-          await shipengine.createLabelFromShipmentDetails({
-            shipment: {
-              ship_from: shipFrom,
-              ship_to: {
-                name: session.shipping_details?.name,
-                address_line1: shipTo.line1,
-                address_line2: shipTo.line2 || undefined,
-                city_locality: shipTo.city,
-                state_province: shipTo.state,
-                postal_code: shipTo.postal_code,
-                country_code: shipTo.country,
-              },
-              packages: [{ weight: { value: Math.max(totalOunces, 1), unit: 'ounce' } }],
-            },
-          });
-        }
+      // Pickup orders have nothing to ship — skip ShipEngine entirely.
+      // Otherwise, label purchase is opt-in: only attempt it once ShipEngine + a
+      // ship-from address are configured via env vars, so we never guess at real warehouse details.
+      if (!isPickup && process.env.SHIPENGINE_API_KEY && process.env.SHIP_FROM_ADDRESS_JSON && session.metadata?.shipTo) {
+        const shipTo = JSON.parse(session.metadata.shipTo);
+        const label = await purchaseLabelForOrder({
+          rateId: session.metadata.shipRateId,
+          shipTo,
+          totalOunces: Number(session.metadata.totalOunces) || totalOunces,
+        });
+        tracking = { trackingNumber: label.trackingNumber, carrierCode: label.carrierCode };
       }
+
+      await sendOrderConfirmationEmail({
+        to: session.customer_details?.email,
+        items,
+        total: (session.amount_total || 0) / 100,
+        fulfillment: isPickup ? 'pickup' : 'ship',
+        tracking,
+      });
     } catch (err) {
-      // Never fail the webhook response over a shipping-side error — log and let Stripe consider it delivered.
+      // Never fail the webhook response over a shipping/email-side error — log and let Stripe consider it delivered.
       console.error('Post-checkout fulfillment error:', err);
     }
   }
