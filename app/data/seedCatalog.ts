@@ -2,7 +2,7 @@ export const SEED_CATALOG = [
   {
     id: 'ky31_fescue',
     category: 'turf',
-    name: 'KY 31 Tall Fescue',
+    name: 'KY 31 Fescue',
     bulkPrice50lb: 81.00,
     desc: 'Drought tolerant, persistent utility field and turf fescue. Exceptional for high-traffic environments, home lawns, and robust erosion control applications.',
     details: 'KY 31 performs best in well-drained to moderately wet soils with a pH between 5.5 and 7.0, and it tolerates full sun to light shade better than almost any other cool-season turfgrass. Seed germinates in 7 to 14 days and reaches usable stand density within 6 to 8 weeks under normal fall or spring conditions. Its coarse-textured, bunch-type growth habit and deep root system make it exceptionally drought tolerant and slow to wear out under foot or vehicle traffic, which is why it remains a dependable standard for pastures, roadsides, and utility turf across Illinois\'s cool-season, corn-belt climate. Mow at 3 to 4 inches to encourage rooting depth and shade out weed competition, and note that older KY 31 seed lots typically carry a wild-type endophyte that benefits stand persistence but can affect grazing animals in hot weather.',
@@ -24,7 +24,7 @@ export const SEED_CATALOG = [
   {
     id: 'emerald_excellence',
     category: 'turf',
-    name: 'Emerald Excellence Ryegrass Blend',
+    name: 'Emerald Excellence Perennial Ryegrass Blend',
     bulkPrice50lb: 102.50,
     desc: 'Elite athletic and golf-grade 3-way perennial ryegrass mix: 32% Palmer III, 33% Line Drive II, and 35% Prelude IV Perennial Ryegrass.',
     details: 'Perennial ryegrass thrives in full sun on well-drained, fertile soils with a pH of 6.0 to 7.0, and it is prized for the fastest germination of any cool-season turf species, typically emerging in 5 to 7 days. This speed makes it ideal for quick athletic-field repair and overseeding, though it lacks the deep root system of tall fescue and is comparatively less drought and heat tolerant, so irrigation matters through Illinois summers even though the state\'s cooler overall climate suits ryegrass better than warmer regions do. Mow at 1.5 to 2.5 inches for athletic or golf use to maintain the fine, dense sward these varieties are bred for. Because straight ryegrass stands can still thin under prolonged summer heat stress or heavy traffic, many turf managers blend it with tall fescue or use it as an overseed component rather than a sole permanent stand.',
@@ -57,7 +57,7 @@ export const SEED_CATALOG = [
   {
     id: 'creeping_red_fescue',
     category: 'turf',
-    name: 'Creeping Red Fescue (Shade Only)',
+    name: 'Creeping Red Fescue',
     bulkPrice50lb: 122.50,
     desc: 'Fine-textured cool season grass that spreads smoothly via underground rhizomes. Excellent shade choice for dense forest coverage or canopy landscaping.',
     details: 'Creeping red fescue is the most shade-tolerant of the common cool-season turf species, performing well under 40 to 60 percent canopy cover where bluegrass and ryegrass struggle. It prefers a slightly acidic to neutral pH of 5.5 to 6.5, tolerates dry, sandy, and infertile soils, and generally underperforms on wet or poorly drained ground. Germination takes 10 to 14 days, with fuller rhizome spread and stand fill-in developing over one to two growing seasons. It has low fertility and mowing demands, doing best left slightly taller (3 to 4 inches) and unmowed or lightly mowed in naturalized woodland-edge plantings, and it holds up poorly to heavy foot traffic or full-sun heat compared to tall fescue.',
@@ -68,35 +68,13 @@ export const SEED_CATALOG = [
   {
     id: 'kentucky_bluegrass_kenblue',
     category: 'turf',
-    name: 'Kentucky Bluegrass - Kenblue',
+    name: 'Kentucky Bluegrass',
     bulkPrice50lb: 117.50,
     desc: 'Classic, dense blue-green lawn grass turf standard. Delivers excellent self-healing durability, cold resistance, and a beautiful premium aesthetic barefoot feel.',
     details: 'Kentucky bluegrass wants full sun, fertile well-drained soil, and a pH of 6.0 to 7.0; it is markedly less shade and drought tolerant than tall fescue and needs supplemental irrigation to stay green through Illinois\'s summer dry spells. Germination is comparatively slow, taking 14 to 28 days, but once established its rhizomatous growth habit lets it spread laterally and self-repair bare or worn patches, unlike bunch-type grasses. Kenblue is a common-type, unimproved variety, so it is less disease-resistant and less densely tillered than named turf cultivars, but it remains extremely cold hardy and reliably persists through harsh winters. Mow at 2 to 3 inches and expect the grass to go semi-dormant (brown) under summer heat stress before recovering with cooler fall temperatures.',
     img: '/images/kentucky_bluegrass.png',
     chartType: 'turf',
     specs: { seedPerLb: '2,200,000', lbsAcre: '90 to 130', lbs1000: '2 to 3', cycle: 'Perennial' }
-  },
-  {
-    id: 'bermudagrass',
-    category: 'turf',
-    name: 'Bermudagrass',
-    bulkPrice50lb: 145.00,
-    desc: 'Aggressive warm-season turf grass designed for intense summer traffic, full sun exposure, and exceptional heat tolerance during the warmest months.',
-    details: 'Bermudagrass requires full sun and warm soil temperatures above 65 degrees F to germinate, typically 10 to 30 days depending on conditions, and it will not tolerate shade or standing water. It prefers a pH of 6.0 to 6.5 and spreads aggressively by both stolons and rhizomes, which is what gives it its wear tolerance and rapid recovery from traffic damage. Because it is a true warm-season species, it goes fully dormant and straw-brown from first frost until late spring green-up, and in Illinois\'s solidly cool-season, humid continental climate it sits well outside its normal winter-hardiness range, so stands should be expected to suffer significant winterkill even in an average winter, not just an unusually harsh one. Mow low, at 0.5 to 1.5 inches for lawns and lower for athletic turf, and expect it to compete poorly with cool-season grasses if the two are mixed in the same area.',
-    img: '/images/black.png',
-    chartType: 'turf',
-    specs: { seedPerLb: '1,787,000', lbsAcre: '45 to 90', lbs1000: '1 to 2', cycle: 'Perennial' }
-  },
-  {
-    id: 'zoysiagrass',
-    category: 'turf',
-    name: 'Zoysiagrass',
-    bulkPrice50lb: 195.00,
-    desc: 'Premium slow-growing warm-season grass producing a highly uniform, low-weed, carpet-dense profile that chokes out weeds and requires less mowing.',
-    details: 'Zoysiagrass wants full sun to light shade, well-drained soil, and a pH near 6.0 to 6.5, and unlike bermudagrass it tolerates some shade while still needing warm-season heat to thrive. Establishment from seed is notably slow, often taking a full growing season or two to reach complete density, because zoysia spreads gradually via both stolons and rhizomes into its signature tight, carpet-like turf. Once mature, its dense growth habit chokes out most weeds and reduces mowing frequency, but it goes dormant and turns tan-brown after the first hard frost and greens up later in spring than cool-season grasses. In Illinois\'s colder, solidly cool-season climate it sits at the northern edge of its viable hardiness range and can suffer meaningful winter injury or thinning in harsh years, so it is best suited to warmer microclimates within the state or to lawns where a uniform look is prioritized over dependable cold-season recovery; mow at 1 to 2 inches with a sharp reel or rotary blade.',
-    img: '/images/black.png',
-    chartType: 'turf',
-    specs: { seedPerLb: '1,200,000', lbsAcre: '45 to 90', lbs1000: '1 to 2', cycle: 'Perennial' }
   },
   {
     id: 'alfalfa_vernal',
@@ -152,17 +130,6 @@ export const SEED_CATALOG = [
     img: '/images/black.png',
     chartType: 'field',
     specs: { lbsAcre: '8 to 12', depth: '0 to 1/4"', lbsBu: '60', seedsPerLb: '275,000', cycle: 'Biennial' }
-  },
-  {
-    id: 'clover_sweet',
-    category: 'pasture',
-    name: 'Sweet Clover (Not Coated)',
-    bulkPrice50lb: 135.00,
-    desc: 'Deep-taproot biennial clover that breaks up tight clay hardpan soils while generating massive volumes of biomass growth and pollinator feed.',
-    details: 'Sweet clover is unusually tolerant of alkaline and low-fertility soils, growing well from pH 6.5 up into mildly alkaline range, and its deep, vigorous taproot is well suited to breaking up compacted clay or hardpan layers that shallower-rooted legumes cannot penetrate. It germinates in 5 to 10 days and, as a true biennial, produces mostly low rosette growth the first year before bolting into tall, heavily flowering growth the second year that is highly attractive to pollinators. It tolerates drought well once established but is less winter-hardy in exposed sites than red clover. Because cured sweet clover hay can develop dicoumarol (an anticoagulant) if it molds, hay should be cured and stored carefully when livestock feeding is intended, and many operations use it primarily for soil building and green manure rather than hay.',
-    img: '/images/black.png',
-    chartType: 'field',
-    specs: { lbsAcre: '15 to 20', depth: '0 to 1/4"', lbsBu: '60', seedsPerLb: '260,000', cycle: 'Biennial' }
   },
   {
     id: 'clover_white_dutch',
@@ -231,31 +198,9 @@ export const SEED_CATALOG = [
     specs: { lbsAcre: '8 to 12', depth: '0 to 1/2"', lbsBu: '45', seedsPerLb: '1,230,000', cycle: 'Perennial' }
   },
   {
-    id: 'timothy_tenho',
-    category: 'pasture',
-    name: 'Timothy - Certified Tenho',
-    bulkPrice50lb: 126.00,
-    desc: 'Certified elite Timothy variant showing accelerated spring start-up speeds and balanced, palatable leaf-to-stem properties.',
-    details: 'Tenho shares timothy\'s core requirements of cool, moist growing conditions, well-drained soil, and a pH of 6.0 to 7.0, and like all timothy it is more heat- and drought-sensitive than orchardgrass or tall fescue, so it thrives particularly well across Illinois\'s cooler corn-belt growing season, more consistently than in warmer transition-zone climates further south. As a certified variety it is bred for faster spring green-up and a favorable leaf-to-stem ratio that improves palatability and hay quality relative to common timothy seed. Germination occurs in 7 to 14 days, and the grass regrows slowly after cutting, so it should not be grazed too closely or too frequently. It is commonly grown alone for premium hay or blended with a legume and other cool-season grasses in mixed pasture stands, cut at early head emergence for peak feed value.',
-    img: '/images/black.png',
-    chartType: 'field',
-    specs: { lbsAcre: '8 to 12', depth: '0 to 1/2"', lbsBu: '45', seedsPerLb: '1,230,000', cycle: 'Perennial' }
-  },
-  {
-    id: 'barley_grain',
-    category: 'cover',
-    name: 'Barley Grain',
-    bulkPrice50lb: 24.50,
-    desc: 'Aggressive cool-season companion nurse crop providing early pasturage forage options and rapid soil erosion field protection.',
-    details: 'Barley prefers well-drained soils with a pH of 6.0 to 7.5 and is notably less tolerant of acidic or waterlogged ground than oats, wheat, or rye. It germinates quickly, in about 7 to 10 days, and establishes rapid early cover, which is why it is commonly used as a nurse crop for slower-establishing legumes or grasses. It is also the least winter-hardy of the common small grains, and Illinois\'s colder winters make fall-seeded stands considerably more prone to winterkill than in milder climates, so spring planting is generally the more reliable choice here, with fall use best treated as a short-lived cover ahead of freeze rather than a crop meant to overwinter. Its quick canopy closure makes it effective for short-term erosion control and early spring grazing, though it is typically terminated or harvested before summer heat arrives.',
-    img: '/images/black.png',
-    chartType: 'field',
-    specs: { lbsAcre: '72 to 96', depth: '1/2 to 1"', lbsBu: '48', seedsPerLb: '14,000', cycle: 'Winter Annual' }
-  },
-  {
     id: 'oats_spring',
     category: 'cover',
-    name: 'Spring Oats (Shelby/Jerry)',
+    name: 'Spring Oats',
     bulkPrice50lb: 26.50,
     desc: 'High biomass producer that provides quick nurse crop ground cover or direct livestock forage clipping options early in the year.',
     details: 'Spring oats tolerate a wider pH range than most small grains, performing acceptably from about 5.5 to 7.0, and they establish quickly, germinating in 7 to 10 days in cool soil. They produce rapid, heavy biomass in a short window, making them useful as an early-season nurse crop for interseeded legumes or as a quick forage clipping before summer crops go in. Unlike winter oat varieties, standard spring oats have essentially no winter hardiness and will winterkill with the first hard freezes, which makes them a reliable, self-terminating cover crop when planted in early spring or late summer ahead of winter. They tolerate moderately wet soils better than barley but still perform best on well-drained ground with adequate fertility.',
@@ -266,10 +211,10 @@ export const SEED_CATALOG = [
   {
     id: 'oats_winter',
     category: 'cover',
-    name: 'Winter Oats - Cosaque',
+    name: 'Winter Oats',
     bulkPrice50lb: 24.75,
     desc: 'Excellent forage profiling winter oat variety bred carefully to stand strong through harsh cold seasonal freezing cycles.',
-    details: 'Cosaque is a winter-type oat bred for improved cold tolerance compared to standard spring oats, though it still remains the least winter-hardy of the common small grains behind wheat and rye. In Illinois\'s colder, more exposed winters it carries meaningfully more winterkill risk than it would in a milder transition-zone climate, so reliable overwintering depends on consistent snow cover, and growers in the colder northern half of the state should treat it as a higher-risk planting than wheat or rye. It prefers well-drained soils with a pH of 5.5 to 7.0 and germinates in about 7 to 10 days, producing good fall forage and biomass before going semi-dormant in the coldest months. Fall planting should occur early enough, typically September, to allow good root development ahead of winter. It is valued for its palatability as grazing or hay forage and its quick regrowth in early spring once temperatures moderate.',
+    details: 'Winter oats are a winter-type oat bred for improved cold tolerance compared to standard spring oats, though it still remains the least winter-hardy of the common small grains behind wheat and rye. In Illinois\'s colder, more exposed winters it carries meaningfully more winterkill risk than it would in a milder transition-zone climate, so reliable overwintering depends on consistent snow cover, and growers in the colder northern half of the state should treat it as a higher-risk planting than wheat or rye. It prefers well-drained soils with a pH of 5.5 to 7.0 and germinates in about 7 to 10 days, producing good fall forage and biomass before going semi-dormant in the coldest months. Fall planting should occur early enough, typically September, to allow good root development ahead of winter. It is valued for its palatability as grazing or hay forage and its quick regrowth in early spring once temperatures moderate.',
     img: '/images/spring_and_winter_oats.png',
     chartType: 'field',
     specs: { lbsAcre: '64 to 80', depth: '1/2"', lbsBu: '32', seedsPerLb: '22,800', cycle: 'Winter Annual' }
@@ -288,7 +233,7 @@ export const SEED_CATALOG = [
   {
     id: 'ryegrain_winter',
     category: 'cover',
-    name: 'Winter Ryegrain',
+    name: 'Winter Rye',
     bulkPrice50lb: 19.50,
     desc: 'The gold standard for winter agricultural cover crops. Unmatched deep nutrient scavenging ability and severe cold weather hardiness.',
     details: 'Cereal rye (Secale cereale) is the most cold-hardy and acid-soil-tolerant of the common small grains, surviving at a pH as low as 5.0 and enduring colder winters than wheat, barley, or oats. It germinates quickly in cool soil, often within 5 to 10 days, and can be planted later into the fall than other cover crops while still establishing a usable stand, making it a reliable last option before winter. Its extensive, fibrous root system is exceptional at scavenging residual nitrogen and other nutrients, reducing leaching over winter, and its rapid spring regrowth produces heavy biomass for erosion control and weed suppression. Because rye is mildly allelopathic and can suppress germination of small-seeded crops, it should be terminated 2 to 3 weeks ahead of planting a following crop, or managed with careful residue planning in no-till systems.',
@@ -330,48 +275,26 @@ export const SEED_CATALOG = [
     specs: { lbsAcre: '15 to 30', depth: '1/2 to 3/4"', lbsBu: '40', seedsPerLb: '15,000', cycle: 'Summer Annual' }
   },
   {
-    id: 'pearl_millet',
-    category: 'cover',
-    name: 'Pearl Millet',
+    id: 'japanese_millet',
+    category: 'wildlife',
+    name: 'Millet - Japanese',
     bulkPrice50lb: 48.00,
-    desc: 'High-performing warm-season field option that provides heavy livestock grazing with absolutely zero prussic acid chemical risks.',
-    details: 'Pearl millet is a warm-season annual grass that tolerates low-fertility, sandy, and acidic soils (pH 5.5 to 7.0) better than sorghum-sudangrass, and it should be planted after soil warms above 65 degrees F, generally late May to mid-June in Illinois given the state\'s cooler, later-arriving spring compared to warmer regions further south. Germination takes about 5 to 10 days, and the crop grows rapidly through summer heat, producing repeated grazable regrowth on a 3- to 4-week cutting or grazing rotation. Unlike sorghum-sudangrass and its hybrids, pearl millet does not produce prussic acid, so it carries none of the cyanide poisoning risk after frost or drought stress, making it a safer option for continuous summer grazing programs. It does still benefit from being grazed or clipped to a stubble height of 6 to 8 inches to maintain regrowth vigor and forage quality.',
+    desc: 'Fast-maturing warm-season wetland grass producing heavy seed heads that draw waterfowl, doves, and upland game birds to moist plots.',
+    details: 'Japanese millet is a warm-season annual grass that tolerates wet, poorly drained, and even periodically flooded soils better than almost any other food plot grass, making it a top choice for moist-soil and waterfowl impoundment plantings, and it should be planted after soil warms above 65 degrees F, generally May through August in Illinois. Germination is quick, typically 5 to 7 days, and the crop matures rapidly, producing heavy, seed-laden heads within 60 to 70 days that bend over and shatter naturally, feeding ducks, dove, quail, and turkey directly from the plant or after it lodges into shallow water. It has no prussic acid risk of any kind, unlike sorghum-based wildlife plantings, so it carries none of the frost or drought-stress toxicity concerns those species require managing. It performs best on moist, fertile ground and is commonly planted alone in drawn-down impoundments or blended with other warm-season wildlife plants on drier ground.',
     img: '/images/black.png',
-    chartType: 'field',
-    specs: { lbsAcre: '15 to 30', depth: '1/2 to 3/4"', lbsBu: '50', seedsPerLb: '83,000', cycle: 'Summer Annual' }
+    chartType: 'wildlife',
+    specs: { wildlifeUse: 'Excellent seed source for waterfowl, dove, quail and turkey', rate: 'Broadcast 20-30 lb per acre, cover 1/4 inch deep', type: 'Summer annual, 60-70 days to mature', notes: 'Thrives in moist soil and shallow water drawdowns' }
   },
   {
     id: 'austrian_winter_peas',
     category: 'wildlife',
-    name: 'Austrian Winter Peas',
+    name: 'Winter Peas',
     bulkPrice50lb: 112.00,
     desc: 'Excellent cool season sweet viney forage choice. Highly attractive winter feed source preferred instantly by deer and wild turkey networks.',
     details: 'Austrian winter peas are a cool-season annual legume that prefer well-drained soils with a pH of 6.0 to 7.5 and germinate in about 7 to 14 days when planted in early fall. Their viney, sprawling growth habit means they benefit from being planted with a cereal grain such as wheat, oats, or rye, which provides physical support and helps the peas climb up off the ground for better deer access and stand persistence. They are only moderately winter hardy and, in Illinois\'s colder winters, carry meaningfully more risk of stand loss than in milder transition-zone climates further south, so they are best suited to southern Illinois or fields with dependable snow cover, while hairy vetch is a safer choice for harsher, more exposed sites further north in the state. As a nitrogen-fixing legume they also improve soil fertility for a following crop, and their sweet, high-protein foliage makes them one of the most attractive cool-season food plot forages for deer and turkey.',
     img: '/images/winter_pea.png',
     chartType: 'wildlife',
     specs: { wildlifeUse: 'Excellent winter feed source for deer and turkey', rate: 'Broadcast 50 lb per acre, cover 1/4 inch deep', type: 'Winter annual legume', notes: 'Top quality forage for deer' }
-  },
-  {
-    id: 'bluestem_little',
-    category: 'wildlife',
-    name: 'Bluestem - Little',
-    bulkPrice50lb: 165.00,
-    desc: 'Foundational native bunchgrass providing premium nesting structural habitat and seasonal bedding safety for upland game birds and local wildlife.',
-    details: 'Little bluestem is a native warm-season bunchgrass tolerant of poor, dry, and low-fertility soils, thriving at a pH of 5.5 to 7.5 in full sun on ground too marginal for most cultivated forages. It is notoriously slow to establish, often taking 2 to 3 growing seasons to reach full stand density, since like most native warm-season grasses it invests early growth into root development rather than top growth. Once mature, its upright bunch form and fine stems create excellent standing winter cover, nesting structure, and bedding habitat for upland birds and small game without matting down under snow. It requires no mowing to remain functional as habitat, and periodic dormant-season prescribed burning or light disking every few years helps maintain vigor and control woody encroachment.',
-    img: '/images/black.png',
-    chartType: 'wildlife',
-    specs: { wildlifeUse: 'Provides forage for deer, good food source for turkey', rate: 'Drill 3-5 pls lb per acre 1/4 inch deep', type: 'Warm season perennial grass', notes: 'Wildlife cover and nesting for birds, slow to establish' }
-  },
-  {
-    id: 'bromegrass_wildlife',
-    category: 'wildlife',
-    name: 'Bromegrass',
-    bulkPrice50lb: 112.50,
-    desc: 'Perennial forage grass that creates excellent multi-season cover, nesting perimeters, and highly dependable structural wildlife sanctuary zones.',
-    details: 'Smooth bromegrass is a cool-season, sod-forming perennial that prefers well-drained soils with a pH of 6.0 to 7.5 and full sun, spreading by rhizomes to form a dense, persistent turf. It germinates in 7 to 14 days and is notably more drought tolerant than timothy once established, thanks to a deep, extensive root system. Its dense rhizomatous growth provides excellent multi-season nesting cover and structural habitat for ground-nesting birds, and it holds up well to periodic mowing or haying. Over time, dense stands can become sod-bound and lose vigor, so periodic light disking, dormant-season burning, or nitrogen fertilization every few years helps maintain productivity and habitat value.',
-    img: '/images/black.png',
-    chartType: 'wildlife',
-    specs: { wildlifeUse: 'Forage and food source for waterfowl, quail, turkey and deer', rate: 'Drill or broadcast 20 lb per acre, cover 1/4 inch deep', type: 'Perennial grass', notes: 'Provides good nesting areas' }
   },
   {
     id: 'buckwheat_wildlife',
@@ -396,17 +319,6 @@ export const SEED_CATALOG = [
     specs: { wildlifeUse: 'High in nutrient feed value for deer in summer', rate: 'Drill or broadcast 5 lb per acre, cover 1/4 inch deep', type: 'Perennial herb', notes: 'Very palatable for summer and fall grazing' }
   },
   {
-    id: 'chufa_wildlife',
-    category: 'wildlife',
-    name: 'Chufa',
-    bulkPrice50lb: 185.00,
-    desc: 'Nut-sedge variant that produces high energy, underground sweet tubers scratch-harvested heavily and targeted by wild turkeys.',
-    details: 'Chufa is a warm-season sedge (Cyperus esculentus) that produces small, energy-rich underground tubers rather than seed heads, and it performs best on light, sandy, well-drained soils with a pH of 5.5 to 7.0 in full sun. It should be planted after the soil warms in late spring, with tubers taking roughly 90 to 120 days to mature underground before they become attractive to foraging wildlife. Establishment above ground can look sparse even when tuber production below ground is excellent, since the plant channels much of its energy into the root system rather than dense top growth. Turkeys are especially effective at scratching up and consuming the tubers through fall and winter, and heavier or poorly drained clay soils will noticeably reduce tuber yield compared to sandy ground.',
-    img: '/images/black.png',
-    chartType: 'wildlife',
-    specs: { wildlifeUse: 'Excellent food for turkey, ducks, deer, quail and dove', rate: 'Broadcast 50 lb per acre', type: 'Annual', notes: 'Sandy soil works best, grows underground' }
-  },
-  {
     id: 'egyptian_wheat',
     category: 'wildlife',
     name: 'Egyptian Wheat',
@@ -416,28 +328,6 @@ export const SEED_CATALOG = [
     img: '/images/black.png',
     chartType: 'wildlife',
     specs: { wildlifeUse: 'Excellent high protein food source for game birds and deer safety', rate: 'Broadcast 20 lb or drill 14 lb per acre', type: 'Summer annual 8-10 feet tall', notes: 'A tall sorghum with a grain head that feeds birds as it bends over' }
-  },
-  {
-    id: 'hairy_vetch_wildlife',
-    category: 'wildlife',
-    name: 'Hairy Vetch',
-    bulkPrice50lb: 115.00,
-    desc: 'Extreme cold winter hardiness profile. High-nitrogen vining annual legume offering rich, sugary late-season browse when other food plots freeze out.',
-    details: 'Hairy vetch is the most winter-hardy of the commonly planted annual vetches, reliably surviving Illinois\'s cold winters, including in the colder northern counties, where less hardy legume cover crops such as Austrian winter peas often fail, and it prefers well-drained soils with a pH of 6.0 to 7.0. It germinates in 7 to 14 days when planted in early fall and produces a sprawling, viny growth habit that benefits from a cereal grain companion such as wheat or rye for physical support and to reduce weed pressure. As a nitrogen-fixing legume it builds soil fertility for a following crop while also tolerating sandy, lower-fertility soils better than many other legumes. It commonly reseeds itself if allowed to set seed, and its foliage remains palatable and available later into fall and early winter than most other cool-season food plot forages, providing a late browse option after frost.',
-    img: '/images/black.png',
-    chartType: 'wildlife',
-    specs: { wildlifeUse: 'Good fall food and insect source for turkey, dove and quail', rate: 'Broadcast 50 lb per acre, cover 1/4 inch deep', type: 'Winter annual legume', notes: 'Very cold tolerant, Excellent reeder' }
-  },
-  {
-    id: 'cowpeas_iron_clay',
-    category: 'wildlife',
-    name: 'Iron & Clay Cowpeas',
-    bulkPrice50lb: 78.00,
-    desc: 'Vigorous warm-season legume choice producing endless premium vine canopy browse under high summer deer herd clipping pressure.',
-    details: 'Iron and clay cowpeas are a warm-season annual legume that tolerates low-fertility and moderately acidic soils, performing well at a pH of 5.5 to 6.5, and they should not be planted until soil has warmed well past the last frost, generally late May to early June in Illinois given the state\'s cooler, later spring than warmer regions further south. Germination occurs in about 5 to 10 days, and the vigorous, sprawling vine canopy can reach a grazable, high-protein forage stage in roughly 45 days. As a nitrogen-fixing legume they improve soil fertility and are commonly planted alone or blended with sorghum, millet, or sunflowers for structural support and a longer plot life under heavy deer browsing pressure. Their deep taproot gives reasonable drought tolerance once established, though very heavy, continuous browsing pressure early on can prevent the crop from ever reaching a mature canopy.',
-    img: '/images/black.png',
-    chartType: 'wildlife',
-    specs: { wildlifeUse: 'Excellent food source for deer browse, quail and turkey protection', rate: 'Broadcast 60 lb per acre, cover 1-1.5 inches deep', type: 'Summer annual legume', notes: 'Forage after 45 days' }
   },
   {
     id: 'radish_daikon',
@@ -473,20 +363,9 @@ export const SEED_CATALOG = [
     specs: { lbsAcre: '6 to 10', depth: '0 to 1/4"', lbsBu: 'Varies', seedsPerLb: 'Varies', cycle: 'Cool Annual' }
   },
   {
-    id: 'sugar_beets_wildlife',
-    category: 'wildlife',
-    name: 'Sugar Beets',
-    bulkPrice50lb: 457.50,
-    desc: 'Extremely high sugar energy storage root option coveted by white-tailed deer tracking programs during intense late winter freezes.',
-    details: 'Sugar beets require deep, fertile, well-drained soil with a pH of 6.0 to 7.5 and are more demanding of soil fertility and boron availability than most food plot brassicas or forages. They are typically grown as an annual with a long season, taking 120 to 160 days to reach mature root size, so planting timing should allow full development before the ground freezes. Germination is comparatively slow and uneven, often 7 to 14 days, and stands benefit from good weed control early on since young beet seedlings compete poorly against fast-growing weeds. Once mature, the large taproot stores exceptional levels of sugar and energy, making it one of the highest-energy late-winter food sources available for deer, especially valuable when other forage has gone dormant or been depleted.',
-    img: '/images/black.png',
-    chartType: 'wildlife',
-    specs: { wildlifeUse: 'Premium energy and sugar root source for deep winter deer attraction', rate: 'Broadcast 15-20 lb per acre, cover 1/2 inch', type: 'Annual root asset', notes: 'Provides massive taproot nutrition profiles' }
-  },
-  {
     id: 'cre_wildlife_mix',
     category: 'wildlife',
-    name: 'CRE Wildlife Mix (15 lb bag)',
+    name: 'CRE Sweet Deer Mix (10 lb bag)',
     bulkPrice50lb: 250.00,
     desc: 'Custom proprietary multi-variant seed plot layout tailored exactly by Cane Run Enterprise advisors for premium regional deer management.',
     details: 'Multi-species food plot blends work by combining plants with different maturity rates, growth forms, and seasonal palatability so that a single planting provides attraction across a longer window than any one species alone. A well-designed mix typically pairs a fast-establishing component for early cover and weed suppression with slower-maturing brassicas or legumes that peak in attraction later in fall and winter, along with a grain or grass component for structure. Because component species vary in ideal pH, drainage, and soil fertility needs, a soil test targeting a pH near 6.0 to 6.5 with balanced phosphorus and potassium generally supports the broadest range of species in a mixed planting. Seedbed preparation, planting depth, and timing should follow the requirements of the mix\'s most demanding or slowest-germinating component to ensure the whole blend establishes evenly.',
