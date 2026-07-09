@@ -32,10 +32,18 @@ function parseRateRange(text?: string): [number, number] | null {
 
 const CALCULABLE_SEEDS = CATALOG.filter((s) => parseRateRange(s.specs?.lbsAcre));
 
+const RATE_CHOICES = [
+  { key: 'low', label: 'Least' },
+  { key: 'mid', label: 'Recommended' },
+  { key: 'high', label: 'Most' },
+] as const;
+type RateChoice = (typeof RATE_CHOICES)[number]['key'];
+
 export default function SeedCalculator() {
   const { addToCart } = useCart();
   const [seedId, setSeedId] = useState(CALCULABLE_SEEDS[0]?.id ?? '');
   const [acres, setAcres] = useState('5');
+  const [rateChoice, setRateChoice] = useState<RateChoice>('mid');
 
   const seed = CALCULABLE_SEEDS.find((s) => s.id === seedId);
   const acresNum = parseFloat(acres);
@@ -48,13 +56,15 @@ export default function SeedCalculator() {
     const lowLbs = Math.round(lowRate * acresNum);
     const highLbs = Math.round(highRate * acresNum);
     const midLbs = Math.max(1, Math.round((lowLbs + highLbs) / 2));
-    const price = calculateTieredPrice(seed.bulkPrice50lb, midLbs);
-    return { lowLbs, highLbs, midLbs, price };
+    return { lowLbs, highLbs, midLbs };
   }, [seed, acresNum]);
+
+  const selectedLbs = result ? { low: result.lowLbs, mid: result.midLbs, high: result.highLbs }[rateChoice] : 0;
+  const selectedPrice = seed && result ? calculateTieredPrice(seed.bulkPrice50lb, selectedLbs) : 0;
 
   const handleAdd = () => {
     if (!seed || !result) return;
-    addToCart({ ...seed, quantity: 1, price: result.price, weightOz: result.midLbs * 16 });
+    addToCart({ ...seed, quantity: 1, price: selectedPrice, weightOz: selectedLbs * 16 });
   };
 
   return (
@@ -96,23 +106,42 @@ export default function SeedCalculator() {
       </div>
 
       {result && seed ? (
-        <div className="mt-6 pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div>
-            <p className="text-[10px] font-bold text-slate-600 uppercase tracking-wide mb-1">Recommended</p>
-            <p className="text-2xl font-black text-slate-900">
-              {result.lowLbs === result.highLbs ? `${result.lowLbs} lbs` : `${result.lowLbs}–${result.highLbs} lbs`}
-            </p>
-            <p className="text-xs text-slate-500 mt-1">
-              Estimated total: <span className="font-bold text-emerald-600">${result.price.toFixed(2)}</span> at {result.midLbs} lbs
-            </p>
+        <div className="mt-6 pt-6 border-t border-slate-100">
+          {result.lowLbs !== result.highLbs && (
+            <div className="flex gap-2 mb-5">
+              {RATE_CHOICES.map(({ key, label }) => {
+                const lbs = { low: result.lowLbs, mid: result.midLbs, high: result.highLbs }[key];
+                return (
+                  <button
+                    key={key}
+                    onClick={() => setRateChoice(key)}
+                    className={`flex-1 py-2.5 rounded-lg text-xs font-bold border-2 transition-all ${rateChoice === key ? 'bg-emerald-600 border-emerald-600 text-white shadow-md shadow-emerald-500/30' : 'bg-white border-slate-200 text-slate-600 hover:border-emerald-500 hover:text-emerald-600'}`}
+                  >
+                    {label}
+                    <span className="block text-[10px] font-normal opacity-80">{lbs} lbs</span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <p className="text-[10px] font-bold text-slate-600 uppercase tracking-wide mb-1">
+                {result.lowLbs === result.highLbs ? 'Recommended' : RATE_CHOICES.find((c) => c.key === rateChoice)?.label}
+              </p>
+              <p className="text-2xl font-black text-slate-900">{selectedLbs} lbs</p>
+              <p className="text-xs text-slate-500 mt-1">
+                Estimated total: <span className="font-bold text-emerald-600">${selectedPrice.toFixed(2)}</span>
+              </p>
+            </div>
+            <button
+              onClick={handleAdd}
+              className="flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm shadow-emerald-500/30 shrink-0"
+            >
+              <ShoppingCartIcon className="w-4 h-4" />
+              Add {selectedLbs} lbs to Batch
+            </button>
           </div>
-          <button
-            onClick={handleAdd}
-            className="flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm shadow-emerald-500/30 shrink-0"
-          >
-            <ShoppingCartIcon className="w-4 h-4" />
-            Add {result.midLbs} lbs to Batch
-          </button>
         </div>
       ) : (
         <p className="text-xs text-slate-400 mt-5 pt-5 border-t border-slate-100">Enter your acreage to see a recommended lbs range and estimated price.</p>

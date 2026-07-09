@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useCart } from '@/store/useCart';
 import { SEED_CATALOG } from '../data/seedCatalog';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ScaleIcon, XMarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
+import { ScaleIcon, XMarkIcon, ShoppingCartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { calculateTieredPrice } from '@/lib/pricing';
 import SeedCalculator from '@/components/SeedCalculator';
 
@@ -19,6 +19,7 @@ export default function StorePage() {
   const [activeTab, setActiveTab] = useState('all');
   const [selectedSeed, setSelectedSeed] = useState<any>(null);
   const [customPounds, setCustomPounds] = useState(50);
+  const [bagQuantity, setBagQuantity] = useState(1);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
@@ -70,7 +71,7 @@ export default function StorePage() {
 
                   <div className="mt-auto">
                     <p className="text-xs text-slate-600 uppercase tracking-wide mb-3">From <span className="text-slate-900 font-bold">${startingPrice.toFixed(2)}</span>/lb</p>
-                    <button onClick={() => { setSelectedSeed(seed); setCustomPounds(50); }} className="w-full flex items-center justify-center gap-2 py-3 bg-slate-900 text-white border-2 border-slate-900 hover:bg-emerald-600 hover:border-emerald-600 rounded-xl text-xs font-bold transition-all shadow-sm">
+                    <button onClick={() => { setSelectedSeed(seed); setCustomPounds(50); setBagQuantity(1); }} className="w-full flex items-center justify-center gap-2 py-3 bg-slate-900 text-white border-2 border-slate-900 hover:bg-emerald-600 hover:border-emerald-600 rounded-xl text-xs font-bold transition-all shadow-sm">
                       <ScaleIcon className="w-4 h-4" />
                       Configure Bag Weight
                     </button>
@@ -85,7 +86,7 @@ export default function StorePage() {
       <AnimatePresence>
         {selectedSeed && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
-            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="relative bg-white rounded-3xl max-w-4xl w-full shadow-2xl max-h-[88vh] overflow-hidden grid sm:grid-cols-5">
+            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="relative bg-white rounded-3xl max-w-4xl w-full shadow-2xl max-h-[88vh] overflow-y-auto sm:overflow-hidden grid sm:grid-cols-5">
               <button
                 onClick={() => setSelectedSeed(null)}
                 aria-label="Close"
@@ -95,7 +96,7 @@ export default function StorePage() {
               </button>
 
               {/* Product info */}
-              <div className="sm:col-span-3 p-8 sm:p-10 overflow-y-auto max-h-[88vh]">
+              <div className="sm:col-span-3 p-8 sm:p-10 sm:overflow-y-auto sm:max-h-[88vh]">
                 <span className="text-[9px] font-bold text-emerald-600 uppercase tracking-widest">{selectedSeed.category}</span>
                 <h2 className="text-2xl font-black text-slate-900 mt-1 pr-10">{selectedSeed.name}</h2>
                 <p className="text-slate-600 text-sm mt-3 leading-relaxed">{selectedSeed.desc}</p>
@@ -133,9 +134,28 @@ export default function StorePage() {
                   </div>
                   <input type="range" min="5" max="50" value={customPounds} onChange={(e) => setCustomPounds(Number(e.target.value))} className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600" />
 
+                  <p className="text-[10px] font-bold text-slate-600 uppercase tracking-wide mt-6 mb-3">Number of Bags</p>
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => setBagQuantity((q) => Math.max(1, q - 1))}
+                      aria-label="Fewer bags"
+                      className="w-10 h-10 flex items-center justify-center rounded-lg border-2 border-slate-300 text-slate-900 hover:border-emerald-500 hover:text-emerald-600 transition-all"
+                    >
+                      <MinusIcon className="w-4 h-4" />
+                    </button>
+                    <span className="flex-1 text-center text-lg font-black text-slate-900">{bagQuantity}× {customPounds} lbs</span>
+                    <button
+                      onClick={() => setBagQuantity((q) => q + 1)}
+                      aria-label="More bags"
+                      className="w-10 h-10 flex items-center justify-center rounded-lg border-2 border-slate-300 text-slate-900 hover:border-emerald-500 hover:text-emerald-600 transition-all"
+                    >
+                      <PlusIcon className="w-4 h-4" />
+                    </button>
+                  </div>
+
                   <div className="mt-8 p-5 rounded-2xl bg-white border border-slate-200">
                     <p className="text-[10px] font-bold text-slate-600 uppercase tracking-wide mb-1">Total Price</p>
-                    <div className="text-3xl font-black text-emerald-600">${calculateTieredPrice(selectedSeed.bulkPrice50lb, customPounds).toFixed(2)}</div>
+                    <div className="text-3xl font-black text-emerald-600">${(calculateTieredPrice(selectedSeed.bulkPrice50lb, customPounds) * bagQuantity).toFixed(2)}</div>
                   </div>
                 </div>
 
@@ -144,7 +164,7 @@ export default function StorePage() {
                     <XMarkIcon className="w-4 h-4" />
                     Cancel
                   </button>
-                  <button onClick={() => { addToCart({ ...selectedSeed, quantity: 1, price: calculateTieredPrice(selectedSeed.bulkPrice50lb, customPounds), weightOz: customPounds * 16 }); setSelectedSeed(null); }} className="flex-1 flex items-center justify-center gap-2 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm shadow-emerald-500/30">
+                  <button onClick={() => { addToCart({ ...selectedSeed, quantity: bagQuantity, price: calculateTieredPrice(selectedSeed.bulkPrice50lb, customPounds), weightOz: customPounds * 16 }); setSelectedSeed(null); }} className="flex-1 flex items-center justify-center gap-2 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm shadow-emerald-500/30">
                     <ShoppingCartIcon className="w-4 h-4" />
                     Add to Batch
                   </button>
