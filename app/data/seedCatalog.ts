@@ -281,7 +281,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 48.00,
     desc: 'Fast-maturing warm-season wetland grass producing heavy seed heads that draw waterfowl, doves, and upland game birds to moist plots.',
     details: 'Japanese millet is a warm-season annual grass that tolerates wet, poorly drained, and even periodically flooded soils better than almost any other food plot grass, making it a top choice for moist-soil and waterfowl impoundment plantings, and it should be planted after soil warms above 65 degrees F, generally May through August in Illinois. Germination is quick, typically 5 to 7 days, and the crop matures rapidly, producing heavy, seed-laden heads within 60 to 70 days that bend over and shatter naturally, feeding ducks, dove, quail, and turkey directly from the plant or after it lodges into shallow water. It has no prussic acid risk of any kind, unlike sorghum-based wildlife plantings, so it carries none of the frost or drought-stress toxicity concerns those species require managing. It performs best on moist, fertile ground and is commonly planted alone in drawn-down impoundments or blended with other warm-season wildlife plants on drier ground.',
-    img: '/images/winter_wheat.png',
+    img: '/images/vernal_alfalfa.jpg',
     chartType: 'wildlife',
     specs: { wildlifeUse: 'Excellent seed source for waterfowl, dove, quail and turkey', rate: 'Broadcast 20-30 lb per acre, cover 1/4 inch deep', type: 'Summer annual, 60-70 days to mature', notes: 'Thrives in moist soil and shallow water drawdowns' }
   },
