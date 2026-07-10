@@ -12,6 +12,9 @@ import {
   MapPinIcon,
   PhoneIcon,
   EnvelopeIcon,
+  ClipboardDocumentListIcon,
+  CubeIcon,
+  ChatBubbleLeftRightIcon,
 } from '@heroicons/react/24/outline';
 
 const FEATURES = [
@@ -42,6 +45,66 @@ const STATS = [
   { value: '15+', label: 'Years in Operation' },
   { value: '500+', label: 'Farms Served' },
   { value: '24/7', label: 'Order Access' },
+];
+
+const STEPS = [
+  {
+    icon: ClipboardDocumentListIcon,
+    title: 'Configure Your Order',
+    desc: 'Placeholder copy — explain how a customer picks products and bag weights in the store. [ADD TEXT HERE]',
+  },
+  {
+    icon: CurrencyDollarIcon,
+    title: 'See Live Pricing',
+    desc: 'Placeholder copy — explain how tiered pricing updates as quantity changes. [ADD TEXT HERE]',
+  },
+  {
+    icon: CubeIcon,
+    title: 'We Prep & Ship',
+    desc: 'Placeholder copy — describe fulfillment: pallets, bagging, freight, or pickup process. [ADD TEXT HERE]',
+  },
+  {
+    icon: TruckIcon,
+    title: 'It Arrives On the Farm',
+    desc: 'Placeholder copy — describe delivery timelines and what customers can expect on arrival. [ADD TEXT HERE]',
+  },
+];
+
+const TESTIMONIALS = [
+  {
+    quote: 'Placeholder testimonial — a sentence or two about the experience of ordering from Cane Run Enterprises. [ADD TEXT HERE]',
+    name: 'Customer Name [ADD TEXT HERE]',
+    role: 'Farm / Title [ADD TEXT HERE]',
+  },
+  {
+    quote: 'Placeholder testimonial — mention pricing, delivery speed, or product quality. [ADD TEXT HERE]',
+    name: 'Customer Name [ADD TEXT HERE]',
+    role: 'Farm / Title [ADD TEXT HERE]',
+  },
+  {
+    quote: 'Placeholder testimonial — mention repeat ordering or support experience. [ADD TEXT HERE]',
+    name: 'Customer Name [ADD TEXT HERE]',
+    role: 'Farm / Title [ADD TEXT HERE]',
+  },
+];
+
+const FAQS = [
+  {
+    q: 'Placeholder question — e.g. what regions do you ship to? [ADD TEXT HERE]',
+    a: 'Placeholder answer copy. [ADD TEXT HERE]',
+  },
+  {
+    q: 'Placeholder question — e.g. what is the minimum order size? [ADD TEXT HERE]',
+    a: 'Placeholder answer copy. [ADD TEXT HERE]',
+  },
+  {
+    q: 'Placeholder question — e.g. do you offer bulk / wholesale pricing? [ADD TEXT HERE]',
+    a: 'Placeholder answer copy. [ADD TEXT HERE]',
+  },
+  {
+    q: 'Placeholder question — e.g. how do returns or damaged shipments work? [ADD TEXT HERE]',
+    a: 'Placeholder answer copy. [ADD TEXT HERE]',
+  },
 ];
 
 export default function HomePage() {
@@ -161,6 +224,107 @@ export default function HomePage() {
               <p className="text-slate-500 text-xs leading-relaxed">{feature.desc}</p>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="border-b border-slate-200 bg-white">
+        <div className="max-w-7xl mx-auto px-6 py-24">
+          <div className="max-w-2xl mb-14">
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600">How It Works</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-2">
+              From order to farm in a few steps.
+            </h2>
+            <p className="text-slate-500 text-sm mt-4 leading-relaxed">
+              Placeholder copy — a short intro to your ordering/fulfillment process. [ADD TEXT HERE]
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {STEPS.map((step, i) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="p-8 rounded-3xl bg-slate-50 border border-slate-200"
+              >
+                <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5">
+                  <step.icon className="w-5 h-5" />
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600">
+                  Step {i + 1}
+                </span>
+                <h3 className="text-base font-black text-slate-900 mt-1 mb-2">{step.title}</h3>
+                <p className="text-slate-500 text-xs leading-relaxed">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="border-b border-slate-200 bg-neutral-800">
+        <div className="max-w-7xl mx-auto px-6 py-24">
+          <div className="max-w-2xl mb-14">
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-400">What Farms Say</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mt-2">
+              Trusted by growers across the region.
+            </h2>
+            <p className="text-slate-400 text-sm mt-4 leading-relaxed">
+              Placeholder copy — an intro line about customer trust or repeat business. [ADD TEXT HERE]
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {TESTIMONIALS.map((t, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="p-8 rounded-3xl bg-white/5 border border-white/10"
+              >
+                <ChatBubbleLeftRightIcon className="w-6 h-6 text-emerald-400 mb-4" />
+                <p className="text-slate-300 text-sm leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
+                <p className="text-white text-sm font-bold">{t.name}</p>
+                <p className="text-slate-400 text-xs">{t.role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-white">
+        <div className="max-w-4xl mx-auto px-6 py-24">
+          <div className="mb-14 text-center">
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600">FAQ</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-2">
+              Common questions.
+            </h2>
+            <p className="text-slate-500 text-sm mt-4 leading-relaxed">
+              Placeholder copy — a short intro line above the FAQ list. [ADD TEXT HERE]
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            {FAQS.map((faq, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                className="p-6 rounded-2xl bg-slate-50 border border-slate-200"
+              >
+                <h3 className="text-sm font-black text-slate-900 mb-2">{faq.q}</h3>
+                <p className="text-slate-500 text-xs leading-relaxed">{faq.a}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
