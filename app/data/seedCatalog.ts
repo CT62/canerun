@@ -6,7 +6,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 81.00,
     desc: 'Drought tolerant, persistent utility field and turf fescue. Exceptional for high-traffic environments, home lawns, and robust erosion control applications.',
     details: 'KY 31 performs best in well-drained to moderately wet soils with a pH between 5.5 and 7.0, and it tolerates full sun to light shade better than almost any other cool-season turfgrass. Seed germinates in 7 to 14 days and reaches usable stand density within 6 to 8 weeks under normal fall or spring conditions. Its coarse-textured, bunch-type growth habit and deep root system make it exceptionally drought tolerant and slow to wear out under foot or vehicle traffic, which is why it remains a dependable standard for pastures, roadsides, and utility turf across Illinois\'s cool-season, corn-belt climate. Mow at 3 to 4 inches to encourage rooting depth and shade out weed competition, and note that older KY 31 seed lots typically carry a wild-type endophyte that benefits stand persistence but can affect grazing animals in hot weather.',
-    img: '/images/ky_31.png',
+    img: '/images/ky_31.jpg',
     chartType: 'turf',
     specs: { seedPerLb: '225,000', lbsAcre: '260 to 435', lbs1000: '6 to 10', cycle: 'Perennial' }
   },
@@ -17,7 +17,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 89.50,
     desc: 'Premium professional lawn mix blend: 30% Tribute II, 30% Falcon IV, 20% Renegade DT Turf Type Tall Fescues, and 20% Line Drive II Perennial Ryegrass.',
     details: 'The turf-type tall fescues that dominate this blend prefer a pH of 6.0 to 7.0, well-drained loam soils, and full sun to moderate shade, establishing a dense, fine-textured stand within 7 to 14 days of germination. Turf-type tall fescues generally have finer leaf blades and better mowing quality than forage types like KY 31, while retaining strong heat and drought tolerance once rooted. The perennial ryegrass component germinates even faster, often within 5 to 7 days, giving the mix quick initial cover and helping to stabilize soil while the fescue matures underneath. Mow at 2.5 to 3.5 inches and expect full establishment in 6 to 10 weeks; overseed in fall in Illinois for best results, since fescue seedlings establish stronger root systems ahead of winter dormancy than spring-seeded stands do heading straight into summer heat.',
-    img: '/images/black.png',
+    img: '/images/easy_beauty_lawn_mix.jpg',
     chartType: 'turf',
     specs: { seedPerLb: 'Varies by Blend', lbsAcre: '260 to 390', lbs1000: '6 to 9', cycle: 'Perennial' }
   },
@@ -28,7 +28,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 102.50,
     desc: 'Elite athletic and golf-grade 3-way perennial ryegrass mix: 32% Palmer III, 33% Line Drive II, and 35% Prelude IV Perennial Ryegrass.',
     details: 'Perennial ryegrass thrives in full sun on well-drained, fertile soils with a pH of 6.0 to 7.0, and it is prized for the fastest germination of any cool-season turf species, typically emerging in 5 to 7 days. This speed makes it ideal for quick athletic-field repair and overseeding, though it lacks the deep root system of tall fescue and is comparatively less drought and heat tolerant, so irrigation matters through Illinois summers even though the state\'s cooler overall climate suits ryegrass better than warmer regions do. Mow at 1.5 to 2.5 inches for athletic or golf use to maintain the fine, dense sward these varieties are bred for. Because straight ryegrass stands can still thin under prolonged summer heat stress or heavy traffic, many turf managers blend it with tall fescue or use it as an overseed component rather than a sole permanent stand.',
-    img: '/images/emerald_excellence_perennial.png',
+    img: '/images/emerald_excellence_perennial.jpg',
     chartType: 'turf',
     specs: { seedPerLb: '270,000', lbsAcre: '175 to 260', lbs1000: '4 to 6', cycle: 'Perennial' }
   },
@@ -39,7 +39,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 120.00,
     desc: 'Premium low-light formulation: 50% Creeping Red Fescue, 11% Prelude IV, 11% Line Drive II, 11% Palmer III Perennial Ryegrasses, and 17% Kenblue Kentucky Bluegrass.',
     details: 'This mix leans on Creeping Red Fescue, the most shade-tolerant common turfgrass, to carry the stand under trees and in low-light situations where bluegrass and ryegrass alone would thin out. Fine fescue prefers a pH of 5.5 to 6.5, tolerates dry, infertile soils, and spreads slowly by short rhizomes, filling in gaps left by the less shade-adapted ryegrass and bluegrass components. Germination across the blend ranges from 7 to 21 days depending on species, with bluegrass being the slowest to establish. Mow shaded stands slightly higher, around 3 to 4 inches, to maximize leaf surface for photosynthesis in reduced light, and expect thinner density than a full-sun lawn since all cool-season turfgrasses lose vigor as available light drops.',
-    img: '/images/shady_lawn_mix.png',
+    img: '/images/shady_lawn_mix.jpg',
     chartType: 'turf',
     specs: { seedPerLb: 'Varies by Blend', lbsAcre: '130 to 220', lbs1000: '3 to 5', cycle: 'Perennial Blend' }
   },
@@ -50,7 +50,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 81.50,
     desc: 'High-performance 3-way turf fescue network: 33% Renegade DT, 34% Falcon IV, and 33% Tribute II Turf Type Tall Fescue. Ideal for beautiful deep green cover.',
     details: 'As a straight turf-type tall fescue blend, Vista favors well-drained soils with a pH of 6.0 to 7.0 and full sun to moderate shade, germinating in 7 to 14 days and reaching mowable height within 3 to 4 weeks. Turf-type tall fescues combine the deep, drought-resistant root systems of the species with finer leaf texture and denser tillering than older forage-type fescues like KY 31, giving a more refined, dark green lawn appearance. Mow at 3 to 4 inches to support root depth and shade suppression of summer weeds. Fall seeding (late August through September) is strongly preferred in Illinois\'s cool-season climate, since it lets seedlings establish strong root systems before the following summer\'s heat and drought stress arrive.',
-    img: '/images/black.png',
+    img: '/images/vista_fescue.jpg',
     chartType: 'turf',
     specs: { seedPerLb: '225,000', lbsAcre: '260 to 435', lbs1000: '6 to 10', cycle: 'Perennial Blend' }
   },
@@ -61,7 +61,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 122.50,
     desc: 'Fine-textured cool season grass that spreads smoothly via underground rhizomes. Excellent shade choice for dense forest coverage or canopy landscaping.',
     details: 'Creeping red fescue is the most shade-tolerant of the common cool-season turf species, performing well under 40 to 60 percent canopy cover where bluegrass and ryegrass struggle. It prefers a slightly acidic to neutral pH of 5.5 to 6.5, tolerates dry, sandy, and infertile soils, and generally underperforms on wet or poorly drained ground. Germination takes 10 to 14 days, with fuller rhizome spread and stand fill-in developing over one to two growing seasons. It has low fertility and mowing demands, doing best left slightly taller (3 to 4 inches) and unmowed or lightly mowed in naturalized woodland-edge plantings, and it holds up poorly to heavy foot traffic or full-sun heat compared to tall fescue.',
-    img: '/images/creeping_red_fescue.png',
+    img: '/images/creeping_red_fescue.jpg',
     chartType: 'turf',
     specs: { seedPerLb: '615,000', lbsAcre: '130 to 220', lbs1000: '3 to 5', cycle: 'Perennial' }
   },
@@ -72,7 +72,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 117.50,
     desc: 'Classic, dense blue-green lawn grass turf standard. Delivers excellent self-healing durability, cold resistance, and a beautiful premium aesthetic barefoot feel.',
     details: 'Kentucky bluegrass wants full sun, fertile well-drained soil, and a pH of 6.0 to 7.0; it is markedly less shade and drought tolerant than tall fescue and needs supplemental irrigation to stay green through Illinois\'s summer dry spells. Germination is comparatively slow, taking 14 to 28 days, but once established its rhizomatous growth habit lets it spread laterally and self-repair bare or worn patches, unlike bunch-type grasses. Kenblue is a common-type, unimproved variety, so it is less disease-resistant and less densely tillered than named turf cultivars, but it remains extremely cold hardy and reliably persists through harsh winters. Mow at 2 to 3 inches and expect the grass to go semi-dormant (brown) under summer heat stress before recovering with cooler fall temperatures.',
-    img: '/images/kentucky_bluegrass.png',
+    img: '/images/kentucky_bluegrass.jpg',
     chartType: 'turf',
     specs: { seedPerLb: '2,200,000', lbsAcre: '90 to 130', lbs1000: '2 to 3', cycle: 'Perennial' }
   },
@@ -83,7 +83,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 131.50,
     desc: 'High-yielding, foundational perennial legume forage known for excellent winter hardiness, rich protein levels, and superior cattle feed production.',
     details: 'Alfalfa demands well-drained soil and a pH of 6.5 to 7.5; it will not persist on wet, poorly drained, or strongly acidic ground since its deep taproot is highly susceptible to root and crown rots under standing water. Seed should be inoculated with the proper Rhizobium meliloti strain at planting to support nitrogen fixation, and germination occurs in 5 to 10 days with usable stands establishing over 60 to 90 days. Vernal is an older, widely adapted variety bred specifically for strong winter hardiness and consistent regrowth, making it especially well matched to Illinois\'s cold corn-belt winters. First cutting should be timed at bud-to-early-bloom stage, with subsequent cuttings on a 28- to 35-day interval, and stands are commonly rotated with corn or small grains every 3 to 5 years as productivity declines.',
-    img: '/images/black.png',
+    img: '/images/vernal_alfalfa.jpg',
     chartType: 'field',
     specs: { lbsAcre: '18 to 30', depth: '1/4"', lbsBu: '60', seedsPerLb: '220,000', cycle: 'Perennial' }
   },
@@ -94,7 +94,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 195.50,
     desc: 'Short-lived perennial clover customized specifically for damp, low-lying environments, wet clay, and cool, acidic soil management configurations.',
     details: 'Alsike clover tolerates wetter, heavier, and more acidic soils than almost any other clover, thriving down to a pH of about 5.5 where red or white clover would struggle, and it handles seasonal flooding better than alfalfa or ladino. It germinates in about 5 to 10 days and establishes quickly, performing best in cool, moist conditions with full sun to light shade. As a short-lived perennial it typically persists only 2 to 3 years before needing reseeding, which makes it a good component in mixed pasture stands on low-lying, poorly drained fields where longer-lived legumes fail. It combines well with grasses such as timothy or redtop that share its tolerance for damp ground, and mowing or grazing management should allow it to reach early bloom periodically to maintain the stand through natural reseeding.',
-    img: '/images/alsike_clover.png',
+    img: '/images/alsike_clover.jpg',
     chartType: 'field',
     specs: { lbsAcre: '4 to 6', depth: '0 to 1/4"', lbsBu: '60', seedsPerLb: '680,000', cycle: 'Biennial' }
   },
@@ -105,7 +105,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 72.00,
     desc: 'Fast-growing nitrogen fixer and annual winter cover choice that acts as a powerful weed suppressor while building beneficial organic soil matter.',
     details: 'Crimson clover prefers well-drained soils with a pH of 5.5 to 7.0 and full sun, and it germinates quickly, often within 7 to 10 days, giving fast fall ground cover and effective weed suppression. It should be seeded in August or early September to build enough growth before dormancy, since its winter survival is not as dependable in Illinois\'s colder corn-belt climate as it is in milder transition-zone regions further south; stands are more consistent in southern Illinois or wherever snow cover reliably insulates the crown, and it is often managed as a frost-sensitive winter annual with some risk of stand loss in harder winters rather than a guaranteed overwinter. As a legume it fixes meaningful nitrogen for a following corn or vegetable crop, and it is commonly rotated ahead of summer row crops or interseeded with small grains for a combined cover crop mix. Terminate by mowing, rolling, or herbicide before or at early flowering to prevent unwanted seed set and volunteer regrowth in the following crop.',
-    img: '/images/crimson_clover.png',
+    img: '/images/crimson_clover.jpg',
     chartType: 'field',
     specs: { lbsAcre: '15 to 20', depth: '0 to 1/4"', lbsBu: '60', seedsPerLb: '150,000', cycle: 'Annual' }
   },
@@ -116,7 +116,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 233.50,
     desc: 'High-forage nutrient profile. Long-lived companion white clover built to enrich pasturage operations, protein balances, and long-term soil health.',
     details: 'Ladino clover is a large-type white clover that prefers moist, fertile, well-drained soils with a pH of 6.0 to 7.0, and it is noticeably less drought tolerant than alfalfa or red clover because of its shallow, stoloniferous root system. It germinates in 3 to 7 days and spreads laterally by surface stolons, allowing it to fill in thin spots in a pasture stand over time. It tolerates fairly close, frequent grazing better than taller legumes, making it a strong companion in grass-clover pasture mixes with orchardgrass, timothy, or fescue, where it also contributes fixed nitrogen to the companion grass. Because bloat risk rises when cattle graze pure or clover-dominant stands, it is typically managed as a 20 to 30 percent component of a grass-clover mixture rather than a monoculture.',
-    img: '/images/black.png',
+    img: '/images/ladino_clover.jpg',
     chartType: 'field',
     specs: { lbsAcre: '1 to 3', depth: '0 to 1/4"', lbsBu: '60', seedsPerLb: '860,000', cycle: 'Perennial' }
   },
@@ -127,7 +127,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 141.50,
     desc: 'Aggressive multi-purpose biennial legume choice engineered for high-tonnage hay cutting, pasture enrichment, and effective green manure cover.',
     details: 'Medium red clover grows best on well-drained soils with a pH of 6.0 to 6.5, though it tolerates somewhat heavier and wetter ground than alfalfa. Germination occurs in 5 to 10 days, and stands typically persist 2 to 3 years before declining, behaving as a short-lived perennial in Illinois\'s climate despite often being labeled biennial. It is more shade tolerant than alfalfa and pairs well with orchardgrass or timothy in a hay or pasture mix, with the legume component fixing nitrogen that benefits the companion grass. First cutting is generally taken at early bloom for hay quality, and subsequent cuttings or grazing rotations should allow 30 to 40 days of regrowth; turning under a red clover stand ahead of corn is also a well-documented green manure practice.',
-    img: '/images/black.png',
+    img: '/images/medium_red_clover.jpg',
     chartType: 'field',
     specs: { lbsAcre: '8 to 12', depth: '0 to 1/4"', lbsBu: '60', seedsPerLb: '275,000', cycle: 'Biennial' }
   },
@@ -138,7 +138,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 276.50,
     desc: 'Low-growing, highly persistent white clover built to withstand close grazing, frequent livestock foot traffic, and aggressive lawn blending.',
     details: 'White Dutch clover is a small-leaved, low-growing white clover type that prefers moist, well-drained soils with a pH of 6.0 to 7.0 and full sun to partial shade. It germinates in 3 to 7 days and spreads by creeping surface stolons that root at the nodes, giving it excellent recovery from close mowing, heavy grazing, and foot traffic compared to taller legumes. This low growth habit makes it a popular addition to lawn seed mixes as well as pastures, where it fixes nitrogen for companion turfgrasses or forage grasses while tolerating regular mowing at 2 to 3 inches. It persists for many years under proper management but can thin during extended summer drought, recovering readily once moisture returns.',
-    img: '/images/white_dutch_clover.png',
+    img: '/images/white_dutch_clover.jpg',
     chartType: 'field',
     specs: { lbsAcre: '15 lb (Broadcast)', depth: '1/4" - 1/2"', lbsBu: '60', seedsPerLb: 'Varies', cycle: 'Perennial' }
   },
@@ -149,7 +149,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 220.00,
     desc: 'Warm-season annual legume that maintains high nutritional forage value during the peak summer heat waves when cool season fields slow down.',
     details: 'Korean lespedeza tolerates poor, acidic, and low-fertility soils better than most legumes, performing well at a pH of 5.5 to 6.5 where clovers and alfalfa struggle, and it is valued for filling the summer forage slump when cool-season grasses go dormant in the heat. Because this seed lot is unhulled (hull-on), the hard seed coat slows and staggers germination over several weeks rather than all at once, which is a natural trait of the species that improves stand persistence through self-reseeding but means establishment takes longer than scarified seed. It is a self-reseeding summer annual, typically germinating in May once soils warm and producing usable forage and seed by late summer. Its low, spreading growth habit also makes it valuable for erosion control on marginal ground and as wildlife food and cover, and it tolerates fairly close grazing once established.',
-    img: '/images/korean_lespedeza.png',
+    img: '/images/korean_lespedeza.jpg',
     chartType: 'field',
     specs: { lbsAcre: '20 to 25', depth: '0 to 1/4"', lbsBu: '25', seedsPerLb: '240,000', cycle: 'Summer Annual' }
   },
@@ -160,7 +160,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 137.00,
     desc: 'Productive, rust-resistant classic agricultural variety producing palatable, clean, high-quality cattle forage and orchard horse hay mixes.',
     details: 'Orchardgrass is one of the most shade-tolerant cool-season pasture grasses, making it well suited to orchard understories and wooded pasture edges, and it prefers well-drained soils with a pH of 6.0 to 7.0. Potomac is an older, widely proven variety that greens up early in spring and regrows quickly after cutting or grazing, though newer varieties generally offer improved rust resistance and yield. Germination takes 7 to 14 days, with full stand establishment over one growing season, and the bunch-type growth habit pairs well with a legume such as red clover or alfalfa for a balanced hay or pasture mix. It does not tolerate poorly drained or waterlogged soils well, and cutting or grazing management should allow 4 to 6 inches of stubble to maintain regrowth vigor.',
-    img: '/images/black.png',
+    img: '/images/orchardgrass_potomac.jpg',
     chartType: 'field',
     specs: { lbsAcre: '15 to 25', depth: '0 to 1/2"', lbsBu: '14', seedsPerLb: '590,000', cycle: 'Perennial' }
   },
@@ -171,7 +171,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 182.50,
     desc: 'Elite modern generation orchardgrass variant providing enhanced high yields, ultra-fast regrowth, and extreme field survival metrics under pressure.',
     details: 'Warrior II shares the core agronomy of the orchardgrass species: a preference for well-drained soils with a pH of 6.0 to 7.0, strong shade tolerance relative to other pasture grasses, and germination in 7 to 14 days. As a modern improved variety, it is bred for better rust resistance and more rapid regrowth after cutting than older lines like Potomac, which translates to more cutting cycles per season under good management. It combines well with a legume component such as red clover, ladino, or alfalfa to improve overall forage protein and reduce nitrogen fertilizer needs. Like all orchardgrass, it performs poorly on wet or compacted soils and should be grazed or cut on a rotation that leaves adequate stubble height (4 to 6 inches) to sustain stand vigor through Illinois\'s hot summer months.',
-    img: '/images/black.png',
+    img: '/images/orchardgrass_warrior.jpg',
     chartType: 'field',
     specs: { lbsAcre: '15 to 25', depth: '0 to 1/2"', lbsBu: '14', seedsPerLb: '590,000', cycle: 'Perennial' }
   },
@@ -182,7 +182,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 337.50,
     desc: 'Highly adaptive utility grass that easily handles marginal, swampy, and acidic field locations where other seed varieties completely fail.',
     details: 'Redtop is exceptionally tolerant of wet, poorly drained, and acidic soils, surviving at a pH as low as 4.5 to 5.0 where most other pasture grasses fail, and it handles periodic flooding better than almost any other cool-season grass. It spreads via rhizomes and stolons, forming a persistent sod that stabilizes wet meadows, waterways, and marginal low-fertility ground. Germination is rapid given its very small seed size, typically 7 to 14 days, though seedling vigor is modest and stands take a full season to thicken. It is generally lower in forage quality and palatability than timothy or orchardgrass, so it is most often used as a minor component in wet-ground pasture mixes or for erosion control rather than as a primary hay grass.',
-    img: '/images/black.png',
+    img: '/images/redtop.jpg',
     chartType: 'field',
     specs: { lbsAcre: '6 to 10', depth: '0 to 1/4"', lbsBu: '27', seedsPerLb: '5,100,000', cycle: 'Perennial' }
   },
@@ -193,7 +193,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 114.50,
     desc: 'Foundational clean cool-season companion grass valued globally for clean premium equine / horse hay production grids.',
     details: 'Timothy prefers cool, moist climates and well-drained soils with a pH of 6.0 to 7.0; it is shallow-rooted and comparatively intolerant of drought and summer heat, so it performs more reliably in Illinois\'s cooler corn-belt climate than it does further south, where warmer transition-zone summers push it closer to its heat tolerance limits. Germination takes about 7 to 14 days, and the bunch-type grass is slower to regrow after cutting than orchardgrass, so it does not tolerate close or frequent grazing as well. Its clean stems, low dust, and consistent palatability have made it the benchmark hay grass for horses, and it is frequently grown alone or blended with a legume such as red clover or alfalfa for improved protein. First cutting is typically taken at early head emergence for the best balance of yield and quality, with 30- to 40-day intervals between subsequent cuttings.',
-    img: '/images/black.png',
+    img: '/images/timothy.jpg',
     chartType: 'field',
     specs: { lbsAcre: '8 to 12', depth: '0 to 1/2"', lbsBu: '45', seedsPerLb: '1,230,000', cycle: 'Perennial' }
   },
@@ -204,7 +204,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 26.50,
     desc: 'High biomass producer that provides quick nurse crop ground cover or direct livestock forage clipping options early in the year.',
     details: 'Spring oats tolerate a wider pH range than most small grains, performing acceptably from about 5.5 to 7.0, and they establish quickly, germinating in 7 to 10 days in cool soil. They produce rapid, heavy biomass in a short window, making them useful as an early-season nurse crop for interseeded legumes or as a quick forage clipping before summer crops go in. Unlike winter oat varieties, standard spring oats have essentially no winter hardiness and will winterkill with the first hard freezes, which makes them a reliable, self-terminating cover crop when planted in early spring or late summer ahead of winter. They tolerate moderately wet soils better than barley but still perform best on well-drained ground with adequate fertility.',
-    img: '/images/spring_and_winter_oats.png',
+    img: '/images/easy_beauty_lawn_mix.jpg',
     chartType: 'field',
     specs: { lbsAcre: '64 to 80', depth: '1/2"', lbsBu: '32', seedsPerLb: '22,800', cycle: 'Spring Annual' }
   },
@@ -215,7 +215,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 24.75,
     desc: 'Excellent forage profiling winter oat variety bred carefully to stand strong through harsh cold seasonal freezing cycles.',
     details: 'Winter oats are a winter-type oat bred for improved cold tolerance compared to standard spring oats, though it still remains the least winter-hardy of the common small grains behind wheat and rye. In Illinois\'s colder, more exposed winters it carries meaningfully more winterkill risk than it would in a milder transition-zone climate, so reliable overwintering depends on consistent snow cover, and growers in the colder northern half of the state should treat it as a higher-risk planting than wheat or rye. It prefers well-drained soils with a pH of 5.5 to 7.0 and germinates in about 7 to 10 days, producing good fall forage and biomass before going semi-dormant in the coldest months. Fall planting should occur early enough, typically September, to allow good root development ahead of winter. It is valued for its palatability as grazing or hay forage and its quick regrowth in early spring once temperatures moderate.',
-    img: '/images/spring_and_winter_oats.png',
+    img: '/images/vista_fescue.jpg',
     chartType: 'field',
     specs: { lbsAcre: '64 to 80', depth: '1/2"', lbsBu: '32', seedsPerLb: '22,800', cycle: 'Winter Annual' }
   },
@@ -226,7 +226,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 16.00,
     desc: 'Hardy agricultural grain solution ideal for building cost-effective winter cover, preventing mud runoff, or machine harvesting.',
     details: 'Winter wheat performs best on well-drained soils with a pH of 6.0 to 7.0 and requires a period of cold exposure (vernalization) to transition from vegetative growth to heading the following spring, which is central to its biology as a true winter annual. It germinates in 7 to 10 days when planted from late September through mid-October in Illinois, developing a strong root and tiller base before winter dormancy sets in, then resuming rapid growth in early spring. Its dense fibrous root system makes it excellent for stabilizing soil and preventing erosion and mud through the winter months. It is commonly grain-harvested in early summer, grazed in fall and early spring before jointing, or terminated as a cover crop ahead of a summer row crop.',
-    img: '/images/winter_wheat.png',
+    img: '/images/vernal_alfalfa.jpg',
     chartType: 'field',
     specs: { lbsAcre: '60 to 120', depth: '1/2 to 3/4"', lbsBu: '60', seedsPerLb: '12,000', cycle: 'Winter Annual' }
   },
@@ -237,7 +237,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 19.50,
     desc: 'The gold standard for winter agricultural cover crops. Unmatched deep nutrient scavenging ability and severe cold weather hardiness.',
     details: 'Cereal rye (Secale cereale) is the most cold-hardy and acid-soil-tolerant of the common small grains, surviving at a pH as low as 5.0 and enduring colder winters than wheat, barley, or oats. It germinates quickly in cool soil, often within 5 to 10 days, and can be planted later into the fall than other cover crops while still establishing a usable stand, making it a reliable last option before winter. Its extensive, fibrous root system is exceptional at scavenging residual nitrogen and other nutrients, reducing leaching over winter, and its rapid spring regrowth produces heavy biomass for erosion control and weed suppression. Because rye is mildly allelopathic and can suppress germination of small-seeded crops, it should be terminated 2 to 3 weeks ahead of planting a following crop, or managed with careful residue planning in no-till systems.',
-    img: '/images/winter_rye.png',
+    img: '/images/kentucky_bluegrass.jpg',
     chartType: 'field',
     specs: { lbsAcre: '50 to 90', depth: '1/2 to 3/4"', lbsBu: '56', seedsPerLb: '19,000', cycle: 'Winter Annual' }
   },
@@ -248,7 +248,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 152.50,
     desc: 'Rugged professional perennial forage blend: 50% Warrior II Orchardgrass, 20% Tenho Timothy, 27% Bestfor Tetrapod Ryegrass, and 3% Redtop.',
     details: 'This blend layers grasses with complementary strengths: orchardgrass brings shade tolerance and fast regrowth, timothy contributes clean, palatable hay quality favored for horses, tetraploid perennial ryegrass adds rapid establishment and high early-season yield, and a small fraction of redtop provides insurance on wetter or more marginal spots in the field. All of these cool-season grasses prefer well-drained soils with a pH of 6.0 to 7.0, though the redtop component tolerates the occasional wet or acidic pocket the others cannot. Germination across the mix ranges from about 5 to 14 days, with orchardgrass and timothy needing longer to reach full density than the ryegrass. Because the species differ in regrowth speed and heat tolerance, rotational grazing or cutting management should favor the slowest-recovering component (timothy) to avoid thinning it out of the stand over time.',
-    img: '/images/annual_ryegrass.png',
+    img: '/images/enduro_pasture_mix.jpg',
     chartType: 'field',
     specs: { lbsAcre: '20 to 25', depth: '0 to 1/4"', lbsBu: 'Varies', seedsPerLb: 'Varies', cycle: 'Perennial Blend' }
   },
@@ -259,7 +259,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 148.50,
     desc: 'Elite premium cattle and livestock mix: 34% Potomac Orchardgrass, 24% Vernal Alfalfa, 20% Timothy, 20% Medium Red Clover, and 2% Ladino Clover.',
     details: 'This grass-legume combination pairs orchardgrass and timothy for forage yield and palatability with alfalfa, red clover, and ladino clover to fix nitrogen and boost overall protein content, a classic complementary hay and pasture design. The legumes prefer a slightly higher pH (6.5 to 7.0) and better drainage than the grasses tolerate, especially alfalfa, so a well-drained site benefits the whole stand\'s persistence. Germination timing varies by species, from about 5 days for ladino to 10 to 14 days for orchardgrass and timothy, so even emergence depends on good seed-to-soil contact across the mix. First cutting should be timed to the alfalfa\'s bud stage for the best balance of yield and quality, and because straight legume-heavy forage carries bloat risk, the substantial grass component here helps make grazing this mix safer than grazing clover or alfalfa alone.',
-    img: '/images/black.png',
+    img: '/images/green_valley_mix.jpg',
     chartType: 'field',
     specs: { lbsAcre: '20 to 25', depth: '0 to 1/4"', lbsBu: 'Varies', seedsPerLb: 'Varies', cycle: 'Perennial / Biennial Mix' }
   },
@@ -270,7 +270,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 41.75,
     desc: 'Massive summer biomass builder that easily tolerates extreme heat and dry spells. Ideal for summer hay cropping or rotational cattle fields.',
     details: 'Sorghum-sudangrass is a warm-season annual that should not be planted until soil temperatures reach at least 65 degrees F, typically late May to early June in Illinois since the state\'s colder spring climate takes longer to warm than regions further south, and it prefers well-drained soils with a pH of 5.5 to 7.5. It germinates in 5 to 10 days under warm conditions and grows extremely fast, often reaching grazing or cutting height within 4 to 6 weeks, with strong regrowth after each harvest through summer. A critical management point is prussic acid (cyanide) risk: young regrowth, frost-damaged, or drought-stressed plants can accumulate dangerous levels, so livestock should not graze until plants reach 18 to 24 inches and should be pulled off after a killing frost until the tissue has dried down. It works well in summer rotational grazing systems or as a high-tonnage silage and hay crop between cool-season forage cycles.',
-    img: '/images/sorghum_sundangrass.png',
+    img: '/images/daikon_radish.jpg',
     chartType: 'field',
     specs: { lbsAcre: '15 to 30', depth: '1/2 to 3/4"', lbsBu: '40', seedsPerLb: '15,000', cycle: 'Summer Annual' }
   },
@@ -292,7 +292,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 112.00,
     desc: 'Excellent cool season sweet viney forage choice. Highly attractive winter feed source preferred instantly by deer and wild turkey networks.',
     details: 'Austrian winter peas are a cool-season annual legume that prefer well-drained soils with a pH of 6.0 to 7.5 and germinate in about 7 to 14 days when planted in early fall. Their viney, sprawling growth habit means they benefit from being planted with a cereal grain such as wheat, oats, or rye, which provides physical support and helps the peas climb up off the ground for better deer access and stand persistence. They are only moderately winter hardy and, in Illinois\'s colder winters, carry meaningfully more risk of stand loss than in milder transition-zone climates further south, so they are best suited to southern Illinois or fields with dependable snow cover, while hairy vetch is a safer choice for harsher, more exposed sites further north in the state. As a nitrogen-fixing legume they also improve soil fertility for a following crop, and their sweet, high-protein foliage makes them one of the most attractive cool-season food plot forages for deer and turkey.',
-    img: '/images/winter_pea.png',
+    img: '/images/winter_pea.jpg',
     chartType: 'wildlife',
     specs: { wildlifeUse: 'Excellent winter feed source for deer and turkey', rate: 'Broadcast 50 lb per acre, cover 1/4 inch deep', type: 'Winter annual legume', notes: 'Top quality forage for deer' }
   },
@@ -303,7 +303,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 61.00,
     desc: 'Fast-maturing summer annual that creates exceptional early honeybee feed plots while radically scavenging phosphorus to build poor soils up fast.',
     details: 'Buckwheat is a broadleaf summer annual, not a grass, that tolerates poor, acidic soils down to a pH of about 5.0 and grows well even on low-fertility or newly cleared ground where little else establishes quickly. It germinates in just 3 to 5 days and matures to flower within 5 to 6 weeks, making it one of the fastest cover and food plot crops available for filling a short summer planting window. Its dense, rapid canopy suppresses weeds effectively, and its prolific white blooms make it an outstanding early-to-mid-summer forage source for honeybees and other pollinators. It has no frost tolerance at all and is killed by the first light freeze, so it functions as a self-terminating rotational crop ahead of a fall planting such as wheat, clover, or a brassica blend.',
-    img: '/images/buckwheat.png',
+    img: '/images/buckwheat.jpg',
     chartType: 'wildlife',
     specs: { wildlifeUse: 'Excellent food for quail, pheasant, dove, turkey, ducks and deer', rate: 'Broadcast 50 lb per acre, cover 1/4 inch deep', type: 'Summer annual, 10-12 weeks to mature', notes: 'Soil improvement, honey production, easy to establish' }
   },
@@ -314,7 +314,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 347.00,
     desc: 'High-protein perennial herb exhibiting incredible drought resilience, deep taproots, and unmatched summer leaf palatability for big buck management.',
     details: 'Chicory is a perennial forb (not a grass or legume) with a deep, carrot-like taproot that gives it strong drought resilience compared to shallow-rooted forages, and it prefers well-drained soils with a pH of 5.5 to 7.5 in full sun to light shade. Seed germinates in 7 to 14 days, and stands typically persist for 3 to 5 years with proper management before needing renovation. Its broad, high-protein leaves regrow vigorously after grazing or mowing, making it one of the most palatable and nutrient-dense summer food plot options for deer, and it holds nutritional value later into the growing season than most cool-season plot forages. Periodic mowing to 6 to 8 inches during summer helps keep growth vegetative, tender, and palatable while preventing the plant from bolting to seed.',
-    img: '/images/black.png',
+    img: '/images/chicory.jpg',
     chartType: 'wildlife',
     specs: { wildlifeUse: 'High in nutrient feed value for deer in summer', rate: 'Drill or broadcast 5 lb per acre, cover 1/4 inch deep', type: 'Perennial herb', notes: 'Very palatable for summer and fall grazing' }
   },
@@ -336,7 +336,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 138.00,
     desc: 'High-nutrient deep-scavenging forage tillage radishes that serve as excellent sweet winter attractant magnets after frost sets in.',
     details: 'Daikon-type tillage radish is a cool-season brassica that prefers well-drained soils with a pH of 6.0 to 7.5 and germinates quickly, often within 4 to 7 days, when planted in late summer to early fall. Its long, thick taproot can penetrate compacted soil layers, physically breaking up hardpan and leaving open channels that improve water infiltration and rooting for a following crop. Deep roots also scavenge nitrogen and other nutrients from lower in the soil profile, cycling them back near the surface as the radish decomposes. Freezing temperatures convert stored starches to sugars in the root and foliage, dramatically increasing palatability, and the radish itself is winterkilled by hard freezes, leaving a residue-friendly, easy-to-plant-into surface the following spring, which makes it both an excellent deer attractant and a low-maintenance cover crop.',
-    img: '/images/daikon_radish.png',
+    img: '/images/daikon_radish.jpg',
     chartType: 'field',
     specs: { lbsAcre: '20 to 25', depth: '1/4 to 1/2"', lbsBu: 'Varies', seedsPerLb: 'Varies', cycle: 'Annual Forage' }
   },
@@ -347,7 +347,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 117.50,
     desc: 'Sweet leafy structural brassica forage choice that spikes dramatically in sugar concentration following late fall cold cycles.',
     details: 'Winter rapeseed is a cool-season brassica that prefers well-drained soils with a pH of 6.0 to 7.5 and full sun, germinating in 4 to 7 days when planted in late summer to early fall for a food-plot planting. Like other brassicas, its leaf tissue converts starches to sugars after frost exposure, sharply increasing palatability and drawing deer in once cold weather arrives. It behaves as a hardy annual to short-lived biennial depending on winter severity; it is more likely to reliably overwinter and bolt to flower the following spring in the milder southern half of Illinois than in the colder northern counties, where a hard winter can winterkill the stand outright. It is often blended with cereal grains, clovers, or other brassicas such as turnip and radish to extend the plot\'s attraction window and diversify forage structure across the season.',
-    img: '/images/winter_rapeseed.png',
+    img: '/images/winter_rapeseed.jpg',
     chartType: 'field',
     specs: { lbsAcre: '6 to 10', depth: '0 to 1/4"', lbsBu: 'Varies', seedsPerLb: 'Varies', cycle: 'Cool Annual' }
   },
@@ -358,7 +358,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 133.50,
     desc: 'Highly reliable dual hunting plot producer supplying both heavy leafy green top browse and premium energy-rich winter root bulbs.',
     details: 'Purple Top turnip is a fast-growing cool-season brassica that prefers well-drained, moisture-retentive soils with a pH of 5.5 to 7.0, germinating in just 3 to 5 days and reaching a grazable leafy stage within roughly 40 to 60 days of a late-summer planting. It produces both a broad leafy canopy and an enlarged storage root (bulb), giving deer two distinct food sources across the season: tender greens through fall and an energy-dense root that becomes more attractive after frost sweetens the tissue through starch-to-sugar conversion. Deer often browse the tops first and dig up the bulbs later in winter once other food sources are scarce. It combines well with radish, rapeseed, or cereal grains in a fall food plot blend to stagger the attraction period from early fall through late winter.',
-    img: '/images/black.png',
+    img: '/images/turnip.jpg',
     chartType: 'field',
     specs: { lbsAcre: '6 to 10', depth: '0 to 1/4"', lbsBu: 'Varies', seedsPerLb: 'Varies', cycle: 'Cool Annual' }
   },

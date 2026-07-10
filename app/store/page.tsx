@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useCart } from '@/store/useCart';
 import { SEED_CATALOG } from '../data/seedCatalog';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -56,25 +57,42 @@ export default function StorePage() {
               const startingPrice = calculateTieredPrice(seed.bulkPrice50lb, 5) / 5;
               const rate = seed.specs?.lbsAcre ? `${seed.specs.lbsAcre} lbs/acre` : seed.specs?.rate;
               const cycle = seed.specs?.cycle || seed.specs?.type;
+              const hasImage = seed.img && seed.img !== '/images/black.png';
               return (
-                <motion.div key={seed.id} layout initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white p-8 rounded-3xl border border-slate-200 hover:border-emerald-500 transition-all shadow-sm hover:shadow-2xl hover:shadow-emerald-500/10 flex flex-col">
-                  <span className="text-[9px] font-bold text-emerald-600 uppercase tracking-widest">{seed.category}</span>
-                  <h3 className="text-xl font-black text-slate-900 mt-2 mb-3">{seed.name}</h3>
-                  <p className="text-slate-600 text-sm mb-5 leading-relaxed">{seed.desc}</p>
-
-                  {(rate || cycle) && (
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {cycle && <span className="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[10px] font-bold uppercase tracking-wide">{cycle}</span>}
-                      {rate && <span className="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[10px] font-bold uppercase tracking-wide">{rate}</span>}
+                <motion.div key={seed.id} layout initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white rounded-3xl border border-slate-200 hover:border-emerald-500 transition-all shadow-sm hover:shadow-2xl hover:shadow-emerald-500/10 flex flex-col overflow-hidden">
+                  {hasImage && (
+                    <div className="relative h-28 w-full bg-slate-100 overflow-hidden">
+                      <Image
+                        src={seed.img}
+                        alt={seed.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/0 to-black/0" />
+                      <span className="absolute bottom-2.5 left-3 px-2.5 py-1 rounded-lg bg-white/90 backdrop-blur-sm text-emerald-700 text-[9px] font-bold uppercase tracking-widest shadow-sm">{seed.category}</span>
                     </div>
                   )}
 
-                  <div className="mt-auto">
-                    <p className="text-xs text-slate-600 uppercase tracking-wide mb-3">From <span className="text-slate-900 font-bold">${startingPrice.toFixed(2)}</span>/lb</p>
-                    <button onClick={() => { setSelectedSeed(seed); setCustomPounds(50); setBagQuantity(1); }} className="w-full flex items-center justify-center gap-2 py-3 bg-slate-900 text-white border-2 border-slate-900 hover:bg-emerald-600 hover:border-emerald-600 rounded-xl text-xs font-bold transition-all shadow-sm">
-                      <ScaleIcon className="w-4 h-4" />
-                      Configure Bag Weight
-                    </button>
+                  <div className="p-8 flex flex-col flex-1">
+                    {!hasImage && <span className="text-[9px] font-bold text-emerald-600 uppercase tracking-widest">{seed.category}</span>}
+                    <h3 className={`text-xl font-black text-slate-900 mb-3 ${hasImage ? 'mt-1' : 'mt-2'}`}>{seed.name}</h3>
+                    <p className="text-slate-600 text-sm mb-5 leading-relaxed">{seed.desc}</p>
+
+                    {(rate || cycle) && (
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {cycle && <span className="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[10px] font-bold uppercase tracking-wide">{cycle}</span>}
+                        {rate && <span className="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[10px] font-bold uppercase tracking-wide">{rate}</span>}
+                      </div>
+                    )}
+
+                    <div className="mt-auto">
+                      <p className="text-xs text-slate-600 uppercase tracking-wide mb-3">From <span className="text-slate-900 font-bold">${startingPrice.toFixed(2)}</span>/lb</p>
+                      <button onClick={() => { setSelectedSeed(seed); setCustomPounds(50); setBagQuantity(1); }} className="w-full flex items-center justify-center gap-2 py-3 bg-slate-900 text-white border-2 border-slate-900 hover:bg-emerald-600 hover:border-emerald-600 rounded-xl text-xs font-bold transition-all shadow-sm">
+                        <ScaleIcon className="w-4 h-4" />
+                        Configure Bag Weight
+                      </button>
+                    </div>
                   </div>
                 </motion.div>
               );
@@ -97,6 +115,11 @@ export default function StorePage() {
 
               {/* Product info */}
               <div className="sm:col-span-3 p-8 sm:p-10 sm:overflow-y-auto sm:max-h-[88vh]">
+                {selectedSeed.img && selectedSeed.img !== '/images/black.png' && (
+                  <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden mb-6 bg-slate-100">
+                    <Image src={selectedSeed.img} alt={selectedSeed.name} fill sizes="(max-width: 640px) 100vw, 60vw" className="object-cover" />
+                  </div>
+                )}
                 <span className="text-[9px] font-bold text-emerald-600 uppercase tracking-widest">{selectedSeed.category}</span>
                 <h2 className="text-2xl font-black text-slate-900 mt-1 pr-10">{selectedSeed.name}</h2>
                 <p className="text-slate-600 text-sm mt-3 leading-relaxed">{selectedSeed.desc}</p>
