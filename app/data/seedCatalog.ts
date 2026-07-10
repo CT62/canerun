@@ -281,7 +281,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 48.00,
     desc: 'Fast-maturing warm-season wetland grass producing heavy seed heads that draw waterfowl, doves, and upland game birds to moist plots.',
     details: 'Japanese millet is a warm-season annual grass that tolerates wet, poorly drained, and even periodically flooded soils better than almost any other food plot grass, making it a top choice for moist-soil and waterfowl impoundment plantings, and it should be planted after soil warms above 65 degrees F, generally May through August in Illinois. Germination is quick, typically 5 to 7 days, and the crop matures rapidly, producing heavy, seed-laden heads within 60 to 70 days that bend over and shatter naturally, feeding ducks, dove, quail, and turkey directly from the plant or after it lodges into shallow water. It has no prussic acid risk of any kind, unlike sorghum-based wildlife plantings, so it carries none of the frost or drought-stress toxicity concerns those species require managing. It performs best on moist, fertile ground and is commonly planted alone in drawn-down impoundments or blended with other warm-season wildlife plants on drier ground.',
-    img: '/images/black.png',
+    img: '/images/winter_wheat.png',
     chartType: 'wildlife',
     specs: { wildlifeUse: 'Excellent seed source for waterfowl, dove, quail and turkey', rate: 'Broadcast 20-30 lb per acre, cover 1/4 inch deep', type: 'Summer annual, 60-70 days to mature', notes: 'Thrives in moist soil and shallow water drawdowns' }
   },
@@ -325,7 +325,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 170.50,
     desc: 'Massive, towering structural cane crop used extensively to engineer blind screening borders, safe entry lanes, and secluded deer bedding blocks.',
     details: 'Egyptian wheat is actually a tall sorghum type, not a true wheat, and it requires warm soil above 65 degrees F to germinate, so planting should wait until after the last frost, typically late May to early June in Illinois given the state\'s later, cooler spring compared to warmer regions further south. It prefers well-drained soils with a pH of 5.8 to 7.5 and grows extremely tall, often 8 to 10 feet or more in a single season, making it one of the most effective screening and blind-cover species for creating visual barriers and secure entry lanes. As with other sorghums, young or stressed regrowth can carry prussic acid risk, so it is grown primarily for structure and its grain heads rather than direct grazing. The heavy seed heads bend over as they mature, feeding ground-feeding birds and other wildlife directly from the standing stalks through fall and winter.',
-    img: '/images/black.png',
+    img: '/images/medium_red_clover.jpg',
     chartType: 'wildlife',
     specs: { wildlifeUse: 'Excellent high protein food source for game birds and deer safety', rate: 'Broadcast 20 lb or drill 14 lb per acre', type: 'Summer annual 8-10 feet tall', notes: 'A tall sorghum with a grain head that feeds birds as it bends over' }
   },
@@ -369,7 +369,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 250.00,
     desc: 'Custom proprietary multi-variant seed plot layout tailored exactly by Cane Run Enterprise advisors for premium regional deer management.',
     details: 'Multi-species food plot blends work by combining plants with different maturity rates, growth forms, and seasonal palatability so that a single planting provides attraction across a longer window than any one species alone. A well-designed mix typically pairs a fast-establishing component for early cover and weed suppression with slower-maturing brassicas or legumes that peak in attraction later in fall and winter, along with a grain or grass component for structure. Because component species vary in ideal pH, drainage, and soil fertility needs, a soil test targeting a pH near 6.0 to 6.5 with balanced phosphorus and potassium generally supports the broadest range of species in a mixed planting. Seedbed preparation, planting depth, and timing should follow the requirements of the mix\'s most demanding or slowest-germinating component to ensure the whole blend establishes evenly.',
-    img: '/images/black.png',
+    img: '/images/crimson_clover.jpg',
     chartType: 'wildlife',
     specs: { wildlifeUse: 'Complete balanced multi-stage food plot drawing action', rate: 'Pre-packaged 15 lb field unit rates', type: 'Mixed Stand Asset', notes: 'Proprietary custom seed blend allocation tracking' }
   }
