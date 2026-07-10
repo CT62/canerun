@@ -1,36 +1,10 @@
 'use client';
 import { useMemo, useState } from 'react';
-import { SEED_CATALOG } from '@/app/data/seedCatalog';
 import { useCart } from '@/store/useCart';
 import { calculateTieredPrice } from '@/lib/pricing';
-import { CalculatorIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
-
-type Seed = {
-  id: string;
-  name: string;
-  bulkPrice50lb: number;
-  specs?: { lbsAcre?: string };
-} & Record<string, unknown>;
-
-const CATALOG = SEED_CATALOG as Seed[];
-
-// Only the "X to Y" / single-number lbsAcre spec format is parsed reliably.
-// Free-text wildlife `rate` strings (e.g. "Broadcast 50 lb per acre, cover 1/4 inch deep")
-// mix seeding rate and planting depth numbers together, so they're intentionally excluded
-// rather than risk recommending the wrong figure.
-function parseRateRange(text?: string): [number, number] | null {
-  if (!text) return null;
-  const rangeMatch = text.match(/(\d+(?:\.\d+)?)\s*(?:to|-|–)\s*(\d+(?:\.\d+)?)/i);
-  if (rangeMatch) return [parseFloat(rangeMatch[1]), parseFloat(rangeMatch[2])];
-  const singleMatch = text.match(/(\d+(?:\.\d+)?)/);
-  if (singleMatch) {
-    const n = parseFloat(singleMatch[1]);
-    return [n, n];
-  }
-  return null;
-}
-
-const CALCULABLE_SEEDS = CATALOG.filter((s) => parseRateRange(s.specs?.lbsAcre));
+import { CALCULABLE_SEEDS, parseRateRange } from '@/lib/seedRates';
+import FieldCoverageVisual from '@/components/FieldCoverageVisual';
+import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 
 const RATE_CHOICES = [
   { key: 'low', label: 'Least' },
@@ -88,16 +62,6 @@ export default function SeedCalculator() {
 
   return (
     <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 sm:p-10 mb-10">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-          <CalculatorIcon className="w-5 h-5" />
-        </div>
-        <div>
-          <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600">Seed Calculator</span>
-          <h2 className="text-lg font-black text-slate-900">How much do I need?</h2>
-        </div>
-      </div>
-
       <div className="grid sm:grid-cols-3 gap-4 items-end">
         <div className="sm:col-span-2">
           <label className="text-[10px] font-bold text-slate-600 uppercase tracking-wide block mb-2">Seed Variety</label>
@@ -178,6 +142,10 @@ export default function SeedCalculator() {
               <ShoppingCartIcon className="w-4 h-4" />
               Add {selectedLbs} lbs to Batch
             </button>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-slate-100">
+            <FieldCoverageVisual acres={acresNum} totalLbs={selectedLbs} />
           </div>
         </div>
       ) : (

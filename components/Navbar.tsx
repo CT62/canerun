@@ -6,6 +6,7 @@ import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 export default function Navbar() {
   const { cart } = useCart();
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalLbs = Math.round(cart.reduce((sum, item) => sum + (item.weightOz || 0) * item.quantity, 0) / 16);
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
@@ -18,8 +19,10 @@ export default function Navbar() {
           <nav className="hidden sm:flex items-center gap-6">
             <Link href="/" className="text-xs font-bold text-slate-500 hover:text-emerald-600 transition-all">Home</Link>
             <Link href="/store" className="text-xs font-bold text-slate-500 hover:text-emerald-600 transition-all">Store</Link>
-            <Link href="/faq" className="text-xs font-bold text-slate-500 hover:text-emerald-600 transition-all">FAQ</Link>
           </nav>
+          {totalLbs > 0 && (
+            <span className="hidden sm:inline text-[10px] font-bold text-slate-400 uppercase tracking-wide">{totalLbs.toLocaleString()} lbs</span>
+          )}
           <Link href="/cart" className="flex items-center gap-2 pl-4 pr-3 py-2.5 rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition-all text-xs font-bold shadow-lg shadow-emerald-500/20">
             <ShoppingCartIcon className="w-4 h-4" />
             <span>My Batch</span>

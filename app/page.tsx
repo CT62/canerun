@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import LogoMarquee from '@/components/LogoMarquee';
 import IllinoisIcon from '@/components/IllinoisIcon';
-import FaqAccordion from '@/components/FaqAccordion';
 import {
   CurrencyDollarIcon,
   ShieldCheckIcon,
@@ -163,25 +162,6 @@ export default function HomePage() {
             </motion.div>
           ))}
         </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="max-w-3xl mx-auto px-6 py-24">
-        <div className="mb-10">
-          <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600">Support</span>
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-2">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-slate-500 text-sm mt-4 leading-relaxed">[ADD TEXT HERE]</p>
-        </div>
-        <FaqAccordion />
-        <Link
-          href="/faq"
-          className="group inline-flex items-center gap-2 mt-8 text-xs font-bold text-emerald-600 hover:text-emerald-700 transition-all"
-        >
-          View All FAQs
-          <ArrowRightIcon className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-        </Link>
       </section>
 
       {/* CTA banner */}

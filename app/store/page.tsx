@@ -4,16 +4,17 @@ import Image from 'next/image';
 import { useCart } from '@/store/useCart';
 import { SEED_CATALOG } from '../data/seedCatalog';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ScaleIcon, XMarkIcon, ShoppingCartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { ScaleIcon, XMarkIcon, ShoppingCartIcon, MinusIcon, PlusIcon, ArrowsRightLeftIcon, ChevronDownIcon, CalculatorIcon } from '@heroicons/react/24/outline';
 import { calculateTieredPrice } from '@/lib/pricing';
+import { formatSpecKey } from '@/lib/format';
 import SeedCalculator from '@/components/SeedCalculator';
+import PriceTierChart from '@/components/PriceTierChart';
+import CompareBar from '@/components/CompareBar';
+import CompareModal from '@/components/CompareModal';
 
 const TABS = ['all', 'turf', 'pasture', 'cover', 'wildlife'];
 const WEIGHT_PRESETS = [5, 10, 25, 50];
-
-function formatSpecKey(key: string) {
-  return key.replace(/([A-Z])/g, ' $1').replace(/^./, (c) => c.toUpperCase());
-}
+const MAX_COMPARE = 3;
 
 export default function StorePage() {
   const { addToCart } = useCart();
@@ -22,11 +23,23 @@ export default function StorePage() {
   const [customPounds, setCustomPounds] = useState(50);
   const [bagQuantity, setBagQuantity] = useState(1);
   const [mounted, setMounted] = useState(false);
+  const [compareIds, setCompareIds] = useState<string[]>([]);
+  const [compareOpen, setCompareOpen] = useState(false);
+  const [calculatorOpen, setCalculatorOpen] = useState(false);
 
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
   const products = activeTab === 'all' ? SEED_CATALOG : SEED_CATALOG.filter(p => p.category === activeTab);
+  const compareSeeds = compareIds.map((id) => SEED_CATALOG.find((s: any) => s.id === id)).filter(Boolean) as any[];
+
+  const toggleCompare = (id: string) => {
+    setCompareIds((prev) => {
+      if (prev.includes(id)) return prev.filter((x) => x !== id);
+      if (prev.length >= MAX_COMPARE) return prev;
+      return [...prev, id];
+    });
+  };
 
   return (
     <main className="min-h-screen bg-slate-50 py-12 px-6">
@@ -37,7 +50,35 @@ export default function StorePage() {
           <p className="text-slate-600 text-sm mt-3 max-w-2xl leading-relaxed">Browse our full lineup of turf, pasture, cover crop, and wildlife seed. Select a variety to configure your bag weight and see live tiered pricing.</p>
         </div>
 
-        <SeedCalculator />
+        <div className="mb-10">
+          <button
+            onClick={() => setCalculatorOpen((v) => !v)}
+            className="w-full flex items-center gap-3 bg-white rounded-3xl border border-slate-200 shadow-sm px-8 py-6 hover:border-emerald-500 transition-all"
+          >
+            <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+              <CalculatorIcon className="w-5 h-5" />
+            </div>
+            <div className="flex-1 text-left">
+              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600">Seed Calculator</span>
+              <h2 className="text-lg font-black text-slate-900">How much do I need?</h2>
+            </div>
+            <ChevronDownIcon className={`w-5 h-5 text-slate-400 transition-transform shrink-0 ${calculatorOpen ? 'rotate-180' : ''}`} />
+          </button>
+          <AnimatePresence initial={false}>
+            {calculatorOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="overflow-hidden"
+              >
+                <div className="pt-4">
+                  <SeedCalculator />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
 
         <div className="flex gap-2 mb-10 overflow-x-auto">
           {TABS.map(tab => {
@@ -88,10 +129,21 @@ export default function StorePage() {
 
                     <div className="mt-auto">
                       <p className="text-xs text-slate-600 uppercase tracking-wide mb-3">From <span className="text-slate-900 font-bold">${startingPrice.toFixed(2)}</span>/lb</p>
-                      <button onClick={() => { setSelectedSeed(seed); setCustomPounds(50); setBagQuantity(1); }} className="w-full flex items-center justify-center gap-2 py-3 bg-slate-900 text-white border-2 border-slate-900 hover:bg-emerald-600 hover:border-emerald-600 rounded-xl text-xs font-bold transition-all shadow-sm">
-                        <ScaleIcon className="w-4 h-4" />
-                        Configure Bag Weight
-                      </button>
+                      <div className="flex gap-2">
+                        <button onClick={() => { setSelectedSeed(seed); setCustomPounds(50); setBagQuantity(1); }} className="flex-1 flex items-center justify-center gap-2 py-3 bg-slate-900 text-white border-2 border-slate-900 hover:bg-emerald-600 hover:border-emerald-600 rounded-xl text-xs font-bold transition-all shadow-sm">
+                          <ScaleIcon className="w-4 h-4" />
+                          Configure Bag Weight
+                        </button>
+                        <button
+                          onClick={() => toggleCompare(seed.id)}
+                          disabled={!compareIds.includes(seed.id) && compareIds.length >= MAX_COMPARE}
+                          aria-label={compareIds.includes(seed.id) ? `Remove ${seed.name} from comparison` : `Add ${seed.name} to comparison`}
+                          title={compareIds.includes(seed.id) ? 'Remove from comparison' : 'Add to comparison'}
+                          className={`w-11 h-11 flex items-center justify-center rounded-xl border-2 transition-all shrink-0 disabled:opacity-40 disabled:cursor-not-allowed ${compareIds.includes(seed.id) ? 'bg-emerald-50 border-emerald-500 text-emerald-600' : 'bg-white border-slate-200 text-slate-400 hover:border-emerald-500 hover:text-emerald-600'}`}
+                        >
+                          <ArrowsRightLeftIcon className="w-4 h-4" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -157,6 +209,10 @@ export default function StorePage() {
                   </div>
                   <input type="range" min="5" max="50" value={customPounds} onChange={(e) => setCustomPounds(Number(e.target.value))} className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600" />
 
+                  <div className="mt-6 p-5 rounded-2xl bg-white border border-slate-200">
+                    <PriceTierChart bulkPrice50lb={selectedSeed.bulkPrice50lb} pounds={customPounds} />
+                  </div>
+
                   <p className="text-[10px] font-bold text-slate-600 uppercase tracking-wide mt-6 mb-3">Number of Bags</p>
                   <div className="flex items-center gap-3">
                     <button
@@ -195,6 +251,19 @@ export default function StorePage() {
               </div>
             </motion.div>
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      <CompareBar
+        seeds={compareSeeds}
+        onRemove={toggleCompare}
+        onClear={() => setCompareIds([])}
+        onCompare={() => setCompareOpen(true)}
+      />
+
+      <AnimatePresence>
+        {compareOpen && compareSeeds.length > 0 && (
+          <CompareModal seeds={compareSeeds} onClose={() => setCompareOpen(false)} />
         )}
       </AnimatePresence>
     </main>

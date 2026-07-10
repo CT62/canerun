@@ -2,7 +2,8 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/store/useCart';
-import { ArrowLeftIcon, TrashIcon, CreditCardIcon, ShoppingCartIcon, TruckIcon, BuildingStorefrontIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftIcon, TrashIcon, CreditCardIcon, ShoppingCartIcon, TruckIcon, BuildingStorefrontIcon, ScaleIcon } from '@heroicons/react/24/outline';
+import { estimatePallets } from '@/lib/freight';
 
 const EMPTY_ADDRESS = {
   name: '',
@@ -28,6 +29,9 @@ export default function CartPage() {
 
   const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const totalOunces = cart.reduce((sum, item) => sum + (item.weightOz || 0) * item.quantity, 0);
+  const totalLbs = totalOunces / 16;
+  const bagCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const palletEstimate = estimatePallets(totalLbs);
 
   const addressComplete = REQUIRED_ADDRESS_FIELDS.every((field) => shipTo[field]?.trim());
   const rateKey = fulfillment === 'ship' && cart.length > 0 && addressComplete
@@ -148,6 +152,22 @@ export default function CartPage() {
                     </button>
                   </div>
                 ))}
+              </div>
+
+              <div className="grid grid-cols-3 gap-3 mb-8">
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                  <ScaleIcon className="w-4 h-4 text-emerald-600 mb-2" />
+                  <p className="text-lg font-black text-slate-900">{totalLbs.toLocaleString()}</p>
+                  <p className="text-[9px] font-bold text-slate-500 uppercase tracking-wide">Total Lbs</p>
+                </div>
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                  <p className="text-lg font-black text-slate-900">{bagCount}</p>
+                  <p className="text-[9px] font-bold text-slate-500 uppercase tracking-wide">Bags in Batch</p>
+                </div>
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                  <p className="text-lg font-black text-slate-900">~{palletEstimate}</p>
+                  <p className="text-[9px] font-bold text-slate-500 uppercase tracking-wide">Est. Pallet{palletEstimate === 1 ? '' : 's'}</p>
+                </div>
               </div>
 
               <div className="border-t border-slate-100 pt-6 mb-6">
