@@ -24,7 +24,7 @@ export default function CompareBar({
           exit={{ y: 80, opacity: 0 }}
           className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-2xl"
         >
-          <div className="flex items-center gap-4 bg-slate-900 text-white rounded-2xl shadow-2xl shadow-slate-900/30 px-5 py-4">
+          <div className="flex items-center gap-4 bg-gray-700 text-white rounded-2xl shadow-2xl shadow-gray-900/30 px-5 py-4">
             <div className="flex items-center gap-2 text-emerald-400 shrink-0">
               <ArrowsRightLeftIcon className="w-4 h-4" />
               <span className="text-xs font-black uppercase tracking-wide">Compare ({seeds.length}/3)</span>
@@ -40,13 +40,13 @@ export default function CompareBar({
               ))}
             </div>
             <div className="flex items-center gap-2 shrink-0">
-              <button onClick={onClear} className="px-3 py-2 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition-all">
+              <button onClick={onClear} className="px-3 py-2 rounded-lg text-xs font-bold text-gray-300 hover:text-white transition-all">
                 Clear
               </button>
               <button
                 onClick={onCompare}
                 disabled={seeds.length < 2}
-                className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white text-xs font-bold transition-all"
+                className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:bg-gray-600 disabled:cursor-not-allowed text-white text-xs font-bold transition-all"
               >
                 Compare
               </button>

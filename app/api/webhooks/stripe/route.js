@@ -38,8 +38,8 @@ export async function POST(req) {
       const isPickup = session.metadata?.fulfillment === 'pickup';
       let tracking = null;
 
-      // Pickup orders have nothing to ship — skip ShipEngine entirely.
-      // Otherwise, label purchase is opt-in: only attempt it once ShipEngine + a
+      // Pickup orders have nothing to ship — skip ShipStation entirely.
+      // Otherwise, label purchase is opt-in: only attempt it once ShipStation + a
       // ship-from address are configured via env vars, so we never guess at real warehouse details.
       if (!isPickup && process.env.SHIPENGINE_API_KEY && process.env.SHIP_FROM_ADDRESS_JSON && session.metadata?.shipTo) {
         const shipTo = JSON.parse(session.metadata.shipTo);

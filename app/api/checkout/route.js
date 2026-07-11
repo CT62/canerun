@@ -33,7 +33,7 @@ export async function POST(req) {
       }
 
       // Re-quote server-side rather than trusting a client-supplied dollar amount —
-      // the price charged must come from ShipEngine, not from the request body.
+      // the price charged must come from ShipStation, not from the request body.
       const rate = await getCheapestRate({ shipTo, totalOunces });
 
       shippingOptions = [{

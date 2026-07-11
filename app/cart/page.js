@@ -31,7 +31,7 @@ export default function CartPage() {
   const totalOunces = cart.reduce((sum, item) => sum + (item.weightOz || 0) * item.quantity, 0);
   const totalLbs = totalOunces / 16;
   const bagCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const palletEstimate = estimatePallets(totalLbs);
+  const palletEstimate = estimatePallets(bagCount);
 
   const addressComplete = REQUIRED_ADDRESS_FIELDS.every((field) => shipTo[field]?.trim());
   const rateKey = fulfillment === 'ship' && cart.length > 0 && addressComplete
@@ -43,7 +43,7 @@ export default function CartPage() {
   const shippingPending = Boolean(rateKey) && shippingLoading && rateResult?.key !== rateKey;
   const grandTotal = totalPrice + (fulfillment === 'ship' && shippingRate ? shippingRate.amount : 0);
 
-  // Quote a live shipping rate from ShipEngine once the address is complete, debounced
+  // Quote a live shipping rate from ShipStation once the address is complete, debounced
   // so we're not firing a request on every keystroke.
   useEffect(() => {
     if (!rateKey) return;

@@ -111,7 +111,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-neutral-800">
+      <section className="relative overflow-hidden bg-gray-700">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(16,185,129,0.22),_transparent_60%)]" />
         <div className="relative max-w-7xl mx-auto px-6 pt-28 pb-24 sm:pt-36 sm:pb-32">
           <motion.div
@@ -265,7 +265,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="border-b border-slate-200 bg-neutral-800">
+      <section className="border-b border-slate-200 bg-gray-700">
         <div className="max-w-7xl mx-auto px-6 py-24">
           <div className="max-w-2xl mb-14">
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-400">What Farms Say</span>
@@ -330,7 +330,7 @@ export default function HomePage() {
 
       {/* CTA banner */}
       <section className="max-w-7xl mx-auto px-6 pb-24">
-        <div className="relative overflow-hidden rounded-[2rem] bg-neutral-800 px-8 py-16 sm:px-16 sm:py-20 text-center">
+        <div className="relative overflow-hidden rounded-[2rem] bg-gray-700 px-8 py-16 sm:px-16 sm:py-20 text-center">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(16,185,129,0.2),_transparent_60%)]" />
           <div className="relative">
             <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
