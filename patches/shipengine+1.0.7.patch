@@ -1,0 +1,50 @@
+diff --git a/node_modules/shipengine/cjs/isomorphic.node.js b/node_modules/shipengine/cjs/isomorphic.node.js
+index f10f7eb..3b2f2cc 100644
+--- a/node_modules/shipengine/cjs/isomorphic.node.js
++++ b/node_modules/shipengine/cjs/isomorphic.node.js
+@@ -3,7 +3,10 @@
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.getUserAgentString = exports.AbortController = void 0;
+ const abort_controller_1 = require("abort-controller");
+-exports.AbortController = abort_controller_1.default;
++// Prefer the runtime's native AbortController/fetch when available: the bundled
++// `abort-controller` polyfill produces an AbortSignal that native fetch (undici)
++// rejects with "RequestInit: Expected signal (...) to be an instance of AbortSignal."
++exports.AbortController = globalThis.AbortController || abort_controller_1.default;
+ const node_fetch_1 = require("node-fetch");
+ const os = require("os");
+ // NOTE: We have to use `require` instead of `import` here because the package.json
+@@ -13,7 +16,9 @@ const { version: sdkVersion } = require("../package.json");
+ // Node.js does not natively support the Fetch API yet,
+ // so polyfill using the node-fetch library instead.
+ // NOTE: The cast is necessary because node-fetch does not 100% match the Fetch API
+-globalThis.fetch = node_fetch_1.default;
++if (typeof globalThis.fetch !== "function") {
++    globalThis.fetch = node_fetch_1.default;
++}
+ /**
+  * Returns the User-Agent string for the Node.js SDK
+  */
+diff --git a/node_modules/shipengine/esm/isomorphic.node.js b/node_modules/shipengine/esm/isomorphic.node.js
+index d4bfb7f..c4e4f70 100644
+--- a/node_modules/shipengine/esm/isomorphic.node.js
++++ b/node_modules/shipengine/esm/isomorphic.node.js
+@@ -9,10 +9,16 @@ const { version: sdkVersion } = require("../package.json");
+ // Node.js does not natively support the Fetch API yet,
+ // so polyfill using the node-fetch library instead.
+ // NOTE: The cast is necessary because node-fetch does not 100% match the Fetch API
+-globalThis.fetch = nodeFetch;
++if (typeof globalThis.fetch !== "function") {
++    globalThis.fetch = nodeFetch;
++}
+ // Node.js does not natively support the AbortController API yet,
+ // so use the abort-controller library instead.
+-export { AbortController };
++// Prefer the runtime's native AbortController when available: the bundled
++// polyfill produces an AbortSignal that native fetch (undici) rejects with
++// "RequestInit: Expected signal (...) to be an instance of AbortSignal."
++const NativeOrPolyfilledAbortController = globalThis.AbortController || AbortController;
++export { NativeOrPolyfilledAbortController as AbortController };
+ /**
+  * Returns the User-Agent string for the Node.js SDK
+  */

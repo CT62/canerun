@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import LogoMarquee from '@/components/LogoMarquee';
+import PartnerLogoGrid from '@/components/PartnerLogoGrid';
 import IllinoisIcon from '@/components/IllinoisIcon';
 import {
   CurrencyDollarIcon,
@@ -174,7 +174,7 @@ export default function HomePage() {
         <p className="text-center text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400 mb-8">
           Trusted by operations across the region
         </p>
-        <LogoMarquee />
+        <PartnerLogoGrid />
       </section>
 
       {/* Illinois roots */}

@@ -2,17 +2,11 @@
 import { useEffect, useState } from 'react';
 
 const PARTNERS: { name: string; logo?: string }[] = [
-  { name: 'Ridgeline Farms' },
-  { name: 'Meadowbrook Ag' },
-  { name: 'Silo Works Co-op' },
-  { name: 'Bluegrass Cooperative' },
-  { name: 'Ironwood Grain' },
-  { name: 'Prairie Holdings' },
-  { name: 'Cedar Fork Ag' },
-  { name: 'Harrow & Co' },
-  { name: 'Rubiscoo Seeds', logo: '/images/partners/rubiscoo-seeds.png' },
-  { name: 'Photosyntech', logo: '/images/partners/photosyntech.png' },
+  { name: 'Rubisco Seeds', logo: '/images/partners/rubisco-seeds.jpg' },
+  { name: 'Photosyntech', logo: '/images/partners/photosyntech.jpg' },
   { name: 'BCD Agriculture', logo: '/images/partners/bcd-agriculture.png' },
+  { name: 'Illinois Crop Improvement Association', logo: '/images/partners/illinois-crop-improvement.png' },
+  { name: 'Total Seed Production', logo: '/images/partners/total-seed-production.png' },
 ];
 
 function AbstractMark({ mark }: { mark: number }) {
