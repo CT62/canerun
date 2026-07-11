@@ -23,8 +23,6 @@ export default function CartPage() {
   const [fulfillment, setFulfillment] = useState('ship');
   const [shipTo, setShipTo] = useState(EMPTY_ADDRESS);
   const [shippingLoading, setShippingLoading] = useState(false);
-  // Keyed by the address/weight it was fetched for, so a stale response never gets
-  // shown against a since-edited address without needing to reset state in an effect.
   const [rateResult, setRateResult] = useState(null);
 
   const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -43,8 +41,6 @@ export default function CartPage() {
   const shippingPending = Boolean(rateKey) && shippingLoading && rateResult?.key !== rateKey;
   const grandTotal = totalPrice + (fulfillment === 'ship' && shippingRate ? shippingRate.amount : 0);
 
-  // Quote a live shipping rate from ShipStation once the address is complete, debounced
-  // so we're not firing a request on every keystroke.
   useEffect(() => {
     if (!rateKey) return;
     let cancelled = false;
