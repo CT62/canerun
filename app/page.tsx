@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import PartnerLogoGrid from '@/components/PartnerLogoGrid';
+import LogoMarquee from '@/components/LogoMarquee';
 import IllinoisIcon from '@/components/IllinoisIcon';
 import {
   CurrencyDollarIcon,
@@ -15,6 +15,7 @@ import {
   ClipboardDocumentListIcon,
   CubeIcon,
   ChatBubbleLeftRightIcon,
+  ClockIcon,
 } from '@heroicons/react/24/outline';
 
 const FEATURES = [
@@ -174,7 +175,7 @@ export default function HomePage() {
         <p className="text-center text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400 mb-8">
           Trusted by operations across the region
         </p>
-        <PartnerLogoGrid />
+        <LogoMarquee />
       </section>
 
       {/* Illinois roots */}
@@ -361,15 +362,23 @@ export default function HomePage() {
           <div className="flex flex-col gap-3 text-xs text-slate-500">
             <span className="flex items-center gap-2">
               <MapPinIcon className="w-4 h-4 text-emerald-600 shrink-0" />
-              Placeholder address, Illinois [ADD TEXT HERE]
+              610 Seminary St, West Salem, IL 62476
             </span>
             <span className="flex items-center gap-2">
               <PhoneIcon className="w-4 h-4 text-emerald-600 shrink-0" />
-              (000) 000-0000 [ADD TEXT HERE]
+              <a href="tel:+16184568851" className="hover:text-emerald-600 transition-all">(618) 456-8851</a>
             </span>
             <span className="flex items-center gap-2">
               <EnvelopeIcon className="w-4 h-4 text-emerald-600 shrink-0" />
-              orders@canerun.example [ADD TEXT HERE]
+              <a href="mailto:admin@canerunenterprises.com" className="hover:text-emerald-600 transition-all">admin@canerunenterprises.com</a>
+            </span>
+            <span className="flex items-start gap-2">
+              <ClockIcon className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+              <span>
+                Monday–Friday: 8 AM–4:30 PM CT
+                <br />
+                Saturday–Sunday: Closed
+              </span>
             </span>
           </div>
         </div>

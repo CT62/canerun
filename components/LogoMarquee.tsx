@@ -48,7 +48,7 @@ function PartnerLogo({ name, logo, mark }: { name: string; logo?: string; mark: 
   }, [logo]);
 
   return (
-    <div className="flex items-center gap-2.5 shrink-0 px-8 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+    <div className="flex items-center gap-2.5 shrink-0 px-8">
       {logo && loaded ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={logo} alt={name} className="h-7 w-7 object-contain shrink-0" />
