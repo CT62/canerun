@@ -42,6 +42,14 @@ const FEATURES = [
   },
 ];
 
+const FOUNDERS = [
+  { name: 'Rebecca Caldbeck', image: undefined },
+  { name: 'William Caldbeck', image: undefined },
+  { name: 'Philip Caldbeck', image: undefined },
+  { name: 'Sarah Caldbeck', image: undefined },
+  { name: 'Ben Caldbeck', image: '/images/founders/ben.png' },
+];
+
 const SEED_CATEGORIES = [
   'Clovers', 'Alfalfas', 'Lespedeza', 'Fescues', 'Timothy', 'Orchardgrass',
   'Pasture Mixes', 'Annual & Perennial Ryegrasses', 'Redtop', 'Spring & Fall Oats',
@@ -231,8 +239,8 @@ export default function HomePage() {
               Family owned and operated.
             </h2>
             <p className="text-slate-600 text-sm mt-6 leading-relaxed">
-              Cane Run Enterprises was founded in 2025 and is family owned and operated. Add the founder
-              names and which family members work at the plant today. [ADD TEXT HERE]
+              Cane Run Enterprises was founded in 2022 by Rebecca Caldbeck, William Caldbeck, Philip
+              Caldbeck, Sarah Caldbeck, and Ben Caldbeck, and is family owned and operated.
             </p>
             <p className="text-slate-600 text-sm mt-4 leading-relaxed">
               We warehouse seed of all kinds — from pasture and hay mixes to specialty cover crops — and we
@@ -252,6 +260,42 @@ export default function HomePage() {
                 </span>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Founders */}
+      <section className="border-b border-slate-200 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 py-24">
+          <div className="max-w-2xl mb-14">
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600">Meet the Family</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-2">
+              The founders of Cane Run Enterprises.
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
+            {FOUNDERS.map((founder) => (
+              <div key={founder.name} className="flex flex-col items-center text-center">
+                <div className="w-full aspect-square rounded-2xl overflow-hidden bg-emerald-50 border border-slate-200 shadow-sm mb-4">
+                  {founder.image ? (
+                    <img
+                      src={founder.image}
+                      alt={founder.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-emerald-600 text-2xl sm:text-3xl font-black">
+                      {founder.name
+                        .split(' ')
+                        .map((part) => part[0])
+                        .join('')}
+                    </div>
+                  )}
+                </div>
+                <p className="text-sm font-bold text-slate-900">{founder.name}</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">Founder</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
