@@ -16,6 +16,7 @@ import {
   CubeIcon,
   ChatBubbleLeftRightIcon,
   ClockIcon,
+  PhotoIcon,
 } from '@heroicons/react/24/outline';
 
 const FEATURES = [
@@ -26,8 +27,8 @@ const FEATURES = [
   },
   {
     icon: ShieldCheckIcon,
-    title: 'Farm-Direct Sourcing',
-    desc: 'Placeholder copy — describe where your seed and forage stock comes from and how it\'s tested for quality. [ADD TEXT HERE]',
+    title: 'Full Seed Inventory',
+    desc: 'We warehouse seed from clovers and alfalfas to fescues, ryegrasses, and pasture mixes — cleaned and ready to bag or handle in bulk depending on the season.',
   },
   {
     icon: TruckIcon,
@@ -37,8 +38,22 @@ const FEATURES = [
   {
     icon: LifebuoyIcon,
     title: 'Expert Field Support',
-    desc: 'Placeholder copy — mention agronomy support, planting guidance, or customer service availability. [ADD TEXT HERE]',
+    desc: 'Many years of hands-on seed experience at your disposal, including help navigating CRP program details — give us a call and we\'ll walk you through it.',
   },
+];
+
+const SEED_CATEGORIES = [
+  'Clovers', 'Alfalfas', 'Lespedeza', 'Fescues', 'Timothy', 'Orchardgrass',
+  'Pasture Mixes', 'Annual & Perennial Ryegrasses', 'Redtop', 'Spring & Fall Oats',
+  'Hybrid Sorghum Sudangrass', 'Chicory', 'Chufa', 'Egyptian Wheat', 'Millets',
+  'Peas', 'Sunflowers', 'Turnips', "Wild Buck's Seed Mixture", 'And Many More',
+];
+
+const FACILITY_PHOTOS = [
+  'Site from the road, including the sign',
+  'Office with parking shown',
+  'Grain bins',
+  'Seed treating setup',
 ];
 
 const STATS = [
@@ -112,27 +127,38 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gray-700">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(16,185,129,0.22),_transparent_60%)]" />
-        <div className="relative max-w-7xl mx-auto px-6 pt-28 pb-24 sm:pt-36 sm:pb-32">
+      <section className="relative overflow-hidden bg-gray-200">
+        {/* Office building photo — clear at the top, fades into the background as it goes down */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/office_building.jpg"
+          alt="Cane Run Enterprises office building (placeholder photo)"
+          className="absolute inset-x-0 top-0 w-full h-[26rem] sm:h-[34rem] object-cover [mask-image:linear-gradient(to_bottom,black,black_25%,transparent_78%)] [-webkit-mask-image:linear-gradient(to_bottom,black,black_25%,transparent_78%)]"
+        />
+        <span className="absolute top-5 left-5 sm:left-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-[10px] font-bold uppercase tracking-widest text-white">
+          <PhotoIcon className="w-3.5 h-3.5 shrink-0" />
+          Office Building — Placeholder Photo
+        </span>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(16,185,129,0.18),_transparent_60%)]" />
+        <div className="relative max-w-7xl mx-auto px-6 pt-64 sm:pt-80 pb-24 sm:pb-32">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block text-[10px] font-bold tracking-[0.25em] uppercase text-emerald-400 mb-5">
+            <span className="inline-block text-[10px] font-bold tracking-[0.25em] uppercase text-emerald-700 mb-5">
               Cane Run Enterprises
             </span>
-            <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight max-w-3xl leading-[1.05]">
+            <h1 className="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight max-w-3xl leading-[1.05]">
               Seed & forage supply, built for working farms.
             </h1>
-            <p className="text-slate-400 text-base sm:text-lg mt-6 max-w-xl leading-relaxed">
+            <p className="text-slate-700 text-base sm:text-lg mt-6 max-w-xl leading-relaxed">
               Placeholder copy — a short line about what Cane Run Enterprises does, who it serves,
               and why customers order from you instead of anywhere else. [ADD TEXT HERE]
             </p>
             <div className="flex items-center gap-2 mt-6">
-              <IllinoisIcon className="w-3 h-6 text-emerald-400" />
-              <span className="text-[11px] font-bold uppercase tracking-widest text-slate-300">
+              <IllinoisIcon className="w-3 h-6 text-emerald-700" />
+              <span className="text-[11px] font-bold uppercase tracking-widest text-slate-800">
                 Proudly Based in Illinois
               </span>
             </div>
@@ -146,7 +172,7 @@ export default function HomePage() {
               </Link>
               <Link
                 href="#partners"
-                className="px-8 py-4 rounded-xl bg-white/10 hover:bg-white/15 text-white text-sm font-bold border border-white/10 transition-all"
+                className="px-8 py-4 rounded-xl bg-slate-900/5 hover:bg-slate-900/10 text-slate-900 text-sm font-bold border border-slate-900/10 transition-all"
               >
                 Who We Work With
               </Link>
@@ -158,12 +184,12 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-20 pt-10 border-t border-white/10"
+            className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-20 pt-10 border-t border-slate-900/10"
           >
             {STATS.map((stat) => (
               <div key={stat.label}>
-                <p className="text-3xl sm:text-4xl font-black text-white">{stat.value}</p>
-                <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400 mt-1">{stat.label}</p>
+                <p className="text-3xl sm:text-4xl font-black text-slate-900">{stat.value}</p>
+                <p className="text-[11px] font-bold uppercase tracking-widest text-slate-700 mt-1">{stat.label}</p>
               </div>
             ))}
           </motion.div>
@@ -193,6 +219,64 @@ export default function HomePage() {
               and why sitting close to the corn belt supply chain means faster sourcing and shipping. [ADD TEXT HERE]
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* About / Family owned */}
+      <section className="border-b border-slate-200 bg-white">
+        <div className="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-14 items-start">
+          <div>
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600">About Us</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-2">
+              Family owned and operated.
+            </h2>
+            <p className="text-slate-600 text-sm mt-6 leading-relaxed">
+              Cane Run Enterprises was founded in 2025 and is family owned and operated. Add the founder
+              names and which family members work at the plant today. [ADD TEXT HERE]
+            </p>
+            <p className="text-slate-600 text-sm mt-4 leading-relaxed">
+              We warehouse seed of all kinds — from pasture and hay mixes to specialty cover crops — and we
+              can clean and either bag or handle bulk seed depending on the season and our current cleaner
+              setup. Working on a CRP project? Give us a call — we can help you with the details.
+            </p>
+          </div>
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-4">What We Warehouse</p>
+            <div className="flex flex-wrap gap-2">
+              {SEED_CATEGORIES.map((item) => (
+                <span
+                  key={item}
+                  className="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Facility */}
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <div className="max-w-2xl mb-14">
+          <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600">Our Facility</span>
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-2">
+            Take a look around.
+          </h2>
+          <p className="text-slate-500 text-sm mt-4 leading-relaxed">
+            Photos coming soon. [ADD IMAGES HERE]
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {FACILITY_PHOTOS.map((photo) => (
+            <div
+              key={photo}
+              className="aspect-[4/3] rounded-3xl border-2 border-dashed border-slate-300 bg-slate-50 flex flex-col items-center justify-center text-center p-6"
+            >
+              <PhotoIcon className="w-8 h-8 text-slate-300 mb-3" />
+              <p className="text-slate-400 text-xs font-bold uppercase tracking-wide">{photo}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -266,14 +350,14 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="border-b border-slate-200 bg-gray-700">
+      <section className="border-b border-slate-200 bg-gray-200">
         <div className="max-w-7xl mx-auto px-6 py-24">
           <div className="max-w-2xl mb-14">
-            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-400">What Farms Say</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mt-2">
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-700">What Farms Say</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-2">
               Trusted by growers across the region.
             </h2>
-            <p className="text-slate-400 text-sm mt-4 leading-relaxed">
+            <p className="text-slate-700 text-sm mt-4 leading-relaxed">
               Placeholder copy — an intro line about customer trust or repeat business. [ADD TEXT HERE]
             </p>
           </div>
@@ -286,12 +370,12 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="p-8 rounded-3xl bg-white/5 border border-white/10"
+                className="p-8 rounded-3xl bg-white/40 border border-slate-900/10"
               >
-                <ChatBubbleLeftRightIcon className="w-6 h-6 text-emerald-400 mb-4" />
-                <p className="text-slate-300 text-sm leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
-                <p className="text-white text-sm font-bold">{t.name}</p>
-                <p className="text-slate-400 text-xs">{t.role}</p>
+                <ChatBubbleLeftRightIcon className="w-6 h-6 text-emerald-700 mb-4" />
+                <p className="text-slate-800 text-sm leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
+                <p className="text-slate-900 text-sm font-bold">{t.name}</p>
+                <p className="text-slate-700 text-xs">{t.role}</p>
               </motion.div>
             ))}
           </div>
@@ -331,13 +415,13 @@ export default function HomePage() {
 
       {/* CTA banner */}
       <section className="max-w-7xl mx-auto px-6 pb-24">
-        <div className="relative overflow-hidden rounded-[2rem] bg-gray-700 px-8 py-16 sm:px-16 sm:py-20 text-center">
+        <div className="relative overflow-hidden rounded-[2rem] bg-gray-200 px-8 py-16 sm:px-16 sm:py-20 text-center">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(16,185,129,0.2),_transparent_60%)]" />
           <div className="relative">
-            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
               Ready to see live pricing on your next order?
             </h2>
-            <p className="text-slate-400 text-sm mt-4 max-w-xl mx-auto leading-relaxed">
+            <p className="text-slate-700 text-sm mt-4 max-w-xl mx-auto leading-relaxed">
               Browse the full catalog, configure exact bag weights, and check out in minutes.
             </p>
             <Link

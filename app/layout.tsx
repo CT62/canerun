@@ -8,7 +8,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   title: "Cane Run Enterprises",
-  description: "Cane Run inventory management system",
+  description: "Cane Run Enterprises — seed and forage supply for working farms in Illinois.",
 };
 
 export default function RootLayout({

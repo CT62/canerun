@@ -21,7 +21,7 @@ export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gray-700">
+      <section className="relative overflow-hidden bg-gray-200">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(16,185,129,0.22),_transparent_60%)]" />
         <div className="relative max-w-7xl mx-auto px-6 pt-20 pb-16">
           <motion.div
@@ -30,11 +30,11 @@ export default function ServicesPage() {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <span className="inline-block text-[10px] font-bold tracking-[0.25em] uppercase text-emerald-400 mb-5">
+            <span className="inline-block text-[10px] font-bold tracking-[0.25em] uppercase text-emerald-700 mb-5">
               Toll Services
             </span>
-            <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight">Services</h1>
-            <p className="text-slate-400 text-sm sm:text-base mt-4 leading-relaxed">
+            <h1 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">Services</h1>
+            <p className="text-slate-700 text-sm sm:text-base mt-4 leading-relaxed">
               Beyond our seed catalog, we offer toll services on your own seed lots. Every service below is
               priced per job — please enquire and we&apos;ll put a quote together for you.
             </p>

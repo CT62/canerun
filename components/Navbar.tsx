@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useCart } from '@/store/useCart';
 import { SERVICES_CATALOG } from '@/app/data/servicesCatalog';
 import { ShoppingCartIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
@@ -12,11 +13,10 @@ export default function Navbar() {
   const totalLbs = Math.round(cart.reduce((sum, item) => sum + (item.weightOz || 0) * item.quantity, 0) / 16);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+    <header className="sticky top-0 z-50 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-        <Link href="/">
-          <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-emerald-600">Cane Run</span>
-          <h1 className="text-lg font-black text-slate-900 tracking-tight">Enterprises</h1>
+        <Link href="/" className="flex items-center">
+          <Image src="/images/logo.png" alt="Cane Run Enterprises" width={1314} height={414} className="h-8 sm:h-9 w-auto" priority />
         </Link>
         <div className="flex items-center gap-2 sm:gap-6">
           <nav className="hidden sm:flex items-center gap-6">

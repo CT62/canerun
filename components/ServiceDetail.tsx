@@ -27,10 +27,10 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gray-700">
+      <section className="relative overflow-hidden bg-gray-200">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(16,185,129,0.22),_transparent_60%)]" />
         <div className="relative max-w-4xl mx-auto px-6 pt-14 pb-20">
-          <Link href="/services" className="inline-flex items-center gap-2 text-xs font-bold text-slate-300 hover:text-emerald-400 transition-all mb-10">
+          <Link href="/services" className="inline-flex items-center gap-2 text-xs font-bold text-slate-700 hover:text-emerald-700 transition-all mb-10">
             <ArrowLeftIcon className="w-4 h-4" />
             All Services
           </Link>
@@ -40,17 +40,17 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/10 text-emerald-400 flex items-center justify-center mb-6">
+            <div className="w-14 h-14 rounded-2xl bg-slate-900/5 border border-slate-900/10 text-emerald-700 flex items-center justify-center mb-6">
               <Icon className="w-7 h-7" />
             </div>
 
             <div className="flex flex-wrap gap-2 mb-5">
-              <span className="px-2.5 py-1 rounded-lg bg-white/10 border border-white/10 text-slate-200 text-[10px] font-bold uppercase tracking-wide">Toll Service</span>
-              <span className="px-2.5 py-1 rounded-lg bg-emerald-500/15 border border-emerald-400/20 text-emerald-300 text-[10px] font-bold uppercase tracking-wide">Please Enquire</span>
+              <span className="px-2.5 py-1 rounded-lg bg-slate-900/5 border border-slate-900/10 text-slate-700 text-[10px] font-bold uppercase tracking-wide">Toll Service</span>
+              <span className="px-2.5 py-1 rounded-lg bg-emerald-500/15 border border-emerald-600/20 text-emerald-800 text-[10px] font-bold uppercase tracking-wide">Please Enquire</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight">{service.name}</h1>
-            <p className="text-slate-400 text-sm sm:text-base mt-4 max-w-xl leading-relaxed">{service.tagline}</p>
+            <h1 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">{service.name}</h1>
+            <p className="text-slate-700 text-sm sm:text-base mt-4 max-w-xl leading-relaxed">{service.tagline}</p>
           </motion.div>
         </div>
       </section>
