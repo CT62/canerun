@@ -43,11 +43,11 @@ const FEATURES = [
 ];
 
 const FOUNDERS = [
-  { name: 'Rebecca Caldbeck', image: undefined },
-  { name: 'William Caldbeck', image: undefined },
-  { name: 'Philip Caldbeck', image: undefined },
-  { name: 'Sarah Caldbeck', image: undefined },
-  { name: 'Ben Caldbeck', image: '/images/founders/ben.png' },
+  { name: 'Rebecca Caldbeck', image: undefined, role: 'Founder' },
+  { name: 'William Caldbeck', image: undefined, role: 'Founder' },
+  { name: 'Philip Caldbeck', image: undefined, role: 'Founder' },
+  { name: 'Sarah Caldbeck', image: undefined, role: 'Founder' },
+  { name: 'Ben Caldbeck', image: '/images/founders/ben.png', role: "Jeremy's Assistant" },
 ];
 
 const SEED_CATEGORIES = [
@@ -293,7 +293,7 @@ export default function HomePage() {
                   )}
                 </div>
                 <p className="text-sm font-bold text-slate-900">{founder.name}</p>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">Founder</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">{founder.role}</p>
               </div>
             ))}
           </div>
