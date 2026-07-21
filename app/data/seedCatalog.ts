@@ -292,7 +292,7 @@ export const SEED_CATALOG = [
     bulkPrice50lb: 112.00,
     desc: 'Excellent cool season sweet viney forage choice. Highly attractive winter feed source preferred instantly by deer and wild turkey networks.',
     details: 'Austrian winter peas are a cool-season annual legume that prefer well-drained soils with a pH of 6.0 to 7.5 and germinate in about 7 to 14 days when planted in early fall. Their viney, sprawling growth habit means they benefit from being planted with a cereal grain such as wheat, oats, or rye, which provides physical support and helps the peas climb up off the ground for better deer access and stand persistence. They are only moderately winter hardy and, in Illinois\'s colder winters, carry meaningfully more risk of stand loss than in milder transition-zone climates further south, so they are best suited to southern Illinois or fields with dependable snow cover, while hairy vetch is a safer choice for harsher, more exposed sites further north in the state. As a nitrogen-fixing legume they also improve soil fertility for a following crop, and their sweet, high-protein foliage makes them one of the most attractive cool-season food plot forages for deer and turkey.',
-    img: '/images/winter_seed.jpg',
+    img: '/images/winter_peas.jpg',
     chartType: 'wildlife',
     specs: { wildlifeUse: 'Excellent winter feed source for deer and turkey', rate: 'Broadcast 50 lb per acre, cover 1/4 inch deep', type: 'Winter annual legume', notes: 'Top quality forage for deer' }
   },

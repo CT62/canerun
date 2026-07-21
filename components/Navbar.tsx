@@ -19,8 +19,8 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-        <Link href="/" className="flex items-center">
-          <Image src="/images/site_images/logo.png" alt="Cane Run Enterprises" width={1314} height={414} className="h-8 sm:h-9 w-auto rounded-md dark:invert dark:hue-rotate-180" priority />
+        <Link href="/" className="flex items-center shrink-0">
+          <Image src="/images/site_images/logo.png" alt="Cane Run Enterprises" width={1241} height={491} className="h-8 sm:h-9 w-auto rounded-md dark:invert dark:hue-rotate-180" priority />
         </Link>
         <div className="flex items-center gap-2 sm:gap-6">
           <nav className="hidden sm:flex items-center gap-6">
@@ -58,11 +58,13 @@ export default function Navbar() {
           {totalLbs > 0 && (
             <span className="hidden sm:inline text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wide">{totalLbs.toLocaleString()} lbs</span>
           )}
-          <Link href="/cart" className="flex items-center gap-2 pl-4 pr-3 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white border-2 border-slate-900 dark:border-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all text-xs font-bold">
-            <ShoppingCartIcon className="w-4 h-4" />
-            <span>My Batch</span>
-            <span className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-2 py-0.5 rounded-md text-[10px]">{totalItems}</span>
-          </Link>
+          {totalItems > 0 && (
+            <Link href="/cart" className="flex items-center gap-2 pl-4 pr-3 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white border-2 border-slate-900 dark:border-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all text-xs font-bold">
+              <ShoppingCartIcon className="w-4 h-4" />
+              <span>My Batch</span>
+              <span className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-2 py-0.5 rounded-md text-[10px]">{totalItems}</span>
+            </Link>
+          )}
           <ThemeToggle className="hidden sm:flex" />
           <button
             onClick={() => setMobileOpen((open) => !open)}
