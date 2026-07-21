@@ -101,32 +101,32 @@ export default function CartPage() {
 
   const updateAddress = (field) => (e) => setShipTo((prev) => ({ ...prev, [field]: e.target.value }));
 
-  const inputClass = 'w-full px-3 py-2.5 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500';
+  const inputClass = 'w-full px-3 py-2.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-emerald-500';
 
   const checkoutDisabled = loading || (fulfillment === 'ship' && (!shippingRate || shippingPending));
 
   return (
-    <main className="min-h-screen bg-slate-50 py-12 px-6">
+    <main className="min-h-screen bg-slate-50 dark:bg-slate-950 py-12 px-6 transition-colors">
       <div className="max-w-3xl mx-auto">
         <div className="flex items-center justify-between mb-10">
           <div>
-            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600">Checkout</span>
-            <h1 className="text-3xl font-black text-slate-900 tracking-tight mt-2">My Batch</h1>
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600 dark:text-emerald-400">Checkout</span>
+            <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight mt-2">My Batch</h1>
           </div>
-          <Link href="/store" className="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-emerald-600 transition-all">
+          <Link href="/store" className="flex items-center gap-2 text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all">
             <ArrowLeftIcon className="w-4 h-4" />
             Back to Catalog
           </Link>
         </div>
 
-        <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+        <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
           {cart.length === 0 ? (
             <div className="flex flex-col items-center text-center py-16">
-              <div className="w-16 h-16 rounded-2xl bg-slate-50 text-slate-300 flex items-center justify-center mb-5">
+              <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800 text-slate-300 dark:text-slate-600 flex items-center justify-center mb-5">
                 <ShoppingCartIcon className="w-8 h-8" />
               </div>
-              <p className="text-slate-500 text-sm mb-6">Your batch is completely empty.</p>
-              <Link href="/store" className="px-6 py-3 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white text-xs font-bold transition-all">
+              <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">Your batch is completely empty.</p>
+              <Link href="/store" className="px-6 py-3 rounded-xl bg-slate-900 dark:bg-white hover:bg-emerald-600 dark:hover:bg-slate-200 text-white dark:text-slate-900 text-xs font-bold transition-all">
                 Browse the Catalog
               </Link>
             </div>
@@ -134,15 +134,15 @@ export default function CartPage() {
             <>
               <div className="space-y-3 mb-8">
                 {cart.map((item) => (
-                  <div key={`${item.id}-${item.weightOz}`} className="flex justify-between items-center bg-slate-50 p-4 rounded-2xl">
+                  <div key={`${item.id}-${item.weightOz}`} className="flex justify-between items-center bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl">
                     <div>
-                      <h3 className="font-black text-sm text-slate-900">{item.name}</h3>
-                      <p className="text-xs text-slate-500 mt-0.5">Qty: {item.quantity} × ${item.price.toFixed(2)}</p>
+                      <h3 className="font-black text-sm text-slate-900 dark:text-white">{item.name}</h3>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Qty: {item.quantity} × ${item.price.toFixed(2)}</p>
                     </div>
                     <button
                       onClick={() => removeFromCart(item.id)}
                       aria-label={`Remove ${item.name}`}
-                      className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-500 transition-all"
+                      className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 dark:text-slate-500 hover:bg-red-50 dark:hover:bg-red-500/10 hover:text-red-500 transition-all"
                     >
                       <TrashIcon className="w-4 h-4" />
                     </button>
@@ -151,34 +151,34 @@ export default function CartPage() {
               </div>
 
               <div className="grid grid-cols-3 gap-3 mb-8">
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                  <ScaleIcon className="w-4 h-4 text-emerald-600 mb-2" />
-                  <p className="text-lg font-black text-slate-900">{totalLbs.toLocaleString()}</p>
-                  <p className="text-[9px] font-bold text-slate-500 uppercase tracking-wide">Total Lbs</p>
+                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
+                  <ScaleIcon className="w-4 h-4 text-emerald-600 dark:text-emerald-400 mb-2" />
+                  <p className="text-lg font-black text-slate-900 dark:text-white">{totalLbs.toLocaleString()}</p>
+                  <p className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Total Lbs</p>
                 </div>
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                  <p className="text-lg font-black text-slate-900">{bagCount}</p>
-                  <p className="text-[9px] font-bold text-slate-500 uppercase tracking-wide">Bags in Batch</p>
+                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
+                  <p className="text-lg font-black text-slate-900 dark:text-white">{bagCount}</p>
+                  <p className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Bags in Batch</p>
                 </div>
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                  <p className="text-lg font-black text-slate-900">~{palletEstimate}</p>
-                  <p className="text-[9px] font-bold text-slate-500 uppercase tracking-wide">Est. Pallet{palletEstimate === 1 ? '' : 's'}</p>
+                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
+                  <p className="text-lg font-black text-slate-900 dark:text-white">~{palletEstimate}</p>
+                  <p className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Est. Pallet{palletEstimate === 1 ? '' : 's'}</p>
                 </div>
               </div>
 
-              <div className="border-t border-slate-100 pt-6 mb-6">
-                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-3">Fulfillment</p>
+              <div className="border-t border-slate-100 dark:border-slate-800 pt-6 mb-6">
+                <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">Fulfillment</p>
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     onClick={() => setFulfillment('ship')}
-                    className={`flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-bold border-2 transition-all ${fulfillment === 'ship' ? 'bg-emerald-600 border-emerald-600 text-white shadow-md shadow-emerald-500/30' : 'bg-white border-slate-200 text-slate-600 hover:border-emerald-500 hover:text-emerald-600'}`}
+                    className={`flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-bold border-2 transition-all ${fulfillment === 'ship' ? 'bg-emerald-600 border-emerald-600 text-white shadow-md shadow-emerald-500/30' : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400'}`}
                   >
                     <TruckIcon className="w-4 h-4" />
                     Ship to Me
                   </button>
                   <button
                     onClick={() => setFulfillment('pickup')}
-                    className={`flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-bold border-2 transition-all ${fulfillment === 'pickup' ? 'bg-emerald-600 border-emerald-600 text-white shadow-md shadow-emerald-500/30' : 'bg-white border-slate-200 text-slate-600 hover:border-emerald-500 hover:text-emerald-600'}`}
+                    className={`flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-bold border-2 transition-all ${fulfillment === 'pickup' ? 'bg-emerald-600 border-emerald-600 text-white shadow-md shadow-emerald-500/30' : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400'}`}
                   >
                     <BuildingStorefrontIcon className="w-4 h-4" />
                     Pick Up
@@ -186,16 +186,16 @@ export default function CartPage() {
                 </div>
 
                 {fulfillment === 'pickup' && (
-                  <div className="mt-4 p-4 rounded-xl bg-slate-50 text-xs text-slate-600 leading-relaxed">
-                    <p className="font-bold text-slate-900 mb-1">Pickup Location</p>
+                  <div className="mt-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                    <p className="font-bold text-slate-900 dark:text-white mb-1">Pickup Location</p>
                     <p>Placeholder address — Cane Run Enterprises, Illinois [ADD TEXT HERE]</p>
                     <p className="mt-1">Placeholder hours — Mon–Fri, 8am–5pm. We&apos;ll email you when your batch is ready. [ADD TEXT HERE]</p>
                   </div>
                 )}
 
                 {fulfillment === 'ship' && (
-                  <div className="mt-4 p-4 rounded-xl bg-slate-50 space-y-3">
-                    <p className="font-bold text-slate-900 text-xs mb-1">Shipping Address</p>
+                  <div className="mt-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800 space-y-3">
+                    <p className="font-bold text-slate-900 dark:text-white text-xs mb-1">Shipping Address</p>
                     <div className="grid grid-cols-2 gap-2">
                       <input className={inputClass} placeholder="Full name" value={shipTo.name} onChange={updateAddress('name')} />
                       <input className={inputClass} placeholder="Phone" value={shipTo.phone} onChange={updateAddress('phone')} />
@@ -213,15 +213,15 @@ export default function CartPage() {
                     </select>
 
                     <div className="pt-1 text-xs">
-                      {shippingPending && <span className="text-slate-500">Calculating shipping…</span>}
+                      {shippingPending && <span className="text-slate-500 dark:text-slate-400">Calculating shipping…</span>}
                       {!shippingPending && shippingError && <span className="text-red-500 font-bold">{shippingError}</span>}
                       {!shippingPending && !shippingError && shippingRate && (
-                        <span className="text-emerald-600 font-bold">
+                        <span className="text-emerald-600 dark:text-emerald-400 font-bold">
                           {shippingRate.carrierFriendlyName} {shippingRate.serviceType} — ${shippingRate.amount.toFixed(2)}
                         </span>
                       )}
                       {!shippingPending && !shippingError && !shippingRate && (
-                        <span className="text-slate-400">Enter your address above to calculate shipping.</span>
+                        <span className="text-slate-400 dark:text-slate-500">Enter your address above to calculate shipping.</span>
                       )}
                     </div>
                   </div>
@@ -230,25 +230,25 @@ export default function CartPage() {
 
               <div className="space-y-2 mb-8">
                 <div className="flex justify-between items-center">
-                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wide">Subtotal</span>
-                  <span className="text-sm font-bold text-slate-700">${totalPrice.toFixed(2)}</span>
+                  <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Subtotal</span>
+                  <span className="text-sm font-bold text-slate-700 dark:text-slate-300">${totalPrice.toFixed(2)}</span>
                 </div>
                 {fulfillment === 'ship' && (
                   <div className="flex justify-between items-center">
-                    <span className="text-xs font-bold text-slate-500 uppercase tracking-wide">Shipping</span>
-                    <span className="text-sm font-bold text-slate-700">{shippingRate ? `$${shippingRate.amount.toFixed(2)}` : '—'}</span>
+                    <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Shipping</span>
+                    <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{shippingRate ? `$${shippingRate.amount.toFixed(2)}` : '—'}</span>
                   </div>
                 )}
-                <div className="flex justify-between items-center pt-2 border-t border-slate-100">
-                  <span className="text-sm font-bold text-slate-500 uppercase tracking-wide">Total</span>
-                  <span className="text-3xl font-black text-slate-900">${grandTotal.toFixed(2)}</span>
+                <div className="flex justify-between items-center pt-2 border-t border-slate-100 dark:border-slate-800">
+                  <span className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Total</span>
+                  <span className="text-3xl font-black text-slate-900 dark:text-white">${grandTotal.toFixed(2)}</span>
                 </div>
               </div>
 
               <button
                 onClick={handleCheckout}
                 disabled={checkoutDisabled}
-                className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-300 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-emerald-500/30"
+                className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-300 dark:disabled:bg-slate-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-emerald-500/30"
               >
                 {fulfillment === 'pickup' ? <BuildingStorefrontIcon className="w-4 h-4" /> : <CreditCardIcon className="w-4 h-4" />}
                 {loading ? 'Processing...' : fulfillment === 'pickup' ? 'Reserve for Pickup' : 'Proceed to Secure Checkout'}

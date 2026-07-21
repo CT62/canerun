@@ -61,14 +61,14 @@ export default function SeedCalculator() {
   };
 
   return (
-    <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 sm:p-10 mb-10">
+    <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm p-8 sm:p-10 mb-10">
       <div className="grid sm:grid-cols-3 gap-4 items-end">
         <div className="sm:col-span-2">
-          <label className="text-[10px] font-bold text-slate-600 uppercase tracking-wide block mb-2">Seed Variety</label>
+          <label className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wide block mb-2">Seed Variety</label>
           <select
             value={seedId}
             onChange={(e) => handleSeedChange(e.target.value)}
-            className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm font-bold text-slate-900 focus:outline-none focus:border-emerald-500"
+            className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm font-bold text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
           >
             {CALCULABLE_SEEDS.map((s) => (
               <option key={s.id} value={s.id}>{s.name}</option>
@@ -76,20 +76,20 @@ export default function SeedCalculator() {
           </select>
         </div>
         <div>
-          <label className="text-[10px] font-bold text-slate-600 uppercase tracking-wide block mb-2">Acreage</label>
+          <label className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wide block mb-2">Acreage</label>
           <input
             type="number"
             min="0.1"
             step="0.1"
             value={acres}
             onChange={(e) => handleAcresChange(e.target.value)}
-            className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm font-bold text-slate-900 focus:outline-none focus:border-emerald-500"
+            className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm font-bold text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
           />
         </div>
       </div>
 
       {result && seed ? (
-        <div className="mt-6 pt-6 border-t border-slate-100">
+        <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800">
           {result.lowLbs !== result.highLbs && (
             <div className="flex gap-2 mb-5">
               {RATE_CHOICES.map(({ key, label }) => {
@@ -98,7 +98,7 @@ export default function SeedCalculator() {
                   <button
                     key={key}
                     onClick={() => handleRateChoice(key)}
-                    className={`flex-1 py-2.5 rounded-lg text-xs font-bold border-2 transition-all ${!isManual && rateChoice === key ? 'bg-emerald-600 border-emerald-600 text-white shadow-md shadow-emerald-500/30' : 'bg-white border-slate-200 text-slate-600 hover:border-emerald-500 hover:text-emerald-600'}`}
+                    className={`flex-1 py-2.5 rounded-lg text-xs font-bold border-2 transition-all ${!isManual && rateChoice === key ? 'bg-emerald-600 border-emerald-600 text-white shadow-md shadow-emerald-500/30' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400'}`}
                   >
                     {label}
                     <span className="block text-[10px] font-normal opacity-80">{lbs} lbs</span>
@@ -109,7 +109,7 @@ export default function SeedCalculator() {
           )}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <label className="text-[10px] font-bold text-slate-600 uppercase tracking-wide mb-1 block">
+              <label className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wide mb-1 block">
                 {isManual ? 'Custom amount' : result.lowLbs === result.highLbs ? 'Recommended' : RATE_CHOICES.find((c) => c.key === rateChoice)?.label}
               </label>
               <div className="flex items-baseline gap-1.5">
@@ -119,20 +119,20 @@ export default function SeedCalculator() {
                   step="0.1"
                   value={manualLbs !== '' ? manualLbs : recommendedLbs}
                   onChange={(e) => setManualLbs(e.target.value)}
-                  className="w-24 text-2xl font-black text-slate-900 border-b-2 border-dashed border-slate-300 focus:outline-none focus:border-emerald-500 bg-transparent"
+                  className="w-24 text-2xl font-black text-slate-900 dark:text-white border-b-2 border-dashed border-slate-300 dark:border-slate-600 focus:outline-none focus:border-emerald-500 bg-transparent"
                 />
-                <span className="text-sm font-bold text-slate-500">lbs</span>
+                <span className="text-sm font-bold text-slate-500 dark:text-slate-400">lbs</span>
                 {isManual && (
                   <button
                     onClick={() => setManualLbs('')}
-                    className="ml-2 text-[10px] font-bold text-emerald-600 hover:text-emerald-700 underline"
+                    className="ml-2 text-[10px] font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 underline"
                   >
                     Reset
                   </button>
                 )}
               </div>
-              <p className="text-xs text-slate-500 mt-1">
-                Estimated total: <span className="font-bold text-emerald-600">${selectedPrice.toFixed(2)}</span>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                Estimated total: <span className="font-bold text-emerald-600 dark:text-emerald-400">${selectedPrice.toFixed(2)}</span>
               </p>
             </div>
             <button
@@ -144,12 +144,12 @@ export default function SeedCalculator() {
             </button>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-slate-100">
+          <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">
             <FieldCoverageVisual acres={acresNum} totalLbs={selectedLbs} />
           </div>
         </div>
       ) : (
-        <p className="text-xs text-slate-400 mt-5 pt-5 border-t border-slate-100">Enter your acreage to see a recommended lbs range and estimated price.</p>
+        <p className="text-xs text-slate-400 dark:text-slate-500 mt-5 pt-5 border-t border-slate-100 dark:border-slate-800">Enter your acreage to see a recommended lbs range and estimated price.</p>
       )}
     </div>
   );

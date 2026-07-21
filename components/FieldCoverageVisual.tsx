@@ -21,35 +21,34 @@ export default function FieldCoverageVisual({ acres, totalLbs }: { acres: number
 
   return (
     <div>
-      <p className="text-[10px] font-bold text-slate-600 uppercase tracking-wide mb-4">Your Field, Covered</p>
+      <p className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wide mb-4">Your Field, Covered</p>
       <div className="flex items-center justify-center gap-6 flex-wrap">
         <div className="flex flex-col items-center gap-2">
           <div
-            className="rounded-lg border-2 border-emerald-600 flex items-center justify-center transition-all duration-300"
+            className="rounded-lg border-2 border-emerald-600 dark:border-emerald-500 bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center transition-all duration-300"
             style={{
               width: boxSize,
               height: boxSize * 0.7,
               backgroundImage: 'repeating-linear-gradient(0deg, rgba(4,120,87,0.14) 0, rgba(4,120,87,0.14) 2px, transparent 2px, transparent 22px)',
-              backgroundColor: '#ecfdf5',
             }}
           >
-            <span className="text-xs font-black text-emerald-700 bg-white/80 px-2 py-0.5 rounded">{acres} ac</span>
+            <span className="text-xs font-black text-emerald-700 dark:text-emerald-400 bg-white/80 dark:bg-slate-900/80 px-2 py-0.5 rounded">{acres} ac</span>
           </div>
-          <p className="text-xs font-bold text-slate-900">Your field</p>
+          <p className="text-xs font-bold text-slate-900 dark:text-white">Your field</p>
         </div>
 
-        <ArrowRightIcon className="w-5 h-5 text-slate-300 shrink-0" />
+        <ArrowRightIcon className="w-5 h-5 text-slate-300 dark:text-slate-600 shrink-0" />
 
         <div className="flex flex-col items-center gap-2 max-w-[220px]">
           <div className="flex flex-wrap gap-1.5 justify-center items-center min-h-[64px]">
             {Array.from({ length: shownBags }).map((_, i) => (
-              <ShoppingBagIcon key={i} className="w-5 h-5 text-emerald-600" title="1 bag (50 lb)" />
+              <ShoppingBagIcon key={i} className="w-5 h-5 text-emerald-600 dark:text-emerald-400" title="1 bag (50 lb)" />
             ))}
             {overflowBags > 0 && (
-              <span className="text-xs font-black text-emerald-700 ml-1">+{overflowBags}</span>
+              <span className="text-xs font-black text-emerald-700 dark:text-emerald-400 ml-1">+{overflowBags}</span>
             )}
           </div>
-          <p className="text-xs font-bold text-slate-900 text-center">
+          <p className="text-xs font-bold text-slate-900 dark:text-white text-center">
             {bagsNeeded} × {BAG_LBS} lb bag{bagsNeeded === 1 ? '' : 's'}
           </p>
         </div>

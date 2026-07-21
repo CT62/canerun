@@ -22,21 +22,21 @@ export default function PriceTierChart({ bulkPrice50lb, pounds }: { bulkPrice50l
 
   return (
     <div>
-      <p className="text-[10px] font-bold text-slate-600 uppercase tracking-wide mb-3">Price per lb by order size</p>
+      <p className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wide mb-3">Price per lb by order size</p>
       <div className="flex items-end gap-2 h-24" role="img" aria-label="Price per pound decreases at each larger order-size tier">
         {TIERS.map((tier, i) => {
           const heightPct = Math.max(18, (rates[i] / maxRate) * 100);
           const isActive = i === activeIndex;
           return (
             <div key={tier.label} className="flex-1 flex flex-col items-center justify-end h-full" title={`${tier.label}: $${rates[i].toFixed(2)}/lb`}>
-              <span className={`text-[10px] font-black mb-1 ${isActive ? 'text-emerald-700' : 'text-slate-500'}`}>
+              <span className={`text-[10px] font-black mb-1 ${isActive ? 'text-emerald-700 dark:text-emerald-400' : 'text-slate-500 dark:text-slate-400'}`}>
                 ${rates[i].toFixed(2)}
               </span>
               <div
-                className={`w-full max-w-6 rounded-t-[4px] transition-all ${isActive ? 'bg-emerald-600' : 'bg-slate-200'}`}
+                className={`w-full max-w-6 rounded-t-[4px] transition-all ${isActive ? 'bg-emerald-600' : 'bg-slate-200 dark:bg-slate-700'}`}
                 style={{ height: `${heightPct}%` }}
               />
-              <span className={`text-[9px] font-bold uppercase tracking-wide mt-2 ${isActive ? 'text-emerald-700' : 'text-slate-400'}`}>
+              <span className={`text-[9px] font-bold uppercase tracking-wide mt-2 ${isActive ? 'text-emerald-700 dark:text-emerald-400' : 'text-slate-400 dark:text-slate-500'}`}>
                 {tier.label}
               </span>
             </div>

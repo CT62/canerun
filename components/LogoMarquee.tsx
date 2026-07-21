@@ -55,7 +55,7 @@ function PartnerLogo({ name, logo, mark }: { name: string; logo?: string; mark: 
       ) : (
         <AbstractMark mark={mark} />
       )}
-      <span className="text-sm font-black text-slate-500 whitespace-nowrap tracking-tight">{name}</span>
+      <span className="text-sm font-black text-slate-500 dark:text-slate-400 whitespace-nowrap tracking-tight">{name}</span>
     </div>
   );
 }

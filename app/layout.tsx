@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -11,14 +12,28 @@ export const metadata: Metadata = {
   description: "Cane Run Enterprises — seed and forage supply for working farms in Illinois.",
 };
 
+const THEME_INIT_SCRIPT = `
+  (function() {
+    try {
+      var stored = localStorage.getItem('theme');
+      var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.toggle('dark', dark);
+    } catch (e) {}
+  })();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
+      <body className="min-h-full flex flex-col bg-white dark:bg-slate-950 transition-colors">
         <Navbar />
         <main className="flex-grow">{children}</main>
+        <Footer />
       </body>
     </html>
   );

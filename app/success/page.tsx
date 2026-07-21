@@ -10,16 +10,16 @@ export default async function SuccessPage({
   const isPickup = fulfillment === 'pickup';
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-slate-50 p-6">
-      <div className="max-w-md w-full text-center bg-white p-10 rounded-3xl shadow-sm border border-slate-200">
-        <div className="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-6">
+    <main className="min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-950 p-6 transition-colors">
+      <div className="max-w-md w-full text-center bg-white dark:bg-slate-900 p-10 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800">
+        <div className="w-16 h-16 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-6">
           {isPickup ? <BuildingStorefrontIcon className="w-9 h-9" /> : <CheckCircleIcon className="w-9 h-9" />}
         </div>
-        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600">Order Confirmed</span>
-        <h1 className="text-2xl font-black text-slate-900 tracking-tight mt-2 mb-3">
+        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600 dark:text-emerald-400">Order Confirmed</span>
+        <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight mt-2 mb-3">
           {isPickup ? 'Your batch is reserved!' : 'Thank you for your order!'}
         </h1>
-        <p className="text-slate-600 text-sm leading-relaxed">
+        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
           {isPickup
             ? "We'll email you as soon as your batch is ready for pickup at our Illinois location. Placeholder hours — Mon–Fri, 8am–5pm. [ADD TEXT HERE]"
             : 'Your seed purchase is being batched for weekly fulfillment. A confirmation email with your order details is on its way.'}
