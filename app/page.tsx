@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import LogoMarquee from '@/components/LogoMarquee';
 import IllinoisIcon from '@/components/IllinoisIcon';
+import ParallaxBackdrop from '@/components/ParallaxBackdrop';
 import {
   CurrencyDollarIcon,
   ShieldCheckIcon,
@@ -202,9 +203,10 @@ export default function HomePage() {
 
       {/* Illinois roots — fixed parallax backdrop */}
       <section
-        className="relative border-b border-slate-200 dark:border-slate-800 bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: "url('/images/site_images/grain_bins.jpg')" }}
+        className="relative border-b border-slate-200 dark:border-slate-800 sm:bg-cover sm:bg-center sm:bg-fixed sm:bg-[url('/images/site_images/grain_bins.jpg')]"
+        style={{ clipPath: 'inset(0)' }}
       >
+        <ParallaxBackdrop src="/images/site_images/grain_bins.jpg" />
         <div className="absolute inset-0 bg-slate-900/70" />
         <div className="relative max-w-7xl mx-auto px-6 py-24 flex flex-col sm:flex-row items-center gap-10 sm:gap-16">
           <IllinoisIcon className="w-16 h-32 sm:w-20 sm:h-40 text-emerald-400 shrink-0" />
@@ -363,9 +365,10 @@ export default function HomePage() {
 
       {/* Testimonials — fixed parallax backdrop */}
       <section
-        className="relative border-b border-slate-200 dark:border-slate-800 bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: "url('/images/site_images/bulk_bags.jpg')" }}
+        className="relative border-b border-slate-200 dark:border-slate-800 sm:bg-cover sm:bg-center sm:bg-fixed sm:bg-[url('/images/site_images/bulk_bags.jpg')]"
+        style={{ clipPath: 'inset(0)' }}
       >
+        <ParallaxBackdrop src="/images/site_images/bulk_bags.jpg" />
         <div className="absolute inset-0 bg-slate-900/75" />
         <div className="relative max-w-7xl mx-auto px-6 py-24">
           <div className="max-w-2xl mb-14">
