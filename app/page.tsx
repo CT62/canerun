@@ -1,7 +1,8 @@
 'use client';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import LogoMarquee from '@/components/LogoMarquee';
 import IllinoisIcon from '@/components/IllinoisIcon';
 import ParallaxBackdrop from '@/components/ParallaxBackdrop';
@@ -13,7 +14,10 @@ import {
   ArrowRightIcon,
   ClipboardDocumentListIcon,
   CubeIcon,
+  XMarkIcon,
 } from '@heroicons/react/24/outline';
+
+const EXPANDABLE_FOUNDER = 'William Caldbeck';
 
 const FEATURES = [
   {
@@ -106,6 +110,8 @@ const FAQS = [
 ];
 
 export default function HomePage() {
+  const [expandedImage, setExpandedImage] = useState<string | null>(null);
+
   return (
     <main className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors">
       {/* Hero */}
@@ -253,28 +259,34 @@ export default function HomePage() {
             </h2>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
-            {FOUNDERS.map((founder) => (
-              <div key={founder.name} className="flex flex-col items-center text-center">
-                <div className="w-full aspect-square rounded-2xl overflow-hidden bg-emerald-50 dark:bg-emerald-500/10 border border-slate-200 dark:border-slate-800 shadow-sm mb-4">
-                  {founder.image ? (
-                    <img
-                      src={founder.image}
-                      alt={founder.name}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-2xl sm:text-3xl font-black">
-                      {founder.name
-                        .split(' ')
-                        .map((part) => part[0])
-                        .join('')}
-                    </div>
-                  )}
+            {FOUNDERS.map((founder) => {
+              const isExpandable = founder.name === EXPANDABLE_FOUNDER && !!founder.image;
+              return (
+                <div key={founder.name} className="flex flex-col items-center text-center">
+                  <div
+                    onClick={isExpandable ? () => setExpandedImage(founder.image!) : undefined}
+                    className={`w-full aspect-square rounded-2xl overflow-hidden bg-emerald-50 dark:bg-emerald-500/10 border border-slate-200 dark:border-slate-800 shadow-sm mb-4 ${isExpandable ? 'cursor-zoom-in hover:opacity-90 transition-opacity' : ''}`}
+                  >
+                    {founder.image ? (
+                      <img
+                        src={founder.image}
+                        alt={founder.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-2xl sm:text-3xl font-black">
+                        {founder.name
+                          .split(' ')
+                          .map((part) => part[0])
+                          .join('')}
+                      </div>
+                    )}
+                  </div>
+                  <p className="text-sm font-bold text-slate-900 dark:text-white">{founder.name}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mt-1">{founder.role}</p>
                 </div>
-                <p className="text-sm font-bold text-slate-900 dark:text-white">{founder.name}</p>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mt-1">{founder.role}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -402,6 +414,34 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <AnimatePresence>
+        {expandedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setExpandedImage(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-6 cursor-zoom-out"
+          >
+            <motion.img
+              initial={{ scale: 0.95 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.95 }}
+              src={expandedImage}
+              alt=""
+              className="max-w-full max-h-full rounded-2xl shadow-2xl"
+            />
+            <button
+              onClick={() => setExpandedImage(null)}
+              aria-label="Close"
+              className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all"
+            >
+              <XMarkIcon className="w-5 h-5" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
