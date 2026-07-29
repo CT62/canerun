@@ -20,7 +20,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
         <Link href="/" className="flex items-center shrink-0">
-          <Image src="/images/site_images/logo.png" alt="Cane Run Enterprises" width={1241} height={491} className="h-8 sm:h-9 w-auto rounded-md dark:invert dark:hue-rotate-180" priority />
+          <Image src="/images/site_images/logo.png" alt="Cane Run Enterprises" width={1241} height={491} className="h-8 sm:h-9 w-auto dark:invert dark:hue-rotate-180" priority />
         </Link>
         <div className="flex items-center gap-2 sm:gap-6">
           <nav className="hidden sm:flex items-center gap-6">
