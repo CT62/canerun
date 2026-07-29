@@ -42,7 +42,7 @@ const FEATURES = [
 const FOUNDERS = [
   { name: 'Rebecca Caldbeck', image: '/images/founders/rebecca.jpeg', role: 'Founder' },
   { name: 'William Caldbeck', image: undefined, role: 'Founder' },
-  { name: 'Philip Caldbeck', image: undefined, role: 'Founder' },
+  { name: 'Philip Caldbeck', image: '/images/founders/philip.jpeg', role: 'Founder' },
   { name: 'Sarah Caldbeck', image: undefined, role: 'Founder' },
   { name: 'Ben Caldbeck', image: '/images/founders/ben.png', role: 'Founder' },
 ];
