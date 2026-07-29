@@ -245,7 +245,7 @@ export default function StorePage() {
                   </button>
                   <button onClick={() => { addToCart({ ...selectedSeed, quantity: bagQuantity, price: calculateTieredPrice(selectedSeed.bulkPrice50lb, customPounds), weightOz: customPounds * 16 }); setSelectedSeed(null); }} className="flex-1 flex items-center justify-center gap-2 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm shadow-emerald-500/30">
                     <ShoppingCartIcon className="w-4 h-4" />
-                    Add to Batch
+                    Add to Cart
                   </button>
                 </div>
               </div>

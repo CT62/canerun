@@ -111,7 +111,7 @@ export default function CartPage() {
         <div className="flex items-center justify-between mb-10">
           <div>
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600 dark:text-emerald-400">Checkout</span>
-            <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight mt-2">My Batch</h1>
+            <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight mt-2">My Cart</h1>
           </div>
           <Link href="/store" className="flex items-center gap-2 text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all">
             <ArrowLeftIcon className="w-4 h-4" />
@@ -125,9 +125,9 @@ export default function CartPage() {
               <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800 text-slate-300 dark:text-slate-600 flex items-center justify-center mb-5">
                 <ShoppingCartIcon className="w-8 h-8" />
               </div>
-              <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">Your batch is completely empty.</p>
+              <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">Your cart is completely empty.</p>
               <Link href="/store" className="px-6 py-3 rounded-xl bg-slate-900 dark:bg-white hover:bg-emerald-600 dark:hover:bg-slate-200 text-white dark:text-slate-900 text-xs font-bold transition-all">
-                Browse the Catalog
+                Browse our Catalog
               </Link>
             </div>
           ) : (
@@ -158,7 +158,7 @@ export default function CartPage() {
                 </div>
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
                   <p className="text-lg font-black text-slate-900 dark:text-white">{bagCount}</p>
-                  <p className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Bags in Batch</p>
+                  <p className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Bags in Cart</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
                   <p className="text-lg font-black text-slate-900 dark:text-white">~{palletEstimate}</p>

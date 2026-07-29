@@ -13,7 +13,6 @@ import {
   ArrowRightIcon,
   ClipboardDocumentListIcon,
   CubeIcon,
-  ChatBubbleLeftRightIcon,
 } from '@heroicons/react/24/outline';
 
 const FEATURES = [
@@ -30,7 +29,7 @@ const FEATURES = [
   {
     icon: TruckIcon,
     title: 'Regional Fast Shipping',
-    desc: 'Placeholder copy — describe your shipping radius, lead times, or delivery/pickup options here. [ADD TEXT HERE]',
+    desc: 'We ship nationwide, with local pickup also available at our Illinois location.',
   },
   {
     icon: LifebuoyIcon,
@@ -44,7 +43,7 @@ const FOUNDERS = [
   { name: 'William Caldbeck', image: '/images/founders/william.jpeg', role: 'Founder' },
   { name: 'Philip Caldbeck', image: '/images/founders/philip.jpeg', role: 'Founder' },
   { name: 'Sarah Caldbeck', image: '/images/founders/sarah.jpeg', role: 'Founder' },
-  { name: 'Ben Caldbeck', image: '/images/founders/ben.png', role: 'Founder' },
+  { name: 'Ben Caldbeck', image: undefined, role: 'Founder' },
 ];
 
 const SEED_CATEGORIES = [
@@ -64,59 +63,41 @@ const STEPS = [
   {
     icon: ClipboardDocumentListIcon,
     title: 'Configure Your Order',
-    desc: 'Placeholder copy — explain how a customer picks products and bag weights in the store. [ADD TEXT HERE]',
+    desc: 'Choose your seed and enter the exact amount you need using our convenient calculator.',
   },
   {
     icon: CurrencyDollarIcon,
     title: 'See Live Pricing',
-    desc: 'Placeholder copy — explain how tiered pricing updates as quantity changes. [ADD TEXT HERE]',
+    desc: 'Tiered pricing updates automatically as your quantity changes — no quote requests needed.',
   },
   {
     icon: CubeIcon,
     title: 'We Prep & Ship',
-    desc: 'Placeholder copy — describe fulfillment: pallets, bagging, freight, or pickup process. [ADD TEXT HERE]',
+    desc: 'Choose convenient shipping, or pick up your order direct from our store.',
   },
   {
     icon: TruckIcon,
-    title: 'It Arrives On the Farm',
-    desc: 'Placeholder copy — describe delivery timelines and what customers can expect on arrival. [ADD TEXT HERE]',
-  },
-];
-
-const TESTIMONIALS = [
-  {
-    quote: 'Placeholder testimonial — a sentence or two about the experience of ordering from Cane Run Enterprises. [ADD TEXT HERE]',
-    name: 'Customer Name [ADD TEXT HERE]',
-    role: 'Farm / Title [ADD TEXT HERE]',
-  },
-  {
-    quote: 'Placeholder testimonial — mention pricing, delivery speed, or product quality. [ADD TEXT HERE]',
-    name: 'Customer Name [ADD TEXT HERE]',
-    role: 'Farm / Title [ADD TEXT HERE]',
-  },
-  {
-    quote: 'Placeholder testimonial — mention repeat ordering or support experience. [ADD TEXT HERE]',
-    name: 'Customer Name [ADD TEXT HERE]',
-    role: 'Farm / Title [ADD TEXT HERE]',
+    title: 'Order Delivered',
+    desc: '',
   },
 ];
 
 const FAQS = [
   {
-    q: 'Placeholder question — e.g. what regions do you ship to? [ADD TEXT HERE]',
-    a: 'Placeholder answer copy. [ADD TEXT HERE]',
+    q: 'What regions do you ship to?',
+    a: 'We ship nationwide.',
   },
   {
-    q: 'Placeholder question — e.g. what is the minimum order size? [ADD TEXT HERE]',
-    a: 'Placeholder answer copy. [ADD TEXT HERE]',
+    q: 'What is the minimum order size?',
+    a: '5 lbs.',
   },
   {
-    q: 'Placeholder question — e.g. do you offer bulk / wholesale pricing? [ADD TEXT HERE]',
-    a: 'Placeholder answer copy. [ADD TEXT HERE]',
+    q: 'Do you offer bulk / wholesale pricing?',
+    a: 'Yes — we offer tiered rates based on quantity.',
   },
   {
-    q: 'Placeholder question — e.g. how do returns or damaged shipments work? [ADD TEXT HERE]',
-    a: 'Placeholder answer copy. [ADD TEXT HERE]',
+    q: 'How do returns or damaged shipments work?',
+    a: "If your order arrives damaged or there is an issue with your shipment, please contact us as soon as possible. We'll work with you to resolve the issue and determine the best solution. Because seed is a perishable agricultural product, returns may not be accepted once an order has been delivered. If you have questions about your order, don't hesitate to reach out — we're happy to help.",
   },
 ];
 
@@ -149,8 +130,12 @@ export default function HomePage() {
               Seed & forage supply, built for working farms.
             </h1>
             <p className="text-slate-700 dark:text-slate-300 text-base sm:text-lg mt-6 max-w-xl leading-relaxed">
-              Placeholder copy — a short line about what Cane Run Enterprises does, who it serves,
-              and why customers order from you instead of anywhere else. [ADD TEXT HERE]
+              Cane Run Enterprises is a family-owned seed processing and seed supply company based in
+              West Salem, Illinois, in America&apos;s Grain Belt. We provide custom seed cleaning, treating,
+              and bagging services, along with quality seed for growers and agricultural businesses. Our
+              focus is on efficient processing, consistent quality, and dependable service — whether you
+              need custom seed processing or quality seed, we&apos;re here to provide reliable solutions you
+              can count on. Thank you for supporting our family-owned small business.
             </p>
             <div className="flex items-center gap-2 mt-6">
               <IllinoisIcon className="w-3 h-6 text-emerald-700 dark:text-emerald-400" />
@@ -215,9 +200,7 @@ export default function HomePage() {
               Proudly based in Illinois.
             </h2>
             <p className="text-slate-200 text-sm mt-4 max-w-xl leading-relaxed">
-              Placeholder copy — Cane Run Enterprises is based in Illinois, and this is a good spot
-              to mention your hometown, how long you&apos;ve processed and shipped seed to Illinois farms,
-              and why sitting close to the corn belt supply chain means faster sourcing and shipping. [ADD TEXT HERE]
+              Cane Run Enterprises calls West Salem, Illinois home.
             </p>
           </div>
         </div>
@@ -300,9 +283,6 @@ export default function HomePage() {
           <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight mt-2">
             Everything you need to stock the season.
           </h2>
-          <p className="text-slate-500 dark:text-slate-400 text-sm mt-4 leading-relaxed">
-            Placeholder copy — replace with a short paragraph on your value proposition. [ADD TEXT HERE]
-          </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -355,7 +335,7 @@ export default function HomePage() {
                   Step {i + 1}
                 </span>
                 <h3 className="text-base font-black text-slate-900 dark:text-white mt-1 mb-2">{step.title}</h3>
-                <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">{step.desc}</p>
+                {step.desc && <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">{step.desc}</p>}
               </motion.div>
             ))}
           </div>
@@ -370,32 +350,11 @@ export default function HomePage() {
         <ParallaxBackdrop src="/images/site_images/bulk_bags.jpg" />
         <div className="absolute inset-0 bg-slate-900/75" />
         <div className="relative max-w-7xl mx-auto px-6 py-24">
-          <div className="max-w-2xl mb-14">
+          <div className="max-w-2xl">
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-400">What Farms Say</span>
             <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mt-2">
               Trusted by growers across the region.
             </h2>
-            <p className="text-slate-200 text-sm mt-4 leading-relaxed">
-              Placeholder copy — an intro line about customer trust or repeat business. [ADD TEXT HERE]
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((t, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="p-8 rounded-3xl bg-white/10 backdrop-blur-sm border border-white/15"
-              >
-                <ChatBubbleLeftRightIcon className="w-6 h-6 text-emerald-400 mb-4" />
-                <p className="text-slate-100 text-sm leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
-                <p className="text-white text-sm font-bold">{t.name}</p>
-                <p className="text-slate-300 text-xs">{t.role}</p>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
@@ -409,7 +368,7 @@ export default function HomePage() {
               Common questions.
             </h2>
             <p className="text-slate-500 dark:text-slate-400 text-sm mt-4 leading-relaxed">
-              Placeholder copy — a short intro line above the FAQ list. [ADD TEXT HERE]
+              A few things customers ask us most often.
             </p>
           </div>
 
@@ -446,7 +405,7 @@ export default function HomePage() {
               href="/store"
               className="group inline-flex items-center gap-2 mt-8 px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold shadow-lg shadow-emerald-500/30 transition-all"
             >
-              Browse the Catalog
+              Browse our Catalog
               <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>

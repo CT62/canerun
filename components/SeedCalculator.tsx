@@ -140,7 +140,7 @@ export default function SeedCalculator() {
               className="flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm shadow-emerald-500/30 shrink-0"
             >
               <ShoppingCartIcon className="w-4 h-4" />
-              Add {selectedLbs} lbs to Batch
+              Add {selectedLbs} lbs to Cart
             </button>
           </div>
 

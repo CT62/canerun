@@ -61,7 +61,7 @@ export default function Navbar() {
           {totalItems > 0 && (
             <Link href="/cart" className="flex items-center gap-2 pl-4 pr-3 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white border-2 border-slate-900 dark:border-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all text-xs font-bold">
               <ShoppingCartIcon className="w-4 h-4" />
-              <span>My Batch</span>
+              <span>My Cart</span>
               <span className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-2 py-0.5 rounded-md text-[10px]">{totalItems}</span>
             </Link>
           )}
@@ -124,7 +124,7 @@ export default function Navbar() {
               </div>
               <div className="pt-2 flex items-center justify-between">
                 {totalLbs > 0 ? (
-                  <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wide">{totalLbs.toLocaleString()} lbs in batch</span>
+                  <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wide">{totalLbs.toLocaleString()} lbs in cart</span>
                 ) : <span />}
                 <ThemeToggle />
               </div>
