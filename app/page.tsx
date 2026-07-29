@@ -55,9 +55,8 @@ const SEED_CATEGORIES = [
 ];
 
 const STATS = [
-  { value: '40+', label: 'Seed Varieties' },
-  { value: '15+', label: 'Years in Operation' },
-  { value: '500+', label: 'Farms Served' },
+  { value: '30+', label: 'Seed Varieties' },
+  { value: '75+', label: 'Years in Operation' },
   { value: '24/7', label: 'Order Access' },
 ];
 
@@ -181,7 +180,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-20 pt-10 border-t border-slate-900/10 dark:border-white/10"
+            className="grid grid-cols-3 gap-6 mt-20 pt-10 border-t border-slate-900/10 dark:border-white/10"
           >
             {STATS.map((stat) => (
               <div key={stat.label}>
