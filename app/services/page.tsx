@@ -31,12 +31,12 @@ export default function ServicesPage() {
             className="max-w-2xl"
           >
             <span className="inline-block text-[10px] font-bold tracking-[0.25em] uppercase text-emerald-700 dark:text-emerald-400 mb-5">
-              Toll Services
+              Custom Services
             </span>
             <h1 className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">Services</h1>
             <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base mt-4 leading-relaxed">
               Beyond our seed catalog, we offer seed processing services on your own seed lots. Every service
-              below is priced per job — please enquire and we&apos;ll put a quote together for you.
+              below is priced per job — please inquire and we&apos;ll put a quote together for you.
             </p>
           </motion.div>
         </div>
@@ -62,8 +62,8 @@ export default function ServicesPage() {
                     <Icon className="w-6 h-6" />
                   </div>
                   <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-[10px] font-bold uppercase tracking-wide">Toll Service</span>
-                    <span className="px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold uppercase tracking-wide">Please Enquire</span>
+                    <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-[10px] font-bold uppercase tracking-wide">Custom Service</span>
+                    <span className="px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold uppercase tracking-wide">Please Inquire</span>
                   </div>
                   <h2 className="text-xl font-black text-slate-900 dark:text-white mb-2">{service.name}</h2>
                   <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">{service.summary}</p>

@@ -45,8 +45,8 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
             </div>
 
             <div className="flex flex-wrap gap-2 mb-5">
-              <span className="px-2.5 py-1 rounded-lg bg-slate-900/5 dark:bg-white/10 border border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300 text-[10px] font-bold uppercase tracking-wide">Toll Service</span>
-              <span className="px-2.5 py-1 rounded-lg bg-emerald-500/15 dark:bg-emerald-500/15 border border-emerald-600/20 dark:border-emerald-400/30 text-emerald-800 dark:text-emerald-400 text-[10px] font-bold uppercase tracking-wide">Please Enquire</span>
+              <span className="px-2.5 py-1 rounded-lg bg-slate-900/5 dark:bg-white/10 border border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300 text-[10px] font-bold uppercase tracking-wide">Custom Service</span>
+              <span className="px-2.5 py-1 rounded-lg bg-emerald-500/15 dark:bg-emerald-500/15 border border-emerald-600/20 dark:border-emerald-400/30 text-emerald-800 dark:text-emerald-400 text-[10px] font-bold uppercase tracking-wide">Please Inquire</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">{service.name}</h1>
@@ -70,7 +70,7 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
 
           <div className="bg-slate-50 dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 p-8 sm:p-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div>
-              <p className="text-sm font-black text-slate-900 dark:text-white">Pricing: Please Enquire</p>
+              <p className="text-sm font-black text-slate-900 dark:text-white">Pricing: Please Inquire</p>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Every job is quoted individually — reach out with your seed lot and quantity.</p>
             </div>
             <a
@@ -78,7 +78,7 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
               className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-lg shadow-emerald-500/30 transition-all shrink-0"
             >
               <EnvelopeIcon className="w-4 h-4" />
-              Enquire About This Service
+              Inquire About This Service
               <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
