@@ -212,11 +212,10 @@ export default function HomePage() {
           <div>
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600 dark:text-emerald-400">About Us</span>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight mt-2">
-              Family owned and operated.
+              Family opened.
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm mt-6 leading-relaxed">
-              Cane Run Enterprises was founded in 2022 by Rebecca Caldbeck, William Caldbeck, Philip
-              Caldbeck, Sarah Caldbeck, and Ben Caldbeck, and is family owned and operated.
+              Cane Run Enterprises was founded in 2022 by the Caldbeck family.
             </p>
             <p className="text-slate-600 dark:text-slate-400 text-sm mt-4 leading-relaxed">
               We warehouse seed of all kinds — from pasture and hay mixes to specialty cover crops — and we
