@@ -25,7 +25,7 @@ export const SERVICES_CATALOG = [
   },
   {
     slug: 'seed-treating',
-    name: 'Custom Seed Treating',
+    name: 'Seed Treating',
     tagline: 'Approved treatments that protect seed and support strong crop establishment.',
     summary: 'Seed treatment services that apply approved products to help protect seed and support strong crop establishment.',
     description: 'Seed treatment services that apply approved products to help protect seed and support strong crop establishment.',

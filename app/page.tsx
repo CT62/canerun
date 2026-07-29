@@ -47,7 +47,7 @@ const FOUNDERS = [
   { name: 'William Caldbeck', image: '/images/founders/william.jpeg', role: 'Founder' },
   { name: 'Philip Caldbeck', image: '/images/founders/philip.jpeg', role: 'Founder' },
   { name: 'Sarah Caldbeck', image: '/images/founders/sarah.jpeg', role: 'Founder' },
-  { name: 'Ben Caldbeck', image: '/images/founders/ben.jpg', role: 'Founder' },
+  { name: 'Ben Caldbeck', image: '/images/founders/ben.png', role: 'Founder' },
 ];
 
 const SEED_CATEGORIES = [
