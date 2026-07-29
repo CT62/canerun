@@ -89,7 +89,11 @@ const FAQS = [
   },
   {
     q: 'What is the minimum order size?',
-    a: '5 lbs.',
+    a: 'Our minimum order size is 5 lbs.',
+  },
+  {
+    q: 'How much should I order?',
+    a: 'The amount of seed needed depends on the crop, planting rate, acreage, and intended use. For help determining the right amount for your operation, please refer to the built-in calculator.',
   },
   {
     q: 'Do you offer bulk / wholesale pricing?',
