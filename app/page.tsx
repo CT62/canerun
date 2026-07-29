@@ -28,7 +28,7 @@ const FEATURES = [
   },
   {
     icon: TruckIcon,
-    title: 'Regional Fast Shipping',
+    title: 'Nationwide Shipping',
     desc: 'We ship nationwide, with local pickup also available at our Illinois location.',
   },
   {
@@ -78,7 +78,7 @@ const STEPS = [
   {
     icon: TruckIcon,
     title: 'Order Delivered',
-    desc: '',
+    desc: 'We aim to provide reliable service and timely delivery for every customer.',
   },
 ];
 
