@@ -127,7 +127,7 @@ export default function CartPage() {
               </div>
               <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">Your cart is completely empty.</p>
               <Link href="/store" className="px-6 py-3 rounded-xl bg-slate-900 dark:bg-white hover:bg-emerald-600 dark:hover:bg-slate-200 text-white dark:text-slate-900 text-xs font-bold transition-all">
-                Browse our Catalog
+                Browse our catalog
               </Link>
             </div>
           ) : (
