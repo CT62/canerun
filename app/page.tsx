@@ -43,7 +43,7 @@ const FOUNDERS = [
   { name: 'William Caldbeck', image: '/images/founders/william.jpeg', role: 'Founder' },
   { name: 'Philip Caldbeck', image: '/images/founders/philip.jpeg', role: 'Founder' },
   { name: 'Sarah Caldbeck', image: '/images/founders/sarah.jpeg', role: 'Founder' },
-  { name: 'Ben Caldbeck', image: undefined, role: 'Founder' },
+  { name: 'Ben Caldbeck', image: '/images/founders/ben.jpg', role: 'Founder' },
 ];
 
 const SEED_CATEGORIES = [
@@ -55,7 +55,7 @@ const SEED_CATEGORIES = [
 
 const STATS = [
   { value: '30+', label: 'Seed Varieties' },
-  { value: '75+', label: 'Years in Operation' },
+  { value: '75+', label: 'Years of History' },
   { value: '24/7', label: 'Order Access' },
 ];
 
@@ -108,7 +108,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-slate-50 dark:bg-slate-950">
         <div className="absolute inset-x-0 top-0 w-full h-[26rem] sm:h-[34rem] [mask-image:linear-gradient(to_bottom,black,black_25%,transparent_78%)] [-webkit-mask-image:linear-gradient(to_bottom,black,black_25%,transparent_78%)]">
           <Image
-            src="/images/site_images/whole_view.jpg"
+            src="/images/site_images/whole_view.png"
             alt="Cane Run Enterprises facility"
             fill
             priority
@@ -127,7 +127,7 @@ export default function HomePage() {
               Cane Run Enterprises
             </span>
             <h1 className="text-4xl sm:text-6xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-[1.05]">
-              Seed & forage supply, built for working farms.
+              Family owned custom seed processing and seed supplier.
             </h1>
             <p className="text-slate-700 dark:text-slate-300 text-base sm:text-lg mt-6 max-w-xl leading-relaxed">
               Cane Run Enterprises is a family-owned seed processing and seed supply company based in
@@ -135,7 +135,7 @@ export default function HomePage() {
               and bagging services, along with quality seed for growers and agricultural businesses. Our
               focus is on efficient processing, consistent quality, and dependable service — whether you
               need custom seed processing or quality seed, we&apos;re here to provide reliable solutions you
-              can count on. Thank you for supporting our family-owned small business.
+              can count on. From our family to yours, thank you for supporting us.
             </p>
             <div className="flex items-center gap-2 mt-6">
               <IllinoisIcon className="w-3 h-6 text-emerald-700 dark:text-emerald-400" />
@@ -305,16 +305,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How it works */}
-      <section className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-        <div className="max-w-7xl mx-auto px-6 py-24">
+      {/* How it works — fixed parallax backdrop */}
+      <section
+        className="relative border-b border-slate-200 dark:border-slate-800 sm:bg-cover sm:bg-center sm:bg-fixed sm:bg-[url('/images/site_images/bulk_bags.jpg')]"
+        style={{ clipPath: 'inset(0)' }}
+      >
+        <ParallaxBackdrop src="/images/site_images/bulk_bags.jpg" />
+        <div className="absolute inset-0 bg-slate-900/75" />
+        <div className="relative max-w-7xl mx-auto px-6 py-24">
           <div className="max-w-2xl mb-14">
-            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600 dark:text-emerald-400">How It Works</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight mt-2">
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-400">How It Works</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mt-2">
               From order to farm in a few steps.
             </h2>
-            <p className="text-slate-500 dark:text-slate-400 text-sm mt-4 leading-relaxed">
-              Placeholder copy — a short intro to your ordering/fulfillment process. [ADD TEXT HERE]
+            <p className="text-slate-200 text-sm mt-4 leading-relaxed">
+              Four simple steps from your first click to seed on the farm.
             </p>
           </div>
 
@@ -326,35 +331,18 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                className="p-8 rounded-3xl bg-white/10 backdrop-blur-sm border border-white/15"
               >
-                <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-5">
+                <div className="w-11 h-11 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-5">
                   <step.icon className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400">
                   Step {i + 1}
                 </span>
-                <h3 className="text-base font-black text-slate-900 dark:text-white mt-1 mb-2">{step.title}</h3>
-                {step.desc && <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">{step.desc}</p>}
+                <h3 className="text-base font-black text-white mt-1 mb-2">{step.title}</h3>
+                {step.desc && <p className="text-slate-300 text-xs leading-relaxed">{step.desc}</p>}
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials — fixed parallax backdrop */}
-      <section
-        className="relative border-b border-slate-200 dark:border-slate-800 sm:bg-cover sm:bg-center sm:bg-fixed sm:bg-[url('/images/site_images/bulk_bags.jpg')]"
-        style={{ clipPath: 'inset(0)' }}
-      >
-        <ParallaxBackdrop src="/images/site_images/bulk_bags.jpg" />
-        <div className="absolute inset-0 bg-slate-900/75" />
-        <div className="relative max-w-7xl mx-auto px-6 py-24">
-          <div className="max-w-2xl">
-            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-400">What Farms Say</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mt-2">
-              Trusted by growers across the region.
-            </h2>
           </div>
         </div>
       </section>

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import type { ServiceEntry } from '@/app/data/servicesCatalog';
 import {
   ArrowsPointingOutIcon,
-  CheckBadgeIcon,
+  ArchiveBoxIcon,
   SparklesIcon,
   BeakerIcon,
   ArrowLeftIcon,
@@ -14,7 +14,7 @@ import {
 
 const ICONS: Record<string, typeof ArrowsPointingOutIcon> = {
   multiplication: ArrowsPointingOutIcon,
-  certification: CheckBadgeIcon,
+  bagging: ArchiveBoxIcon,
   cleaning: SparklesIcon,
   treating: BeakerIcon,
 };

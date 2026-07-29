@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { SERVICES_CATALOG } from '../data/servicesCatalog';
 import {
   ArrowsPointingOutIcon,
-  CheckBadgeIcon,
+  ArchiveBoxIcon,
   SparklesIcon,
   BeakerIcon,
   ArrowRightIcon,
@@ -12,7 +12,7 @@ import {
 
 const ICONS: Record<string, typeof ArrowsPointingOutIcon> = {
   multiplication: ArrowsPointingOutIcon,
-  certification: CheckBadgeIcon,
+  bagging: ArchiveBoxIcon,
   cleaning: SparklesIcon,
   treating: BeakerIcon,
 };
@@ -35,8 +35,8 @@ export default function ServicesPage() {
             </span>
             <h1 className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">Services</h1>
             <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base mt-4 leading-relaxed">
-              Beyond our seed catalog, we offer toll services on your own seed lots. Every service below is
-              priced per job — please enquire and we&apos;ll put a quote together for you.
+              Beyond our seed catalog, we offer seed processing services on your own seed lots. Every service
+              below is priced per job — please enquire and we&apos;ll put a quote together for you.
             </p>
           </motion.div>
         </div>
