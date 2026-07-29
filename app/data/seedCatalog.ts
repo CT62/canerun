@@ -1,16 +1,5 @@
 export const SEED_CATALOG = [
   {
-    id: 'ky31_fescue',
-    category: 'turf',
-    name: 'KY 31 Fescue',
-    bulkPrice50lb: 81.00,
-    desc: 'Drought tolerant, persistent utility field and turf fescue. Exceptional for high-traffic environments, home lawns, and robust erosion control applications.',
-    details: 'KY 31 performs best in well-drained to moderately wet soils with a pH between 5.5 and 7.0, and it tolerates full sun to light shade better than almost any other cool-season turfgrass. Seed germinates in 7 to 14 days and reaches usable stand density within 6 to 8 weeks under normal fall or spring conditions. Its coarse-textured, bunch-type growth habit and deep root system make it exceptionally drought tolerant and slow to wear out under foot or vehicle traffic, which is why it remains a dependable standard for pastures, roadsides, and utility turf across Illinois\'s cool-season, corn-belt climate. Mow at 3 to 4 inches to encourage rooting depth and shade out weed competition, and note that older KY 31 seed lots typically carry a wild-type endophyte that benefits stand persistence but can affect grazing animals in hot weather.',
-    img: '/images/ky_31.jpg',
-    chartType: 'turf',
-    specs: { seedPerLb: '225,000', lbsAcre: '260 to 435', lbs1000: '6 to 10', cycle: 'Perennial' }
-  },
-  {
     id: 'easy_beauty',
     category: 'turf',
     name: 'Easy Beauty® Lawn Mix',
@@ -53,6 +42,17 @@ export const SEED_CATALOG = [
     img: '/images/vista_fescue.jpg',
     chartType: 'turf',
     specs: { seedPerLb: '225,000', lbsAcre: '260 to 435', lbs1000: '6 to 10', cycle: 'Perennial Blend' }
+  },
+  {
+    id: 'ky31_fescue',
+    category: 'turf',
+    name: 'KY 31 Fescue',
+    bulkPrice50lb: 81.00,
+    desc: 'Drought tolerant, persistent utility field and turf fescue. Exceptional for high-traffic environments, home lawns, and robust erosion control applications.',
+    details: 'KY 31 performs best in well-drained to moderately wet soils with a pH between 5.5 and 7.0, and it tolerates full sun to light shade better than almost any other cool-season turfgrass. Seed germinates in 7 to 14 days and reaches usable stand density within 6 to 8 weeks under normal fall or spring conditions. Its coarse-textured, bunch-type growth habit and deep root system make it exceptionally drought tolerant and slow to wear out under foot or vehicle traffic, which is why it remains a dependable standard for pastures, roadsides, and utility turf across Illinois\'s cool-season, corn-belt climate. Mow at 3 to 4 inches to encourage rooting depth and shade out weed competition, and note that older KY 31 seed lots typically carry a wild-type endophyte that benefits stand persistence but can affect grazing animals in hot weather.',
+    img: '/images/ky_31.jpg',
+    chartType: 'turf',
+    specs: { seedPerLb: '225,000', lbsAcre: '260 to 435', lbs1000: '6 to 10', cycle: 'Perennial' }
   },
   {
     id: 'creeping_red_fescue',

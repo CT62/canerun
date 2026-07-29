@@ -126,7 +126,7 @@ export default function HomePage() {
             className="object-cover"
           />
         </div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(16,185,129,0.18),_transparent_60%)]" />
+        <div className="hidden sm:block absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(16,185,129,0.18),_transparent_60%)]" />
         <div className="relative max-w-7xl mx-auto px-6 pt-64 sm:pt-80 pb-24 sm:pb-32">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -137,7 +137,7 @@ export default function HomePage() {
               Cane Run Enterprises
             </span>
             <h1 className="text-4xl sm:text-6xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-[1.05]">
-              Family owned custom seed processing and seed supplier.
+              Family-owned custom seed processing and seed supplier.
             </h1>
             <p className="text-slate-700 dark:text-slate-300 text-base sm:text-lg mt-6 max-w-xl leading-relaxed">
               Cane Run Enterprises is a family-owned seed processing and seed supply company based in
