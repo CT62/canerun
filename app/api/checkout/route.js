@@ -48,7 +48,9 @@ export async function POST(req) {
 
       shippingMetadata = {
         shipTo: JSON.stringify(shipTo),
-        shipRateId: rate.rateId,
+        // An order can price out as multiple label purchases (e.g. summed per-box USPS
+        // rates), so this is an array of rate ids, not a single one.
+        shipRateIds: JSON.stringify(rate.legs.map((leg) => leg.rateId)),
         totalOunces: String(totalOunces),
       };
     }

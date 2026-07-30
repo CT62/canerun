@@ -49,8 +49,13 @@ export async function POST(req) {
       // ship-from address are configured via env vars, so we never guess at real warehouse details.
       if (!isPickup && process.env.SHIPENGINE_API_KEY && process.env.SHIP_FROM_ADDRESS_JSON && session.metadata?.shipTo) {
         const shipTo = JSON.parse(session.metadata.shipTo);
+        // An order can price out as multiple label purchases (e.g. summed per-box USPS
+        // rates) — turn the stored rate ids back into legs; purchaseLabelForOrder falls
+        // back to a fresh quote if any of them have since expired.
+        const rateIds = session.metadata.shipRateIds ? JSON.parse(session.metadata.shipRateIds) : [];
+        const legs = rateIds.filter(Boolean).map((rateId) => ({ rateId }));
         const label = await purchaseLabelForOrder({
-          rateId: session.metadata.shipRateId,
+          legs,
           shipTo,
           bagLines,
         });
