@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/store/useCart';
 import { ArrowLeftIcon, TrashIcon, CreditCardIcon, ShoppingCartIcon, TruckIcon, BuildingStorefrontIcon, ScaleIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
-import { estimatePallets } from '@/lib/freight';
 import { packItemsIntoBags, summarizeBagCounts, BAG_SIZES } from '@/lib/bagSizes';
 
 const EMPTY_ADDRESS = {
@@ -30,13 +29,11 @@ export default function CartPage() {
   const totalOunces = cart.reduce((sum, item) => sum + (item.weightOz || 0) * item.quantity, 0);
   const totalLbs = totalOunces / 16;
 
-  // Real bag breakdown: how much of each specific seed is being ordered determines how many
-  // small/medium/large bags it actually takes, since bag capacity is a volume limit and every
-  // seed has a different bulk density.
+  // Real bag breakdown: each cart line is a customer-configured bag, sized small/medium/large
+  // by its per-bag weight.
   const bagLines = packItemsIntoBags(cart);
   const bagCounts = summarizeBagCounts(bagLines);
   const bagCount = bagLines.length;
-  const palletEstimate = estimatePallets(bagCount);
 
   const addressComplete = REQUIRED_ADDRESS_FIELDS.every((field) => shipTo[field]?.trim());
   const rateKey = fulfillment === 'ship' && cart.length > 0 && addressComplete
@@ -157,7 +154,7 @@ export default function CartPage() {
                 ))}
               </div>
 
-              <div className="grid grid-cols-3 gap-3 mb-8">
+              <div className="grid grid-cols-2 gap-3 mb-8">
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
                   <ScaleIcon className="w-4 h-4 text-emerald-600 dark:text-emerald-400 mb-2" />
                   <p className="text-lg font-black text-slate-900 dark:text-white">{totalLbs.toLocaleString()}</p>
@@ -166,10 +163,6 @@ export default function CartPage() {
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
                   <p className="text-lg font-black text-slate-900 dark:text-white">{bagCount}</p>
                   <p className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Bags in Cart</p>
-                </div>
-                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
-                  <p className="text-lg font-black text-slate-900 dark:text-white">~{palletEstimate}</p>
-                  <p className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Est. Pallet{palletEstimate === 1 ? '' : 's'}</p>
                 </div>
               </div>
 

@@ -58,8 +58,8 @@ export async function POST(req) {
           trackingNumber: label.trackingNumber,
           carrierCode: label.carrierCode,
           labelUrl: label.labelDownload?.pdf || label.labelDownload?.href || null,
-          // Multi-package shipments (e.g. an order needing several small/medium/large bags)
-          // carry one tracking number per bag here, even though the label itself is a single object.
+          // Multi-package shipments (e.g. an order whose bags didn't all fit in one box)
+          // carry one tracking number per box here, even though the label itself is a single object.
           packages: (label.packages || [])
             .filter((pkg) => pkg.trackingNumber)
             .map((pkg) => ({ trackingNumber: pkg.trackingNumber })),

@@ -86,3 +86,50 @@ export function summarizeBagCounts(lines: BagLine[]): Record<BagSizeId, number> 
 export function totalOuncesForBagLines(lines: BagLine[]): number {
   return lines.reduce((sum, line) => sum + line.weightLb * 16, 0);
 }
+
+// Conservative combined-package limits used when consolidating multiple bags into fewer
+// shipping boxes — matches USPS Priority Mail's limits, the tightest of our supported
+// carriers, so a consolidated box stays valid no matter which carrier ends up quoting it.
+const MAX_PACKAGE_WEIGHT_LB = 70;
+const MAX_COMBINED_SIZE_IN = 108; // length + girth, girth = 2 * (width + height)
+
+export type ShippingPackage = { weightLb: number; length: number; width: number; height: number };
+
+function packageForStack(dims: { length: number; width: number; height: number }, stack: { weightLb: number; count: number }): ShippingPackage {
+  return { weightLb: stack.weightLb, length: dims.length, width: dims.width, height: dims.height * stack.count };
+}
+
+// Stacks same-size bags into as few physical shipping boxes as possible — e.g. several small
+// bags in one order can ride in a single box instead of each shipping (and being priced)
+// separately — while keeping every resulting box under USPS's weight/size limit. Bags of
+// different sizes are never combined with each other since their footprints don't stack.
+export function consolidateBagLinesForShipping(lines: BagLine[]): ShippingPackage[] {
+  const packages: ShippingPackage[] = [];
+
+  for (const bagId of Object.keys(BAG_BY_ID) as BagSizeId[]) {
+    const group = lines.filter((line) => line.bagId === bagId);
+    if (group.length === 0) continue;
+
+    const dims = bagPackagedDimensionsIn(bagId);
+    let current: { weightLb: number; count: number } | null = null;
+
+    for (const line of group) {
+      const candidate: { weightLb: number; count: number } = {
+        weightLb: (current?.weightLb ?? 0) + line.weightLb,
+        count: (current?.count ?? 0) + 1,
+      };
+      const combinedSize = dims.length + 2 * (dims.width + dims.height * candidate.count);
+      const fits = current !== null && candidate.weightLb <= MAX_PACKAGE_WEIGHT_LB && combinedSize <= MAX_COMBINED_SIZE_IN;
+
+      if (fits) {
+        current = candidate;
+      } else {
+        if (current) packages.push(packageForStack(dims, current));
+        current = { weightLb: line.weightLb, count: 1 };
+      }
+    }
+    if (current) packages.push(packageForStack(dims, current));
+  }
+
+  return packages;
+}
