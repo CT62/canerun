@@ -216,9 +216,14 @@ export default function CartPage() {
                       {shippingPending && <span className="text-slate-500 dark:text-slate-400">Calculating shipping…</span>}
                       {!shippingPending && shippingError && <span className="text-red-500 font-bold">{shippingError}</span>}
                       {!shippingPending && !shippingError && shippingRate && (
-                        <span className="text-emerald-600 dark:text-emerald-400 font-bold">
-                          {shippingRate.carrierFriendlyName} {shippingRate.serviceType} — ${shippingRate.amount.toFixed(2)}
-                        </span>
+                        <div>
+                          <span className="text-emerald-600 dark:text-emerald-400 font-bold">
+                            {shippingRate.carrierFriendlyName} {shippingRate.serviceType} — ${shippingRate.amount.toFixed(2)}
+                          </span>
+                          {shippingRate.warning && (
+                            <p className="mt-2 text-amber-600 dark:text-amber-400 font-bold">{shippingRate.warning}</p>
+                          )}
+                        </div>
                       )}
                       {!shippingPending && !shippingError && !shippingRate && (
                         <span className="text-slate-400 dark:text-slate-500">Enter your address above to calculate shipping.</span>

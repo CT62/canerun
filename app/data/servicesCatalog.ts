@@ -34,3 +34,4 @@ export const SERVICES_CATALOG = [
 ] as const;
 
 export type ServiceEntry = (typeof SERVICES_CATALOG)[number];
+
