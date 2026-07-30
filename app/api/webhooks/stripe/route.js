@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { purchaseLabelForOrder } from '@/lib/shipengine';
 import { sendOrderConfirmationEmail } from '@/lib/email';
+import { packItemsIntoBags } from '@/lib/bagSizes';
 
 export async function POST(req) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -29,11 +30,16 @@ export async function POST(req) {
         amount: (item.amount_total || 0) / 100,
       }));
 
-      // Sum the configured bag weights (in oz) carried in each line item's product metadata
-      const totalOunces = lineItems.data.reduce((sum, item) => {
-        const weightOz = parseFloat(item.price?.product?.metadata?.weightOz) || 0;
-        return sum + weightOz * item.quantity;
-      }, 0);
+      // Re-derive the real small/medium/large bag breakdown from each line item's product
+      // metadata (seed id + configured per-bag weight) — same packing math used at checkout,
+      // recomputed here rather than trusted from Stripe metadata so it can't go stale.
+      const bagLines = packItemsIntoBags(
+        lineItems.data.map((item) => ({
+          id: item.price?.product?.metadata?.id,
+          weightOz: parseFloat(item.price?.product?.metadata?.weightOz) || 0,
+          quantity: item.quantity,
+        }))
+      );
 
       const isPickup = session.metadata?.fulfillment === 'pickup';
       let tracking = null;
@@ -46,9 +52,18 @@ export async function POST(req) {
         const label = await purchaseLabelForOrder({
           rateId: session.metadata.shipRateId,
           shipTo,
-          totalOunces: Number(session.metadata.totalOunces) || totalOunces,
+          bagLines,
         });
-        tracking = { trackingNumber: label.trackingNumber, carrierCode: label.carrierCode };
+        tracking = {
+          trackingNumber: label.trackingNumber,
+          carrierCode: label.carrierCode,
+          labelUrl: label.labelDownload?.pdf || label.labelDownload?.href || null,
+          // Multi-package shipments (e.g. an order needing several small/medium/large bags)
+          // carry one tracking number per bag here, even though the label itself is a single object.
+          packages: (label.packages || [])
+            .filter((pkg) => pkg.trackingNumber)
+            .map((pkg) => ({ trackingNumber: pkg.trackingNumber })),
+        };
       }
 
       await sendOrderConfirmationEmail({

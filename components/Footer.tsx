@@ -5,8 +5,7 @@ export default function Footer() {
     <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 transition-colors">
       <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col sm:flex-row justify-between gap-10">
         <div>
-          <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-emerald-600 dark:text-emerald-400">Cane Run</span>
-          <p className="text-sm font-black text-slate-900 dark:text-white">Enterprises</p>
+          <p className="text-sm font-black text-slate-900 dark:text-white">Cane Run Enterprises</p>
           <p className="text-xs text-slate-400 dark:text-slate-500 mt-3">© {new Date().getFullYear()} Cane Run Enterprises.</p>
         </div>
         <div className="flex flex-col gap-3 text-xs text-slate-500 dark:text-slate-400">

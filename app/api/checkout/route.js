@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { getCheapestRate } from '@/lib/shipengine';
+import { packItemsIntoBags, totalOuncesForBagLines } from '@/lib/bagSizes';
 
 export async function POST(req) {
   try {
@@ -23,7 +24,8 @@ export async function POST(req) {
       quantity: item.quantity,
     }));
 
-    const totalOunces = items.reduce((sum, item) => sum + (item.weightOz || 0) * item.quantity, 0);
+    const bagLines = packItemsIntoBags(items);
+    const totalOunces = totalOuncesForBagLines(bagLines);
 
     let shippingOptions;
     let shippingMetadata = {};
@@ -34,7 +36,7 @@ export async function POST(req) {
 
       // Re-quote server-side rather than trusting a client-supplied dollar amount —
       // the price charged must come from ShipStation, not from the request body.
-      const rate = await getCheapestRate({ shipTo, totalOunces });
+      const rate = await getCheapestRate({ shipTo, bagLines });
 
       shippingOptions = [{
         shipping_rate_data: {

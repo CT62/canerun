@@ -2,8 +2,9 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/store/useCart';
-import { ArrowLeftIcon, TrashIcon, CreditCardIcon, ShoppingCartIcon, TruckIcon, BuildingStorefrontIcon, ScaleIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftIcon, TrashIcon, CreditCardIcon, ShoppingCartIcon, TruckIcon, BuildingStorefrontIcon, ScaleIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
 import { estimatePallets } from '@/lib/freight';
+import { packItemsIntoBags, summarizeBagCounts, BAG_SIZES } from '@/lib/bagSizes';
 
 const EMPTY_ADDRESS = {
   name: '',
@@ -28,12 +29,18 @@ export default function CartPage() {
   const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const totalOunces = cart.reduce((sum, item) => sum + (item.weightOz || 0) * item.quantity, 0);
   const totalLbs = totalOunces / 16;
-  const bagCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  // Real bag breakdown: how much of each specific seed is being ordered determines how many
+  // small/medium/large bags it actually takes, since bag capacity is a volume limit and every
+  // seed has a different bulk density.
+  const bagLines = packItemsIntoBags(cart);
+  const bagCounts = summarizeBagCounts(bagLines);
+  const bagCount = bagLines.length;
   const palletEstimate = estimatePallets(bagCount);
 
   const addressComplete = REQUIRED_ADDRESS_FIELDS.every((field) => shipTo[field]?.trim());
   const rateKey = fulfillment === 'ship' && cart.length > 0 && addressComplete
-    ? `${totalOunces}|${JSON.stringify(shipTo)}`
+    ? `${JSON.stringify(bagLines)}|${JSON.stringify(shipTo)}`
     : null;
 
   const shippingRate = rateResult?.key === rateKey ? rateResult.rate : null;
@@ -213,7 +220,12 @@ export default function CartPage() {
                     </select>
 
                     <div className="pt-1 text-xs">
-                      {shippingPending && <span className="text-slate-500 dark:text-slate-400">Calculating shipping…</span>}
+                      {shippingPending && (
+                        <span className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
+                          <ArrowPathIcon className="w-3.5 h-3.5 animate-spin" />
+                          Calculating shipping…
+                        </span>
+                      )}
                       {!shippingPending && shippingError && <span className="text-red-500 font-bold">{shippingError}</span>}
                       {!shippingPending && !shippingError && shippingRate && (
                         <div>
@@ -241,7 +253,9 @@ export default function CartPage() {
                 {fulfillment === 'ship' && (
                   <div className="flex justify-between items-center">
                     <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Shipping</span>
-                    <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{shippingRate ? `$${shippingRate.amount.toFixed(2)}` : '—'}</span>
+                    <span className="text-sm font-bold text-slate-700 dark:text-slate-300">
+                      {shippingRate ? `$${shippingRate.amount.toFixed(2)}` : shippingPending ? <ArrowPathIcon className="w-4 h-4 animate-spin inline text-slate-400" /> : '—'}
+                    </span>
                   </div>
                 )}
                 <div className="flex justify-between items-center pt-2 border-t border-slate-100 dark:border-slate-800">

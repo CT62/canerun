@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { CheckCircleIcon, ArrowRightIcon, BuildingStorefrontIcon } from '@heroicons/react/24/outline';
+import ClearCartOnSuccess from './ClearCartOnSuccess';
 
 export default async function SuccessPage({
   searchParams,
@@ -11,6 +12,7 @@ export default async function SuccessPage({
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-950 p-6 transition-colors">
+      <ClearCartOnSuccess />
       <div className="max-w-md w-full text-center bg-white dark:bg-slate-900 p-10 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800">
         <div className="w-16 h-16 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-6">
           {isPickup ? <BuildingStorefrontIcon className="w-9 h-9" /> : <CheckCircleIcon className="w-9 h-9" />}
