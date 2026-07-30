@@ -57,7 +57,7 @@ export default function CartPage() {
         const res = await fetch('/api/shipping/rate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ shipTo, totalOunces }),
+          body: JSON.stringify({ shipTo, items: cart }),
         });
         const data = await res.json();
         if (!cancelled) {
@@ -76,7 +76,7 @@ export default function CartPage() {
       cancelled = true;
       clearTimeout(timer);
     };
-  }, [rateKey, shipTo, totalOunces]);
+  }, [rateKey, shipTo, cart]);
 
   const handleCheckout = async () => {
     if (cart.length === 0) return;
@@ -172,6 +172,20 @@ export default function CartPage() {
                   <p className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Est. Pallet{palletEstimate === 1 ? '' : 's'}</p>
                 </div>
               </div>
+
+              {bagCount > 0 && (
+                <div className="flex flex-wrap gap-2 -mt-4 mb-8">
+                  {BAG_SIZES.map((bag) => bagCounts[bag.id] > 0 && (
+                    <span
+                      key={bag.id}
+                      title={`${bag.label} (${bag.flatDimensionsIn.length}" x ${bag.flatDimensionsIn.width}")`}
+                      className="px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-100 dark:border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold uppercase tracking-wide"
+                    >
+                      {bagCounts[bag.id]}× {bag.label}
+                    </span>
+                  ))}
+                </div>
+              )}
 
               <div className="border-t border-slate-100 dark:border-slate-800 pt-6 mb-6">
                 <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">Fulfillment</p>

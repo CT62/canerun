@@ -59,7 +59,7 @@ const SEED_CATEGORIES = [
 
 const STATS = [
   { value: '30+', label: 'Seed Varieties' },
-  { value: '75+', label: 'Years of History' },
+  { value: '150+', label: 'Years of History' },
   { value: '24/7', label: 'Order Access' },
 ];
 
