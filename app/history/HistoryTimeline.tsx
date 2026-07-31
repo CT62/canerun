@@ -28,13 +28,14 @@ const TIMELINE = [
     era: '1981',
     title: 'Baker Seed',
     desc: 'The property became home to Baker Seed, founded in 1981, continuing to serve growers in the region for decades.',
-    logo: '/images/baker_seed.jpeg',
+    thumb: '/images/baker_seed.jpeg',
   },
   {
     era: '2022',
     title: 'Cane Run Enterprises',
     desc: "The property became part of Cane Run Enterprises, preserving a site that has supported local farmers and agricultural trade for nearly 150 years.",
-    photo: '/images/site_images/front_enterance.jpg',
+    thumb: '/images/site_images/front_enterance.jpg',
+    thumbPosition: 'top' as const,
   },
 ];
 
@@ -73,33 +74,28 @@ export default function HistoryTimeline() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex-1 mb-10 p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all"
+              className="relative flex-1 mb-10 p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all"
             >
-              <div className="flex items-start justify-between gap-4">
+              <div className="flex items-start justify-between gap-5">
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">
                     {item.era}
                   </span>
                   <h3 className="text-base font-black text-slate-900 dark:text-white mt-1 mb-2">{item.title}</h3>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{item.desc}</p>
                 </div>
-                {item.logo && (
-                  <div className="relative w-14 h-14 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shrink-0 overflow-hidden">
-                    <Image src={item.logo} alt={`${item.title} logo`} fill className="object-contain p-1.5" />
+                {item.thumb && (
+                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shrink-0 overflow-hidden shadow-sm">
+                    <Image
+                      src={item.thumb}
+                      alt={item.title}
+                      fill
+                      sizes="96px"
+                      className={`object-cover ${item.thumbPosition === 'top' ? 'object-top' : 'object-center'}`}
+                    />
                   </div>
                 )}
               </div>
-              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{item.desc}</p>
-              {item.photo && (
-                <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden mt-5 bg-slate-100 dark:bg-slate-800">
-                  <Image
-                    src={item.photo}
-                    alt={`${item.title} — front entrance`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 700px"
-                    className="object-cover"
-                  />
-                </div>
-              )}
             </motion.div>
           </div>
         ))}
