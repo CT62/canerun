@@ -8,7 +8,9 @@ export async function POST(req) {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
     const { items, fulfillment, shipTo } = await req.json();
     const isPickup = fulfillment === 'pickup';
-    const origin = req.headers.get('origin') || 'http://localhost:3000';
+    // Never trust the client-supplied Origin header for a redirect target — fall back to it
+    // only for local dev convenience when SITE_URL isn't set.
+    const origin = process.env.SITE_URL || req.headers.get('origin') || 'http://localhost:3000';
 
     // Build the dynamic Stripe line-item array based on the custom Next.js UI state
     const lineItems = items.map((item) => ({
