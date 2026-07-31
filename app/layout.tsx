@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import TermsGate from '@/components/TermsGate';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -31,6 +32,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
       <body className="min-h-full flex flex-col bg-white dark:bg-slate-950 transition-colors">
+        <TermsGate />
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />
