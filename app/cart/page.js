@@ -218,7 +218,7 @@ export default function CartPage() {
                     <input className={inputClass} placeholder="Address line 2 (optional)" value={shipTo.addressLine2} onChange={updateAddress('addressLine2')} />
                     <div className="grid grid-cols-3 gap-2">
                       <input className={inputClass} placeholder="City" value={shipTo.cityLocality} onChange={updateAddress('cityLocality')} />
-                      <input className={inputClass} placeholder="State" value={shipTo.stateProvince} onChange={updateAddress('stateProvince')} />
+                      <input className={inputClass} placeholder="State (IL or Illinois)" value={shipTo.stateProvince} onChange={updateAddress('stateProvince')} />
                       <input className={inputClass} placeholder="ZIP" value={shipTo.postalCode} onChange={updateAddress('postalCode')} />
                     </div>
                     <select className={inputClass} value={shipTo.countryCode} onChange={updateAddress('countryCode')}>
