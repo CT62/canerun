@@ -202,8 +202,8 @@ export default function CartPage() {
                 {fulfillment === 'pickup' && (
                   <div className="mt-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
                     <p className="font-bold text-slate-900 dark:text-white mb-1">Pickup Location</p>
-                    <p>Placeholder address — Cane Run Enterprises, Illinois [ADD TEXT HERE]</p>
-                    <p className="mt-1">Placeholder hours — Mon–Fri, 8am–5pm. We&apos;ll email you when your batch is ready. [ADD TEXT HERE]</p>
+                    <p>610 Seminary St, West Salem, IL 62476</p>
+                    <p className="mt-1">Monday–Friday: 8 AM–4:30 PM CT. Saturday–Sunday: Closed.</p>
                   </div>
                 )}
 
@@ -223,7 +223,6 @@ export default function CartPage() {
                     </div>
                     <select className={inputClass} value={shipTo.countryCode} onChange={updateAddress('countryCode')}>
                       <option value="US">United States</option>
-                      <option value="CA">Canada</option>
                     </select>
 
                     <div className="pt-1 text-xs">
@@ -279,6 +278,13 @@ export default function CartPage() {
                 {fulfillment === 'pickup' ? <BuildingStorefrontIcon className="w-4 h-4" /> : <CreditCardIcon className="w-4 h-4" />}
                 {loading ? 'Processing...' : fulfillment === 'pickup' ? 'Reserve for Pickup' : 'Proceed to Secure Checkout'}
               </button>
+              <p className="text-center text-[10px] text-slate-400 dark:text-slate-500 mt-3">
+                By placing your order, you agree to our{' '}
+                <Link href="/terms" className="underline hover:text-emerald-600 dark:hover:text-emerald-400">
+                  Terms & Conditions
+                </Link>
+                .
+              </p>
             </>
           )}
         </div>

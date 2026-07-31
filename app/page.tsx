@@ -269,13 +269,15 @@ export default function HomePage() {
                 <div key={founder.name} className="flex flex-col items-center text-center">
                   <div
                     onClick={isExpandable ? () => setExpandedImage(founder.image!) : undefined}
-                    className={`w-full aspect-square rounded-2xl overflow-hidden bg-emerald-50 dark:bg-emerald-500/10 border border-slate-200 dark:border-slate-800 shadow-sm mb-4 ${isExpandable ? 'cursor-zoom-in hover:opacity-90 transition-opacity' : ''}`}
+                    className={`relative w-full aspect-square rounded-2xl overflow-hidden bg-emerald-50 dark:bg-emerald-500/10 border border-slate-200 dark:border-slate-800 shadow-sm mb-4 ${isExpandable ? 'cursor-zoom-in hover:opacity-90 transition-opacity' : ''}`}
                   >
                     {founder.image ? (
-                      <img
+                      <Image
                         src={founder.image}
                         alt={founder.name}
-                        className="w-full h-full object-cover"
+                        fill
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                        className="object-cover"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-2xl sm:text-3xl font-black">

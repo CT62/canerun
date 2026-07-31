@@ -6,6 +6,9 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
+    // Syncing from the DOM class the inline theme-init script (in layout.tsx) set before
+    // hydration — a real external system, not derivable at render time.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsDark(document.documentElement.classList.contains('dark'));
   }, []);
 

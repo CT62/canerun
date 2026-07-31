@@ -23,7 +23,7 @@ export default async function SuccessPage({
         </h1>
         <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
           {isPickup
-            ? "We'll email you as soon as your batch is ready for pickup at our Illinois location. Placeholder hours — Mon–Fri, 8am–5pm. [ADD TEXT HERE]"
+            ? 'Pick up at 610 Seminary St, West Salem, IL 62476. Monday–Friday: 8 AM–4:30 PM CT. Saturday–Sunday: Closed.'
             : 'Your seed purchase is being batched for weekly fulfillment. A confirmation email with your order details is on its way.'}
         </p>
         <Link

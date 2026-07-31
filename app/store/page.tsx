@@ -12,6 +12,17 @@ import PriceTierChart from '@/components/PriceTierChart';
 import CompareBar from '@/components/CompareBar';
 import CompareModal from '@/components/CompareModal';
 
+type Seed = {
+  id: string;
+  name: string;
+  category: string;
+  desc: string;
+  bulkPrice50lb: number;
+  img?: string;
+  details?: string;
+  specs?: Record<string, string | undefined>;
+} & Record<string, unknown>;
+
 const TABS = ['all', 'turf', 'pasture', 'cover', 'wildlife'];
 const WEIGHT_PRESETS = [5, 10, 25, 50];
 const MAX_COMPARE = 3;
@@ -19,7 +30,7 @@ const MAX_COMPARE = 3;
 export default function StorePage() {
   const { addToCart } = useCart();
   const [activeTab, setActiveTab] = useState('all');
-  const [selectedSeed, setSelectedSeed] = useState<any>(null);
+  const [selectedSeed, setSelectedSeed] = useState<Seed | null>(null);
   const [customPounds, setCustomPounds] = useState(50);
   const [bagQuantity, setBagQuantity] = useState(1);
   const [mounted, setMounted] = useState(false);
@@ -27,11 +38,16 @@ export default function StorePage() {
   const [compareOpen, setCompareOpen] = useState(false);
   const [calculatorOpen, setCalculatorOpen] = useState(false);
 
+  // Client-only gate: useCart() hydrates from localStorage, which isn't available during
+  // SSR, so the first client render must match the server's before switching over.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
   const products = activeTab === 'all' ? SEED_CATALOG : SEED_CATALOG.filter(p => p.category === activeTab);
-  const compareSeeds = compareIds.map((id) => SEED_CATALOG.find((s: any) => s.id === id)).filter(Boolean) as any[];
+  const compareSeeds = compareIds
+    .map((id) => SEED_CATALOG.find((s) => s.id === id))
+    .filter(Boolean) as Seed[];
 
   const toggleCompare = (id: string) => {
     setCompareIds((prev) => {
@@ -94,7 +110,7 @@ export default function StorePage() {
 
         <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
-            {products.map((seed: any) => {
+            {products.map((seed: Seed) => {
               const startingPrice = calculateTieredPrice(seed.bulkPrice50lb, 5) / 5;
               const rate = seed.specs?.lbsAcre ? `${seed.specs.lbsAcre} lbs/acre` : seed.specs?.rate;
               const cycle = seed.specs?.cycle || seed.specs?.type;
@@ -104,7 +120,7 @@ export default function StorePage() {
                   {hasImage && (
                     <div className="relative h-28 w-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
                       <Image
-                        src={seed.img}
+                        src={seed.img!}
                         alt={seed.name}
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

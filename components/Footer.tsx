@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { MapPinIcon, PhoneIcon, EnvelopeIcon, ClockIcon } from '@heroicons/react/24/outline';
 
 export default function Footer() {
@@ -7,6 +8,9 @@ export default function Footer() {
         <div>
           <p className="text-sm font-black text-slate-900 dark:text-white">Cane Run Enterprises</p>
           <p className="text-xs text-slate-400 dark:text-slate-500 mt-3">Cane Run Enterprises, LLP</p>
+          <Link href="/terms" className="inline-block text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all mt-3">
+            Terms & Conditions
+          </Link>
         </div>
         <div className="flex flex-col gap-3 text-xs text-slate-500 dark:text-slate-400">
           <span className="flex items-center gap-2">
