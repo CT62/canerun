@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/store/useCart';
 import { ArrowLeftIcon, TrashIcon, CreditCardIcon, ShoppingCartIcon, TruckIcon, BuildingStorefrontIcon, ScaleIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
@@ -24,9 +24,6 @@ export default function CartPage() {
   const [shipTo, setShipTo] = useState(EMPTY_ADDRESS);
   const [shippingLoading, setShippingLoading] = useState(false);
   const [rateResult, setRateResult] = useState(null);
-  const [addressSuggestions, setAddressSuggestions] = useState([]);
-  const [suggestionsOpen, setSuggestionsOpen] = useState(false);
-  const skipNextLookupRef = useRef(false);
 
   const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const totalOunces = cart.reduce((sum, item) => sum + (item.weightOz || 0) * item.quantity, 0);
@@ -77,69 +74,6 @@ export default function CartPage() {
       clearTimeout(timer);
     };
   }, [rateKey, shipTo, cart]);
-
-  // Address autocomplete via Photon (OpenStreetMap) — free, no API key required. Skipped for
-  // the one update that follows picking a suggestion, so selecting one doesn't immediately
-  // re-open the dropdown against its own new value.
-  useEffect(() => {
-    if (fulfillment !== 'ship') return;
-    if (skipNextLookupRef.current) {
-      skipNextLookupRef.current = false;
-      return;
-    }
-    const query = shipTo.addressLine1.trim();
-    if (query.length < 4) {
-      setAddressSuggestions([]);
-      return;
-    }
-    let cancelled = false;
-    const timer = setTimeout(async () => {
-      try {
-        const res = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(query)}&limit=5&lang=en`);
-        const data = await res.json();
-        if (cancelled) return;
-        const results = (data.features || [])
-          .map((feature) => {
-            const p = feature.properties || {};
-            const countryCode = (p.countrycode || '').toUpperCase();
-            const addressLine1 = [p.housenumber, p.street || p.name].filter(Boolean).join(' ');
-            if (!addressLine1 || (countryCode !== 'US' && countryCode !== 'CA')) return null;
-            return {
-              id: `${p.osm_type || ''}-${p.osm_id || ''}-${addressLine1}-${p.postcode || ''}`,
-              label: [addressLine1, p.city || p.town || p.village, p.state, p.postcode].filter(Boolean).join(', '),
-              addressLine1,
-              cityLocality: p.city || p.town || p.village || '',
-              stateProvince: p.state || '',
-              postalCode: p.postcode || '',
-              countryCode,
-            };
-          })
-          .filter(Boolean);
-        setAddressSuggestions(results);
-        setSuggestionsOpen(results.length > 0);
-      } catch (err) {
-        console.error(err);
-      }
-    }, 350);
-    return () => {
-      cancelled = true;
-      clearTimeout(timer);
-    };
-  }, [shipTo.addressLine1, fulfillment]);
-
-  const selectAddressSuggestion = (suggestion) => {
-    skipNextLookupRef.current = true;
-    setShipTo((prev) => ({
-      ...prev,
-      addressLine1: suggestion.addressLine1,
-      cityLocality: suggestion.cityLocality,
-      stateProvince: suggestion.stateProvince,
-      postalCode: suggestion.postalCode,
-      countryCode: suggestion.countryCode,
-    }));
-    setSuggestionsOpen(false);
-    setAddressSuggestions([]);
-  };
 
   const handleCheckout = async () => {
     if (cart.length === 0) return;
@@ -280,35 +214,7 @@ export default function CartPage() {
                       <input className={inputClass} placeholder="Full name" value={shipTo.name} onChange={updateAddress('name')} />
                       <input className={inputClass} placeholder="Phone" value={shipTo.phone} onChange={updateAddress('phone')} />
                     </div>
-                    <div className="relative">
-                      <input
-                        className={inputClass}
-                        placeholder="Address line 1"
-                        value={shipTo.addressLine1}
-                        onChange={updateAddress('addressLine1')}
-                        onFocus={() => addressSuggestions.length > 0 && setSuggestionsOpen(true)}
-                        onBlur={() => setSuggestionsOpen(false)}
-                        autoComplete="off"
-                      />
-                      {suggestionsOpen && addressSuggestions.length > 0 && (
-                        <div className="absolute z-30 top-full left-0 right-0 mt-1 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-lg overflow-hidden">
-                          {addressSuggestions.map((suggestion) => (
-                            <button
-                              key={suggestion.id}
-                              type="button"
-                              onMouseDown={(e) => e.preventDefault()}
-                              onClick={() => selectAddressSuggestion(suggestion)}
-                              className="w-full text-left px-3 py-2 text-xs text-slate-700 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-slate-800 hover:text-emerald-700 dark:hover:text-emerald-400 transition-all"
-                            >
-                              {suggestion.label}
-                            </button>
-                          ))}
-                          <p className="px-3 py-1.5 text-[9px] text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700">
-                            Address search by OpenStreetMap contributors
-                          </p>
-                        </div>
-                      )}
-                    </div>
+                    <input className={inputClass} placeholder="Address line 1" value={shipTo.addressLine1} onChange={updateAddress('addressLine1')} />
                     <input className={inputClass} placeholder="Address line 2 (optional)" value={shipTo.addressLine2} onChange={updateAddress('addressLine2')} />
                     <div className="grid grid-cols-3 gap-2">
                       <input className={inputClass} placeholder="City" value={shipTo.cityLocality} onChange={updateAddress('cityLocality')} />
