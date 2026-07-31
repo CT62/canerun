@@ -207,7 +207,7 @@ export default function HomePage() {
           <div>
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-400">Illinois Based</span>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-2">
-              Proudly based in Illinois.
+              Proudly based in Illinois
             </h2>
             <p className="text-slate-200 text-sm mt-4 max-w-xl leading-relaxed">
               Cane Run Enterprises calls West Salem, Illinois home.
@@ -222,7 +222,7 @@ export default function HomePage() {
           <div>
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600 dark:text-emerald-400">About Us</span>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight mt-2">
-              Family opened.
+              Family owned
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm mt-6 leading-relaxed">
               Cane Run Enterprises was founded in 2022 by the Caldbeck family.
@@ -237,12 +237,13 @@ export default function HomePage() {
             <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-4">What We Warehouse</p>
             <div className="flex flex-wrap gap-2">
               {SEED_CATEGORIES.map((item) => (
-                <span
+                <Link
                   key={item}
-                  className="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold"
+                  href="/store"
+                  className="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all"
                 >
                   {item}
-                </span>
+                </Link>
               ))}
             </div>
           </div>
@@ -255,7 +256,7 @@ export default function HomePage() {
           <div className="max-w-2xl mb-14">
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600 dark:text-emerald-400">Meet the Family</span>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight mt-2">
-              The founders of Cane Run Enterprises.
+              The founders of Cane Run Enterprises
             </h2>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
@@ -296,7 +297,7 @@ export default function HomePage() {
         <div className="max-w-2xl mb-14">
           <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600 dark:text-emerald-400">Why Cane Run</span>
           <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight mt-2">
-            Everything you need to stock the season.
+            Everything you need to stock the season
           </h2>
         </div>
 
@@ -322,16 +323,16 @@ export default function HomePage() {
 
       {/* How it works — fixed parallax backdrop */}
       <section
-        className="relative border-b border-slate-200 dark:border-slate-800 sm:bg-cover sm:bg-center sm:bg-fixed sm:bg-[url('/images/site_images/bulk_bags.jpg')]"
+        className="relative border-b border-slate-200 dark:border-slate-800 sm:bg-cover sm:bg-center sm:bg-fixed sm:bg-[url('/images/site_images/bulk_bags.png')]"
         style={{ clipPath: 'inset(0)' }}
       >
-        <ParallaxBackdrop src="/images/site_images/bulk_bags.jpg" />
+        <ParallaxBackdrop src="/images/site_images/bulk_bags.png" />
         <div className="absolute inset-0 bg-slate-900/75" />
         <div className="relative max-w-7xl mx-auto px-6 py-24">
           <div className="max-w-2xl mb-14">
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-400">How It Works</span>
             <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mt-2">
-              From order to farm in a few steps.
+              From order to farm in a few steps
             </h2>
             <p className="text-slate-200 text-sm mt-4 leading-relaxed">
               Four simple steps from your first click to seed on the farm.
@@ -368,7 +369,7 @@ export default function HomePage() {
           <div className="mb-14 text-center">
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600 dark:text-emerald-400">FAQ</span>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight mt-2">
-              Common questions.
+              Common questions
             </h2>
             <p className="text-slate-500 dark:text-slate-400 text-sm mt-4 leading-relaxed">
               A few things customers ask us most often.

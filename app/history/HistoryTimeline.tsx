@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const TIMELINE = [
   {
@@ -31,6 +32,7 @@ const TIMELINE = [
     era: '2022',
     title: 'Cane Run Enterprises',
     desc: "The property became part of Cane Run Enterprises, preserving a site that has supported local farmers and agricultural trade for nearly 150 years.",
+    img: '/images/site_images/front_enterance_v2.jpg',
   },
 ];
 
@@ -72,6 +74,17 @@ export default function HistoryTimeline() {
             </span>
             <h3 className="text-base font-black text-slate-900 dark:text-white mt-1 mb-2">{item.title}</h3>
             <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+            {item.img && (
+              <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden mt-5 bg-slate-100 dark:bg-slate-800">
+                <Image
+                  src={item.img}
+                  alt={`${item.title} — front entrance`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 700px"
+                  className="object-cover"
+                />
+              </div>
+            )}
           </motion.div>
         </div>
       ))}

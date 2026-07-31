@@ -18,7 +18,7 @@ export default function HistoryPage() {
             Our Story
           </span>
           <h1 className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight mt-2">
-            Nearly 150 years of Illinois agriculture.
+            Nearly 150 years of Illinois agriculture
           </h1>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-6 max-w-2xl mx-auto leading-relaxed">
             The agricultural history of West Salem traces its roots to the late 19th century, beginning with
@@ -38,7 +38,7 @@ export default function HistoryPage() {
             A Site With History
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight mt-2">
-            From Frederick Luther&apos;s mill to Cane Run.
+            From Frederick Luther&apos;s mill to Cane Run
           </h2>
         </div>
 
@@ -49,7 +49,7 @@ export default function HistoryPage() {
       <section className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
         <div className="max-w-4xl mx-auto px-6 py-24 text-center">
           <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-            Let&apos;s build a great partnership.
+            Let&apos;s build a great partnership
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-4 max-w-xl mx-auto leading-relaxed">
             Whether you&apos;re looking to place an order, inquire about new products, or simply connect,
