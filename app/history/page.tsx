@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { PhoneIcon, EnvelopeIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import HistoryTimeline from './HistoryTimeline';
+import ParallaxBackdrop from '@/components/ParallaxBackdrop';
 
 export const metadata = {
   title: 'Our History | Cane Run Enterprises',
@@ -43,6 +44,15 @@ export default function HistoryPage() {
         </div>
 
         <HistoryTimeline />
+      </section>
+
+      {/* Ambient site photo — fixed parallax backdrop, kept faint/distant on purpose */}
+      <section
+        className="relative border-t border-b border-slate-200 dark:border-slate-800 h-[22rem] sm:h-[28rem] sm:bg-cover sm:bg-[position:center_20%] sm:bg-fixed sm:bg-[url('/images/site_images/front_enterance.jpg')]"
+        style={{ clipPath: 'inset(0)' }}
+      >
+        <ParallaxBackdrop src="/images/site_images/front_enterance.jpg" position="center 20%" />
+        <div className="absolute inset-0 bg-slate-950/80" />
       </section>
 
       {/* CTA */}

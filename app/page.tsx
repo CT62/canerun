@@ -225,7 +225,10 @@ export default function HomePage() {
               Cane Run Enterprises was founded in 2022 by the Caldbeck family.
             </p>
             <p className="text-slate-600 dark:text-slate-400 text-sm mt-4 leading-relaxed">
-              Whether you need seed for forage, conservation, or cover cropping, we keep a diverse selection
+              Whether you need seed for forage, conservation, or cover cropping, we keep a{' '}
+              <Link href="/store" className="text-emerald-600 dark:text-emerald-400 font-bold hover:underline">
+                diverse selection of speciality seeds
+              </Link>{' '}
               ready to meet your needs. We also offer a variety of{' '}
               <Link href="/services" className="text-emerald-600 dark:text-emerald-400 font-bold hover:underline">
                 custom seed processing services

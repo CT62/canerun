@@ -8,12 +8,12 @@
  * listeners, so no scroll jank. Desktop/tablet keep plain `bg-fixed` on the
  * section itself; this component is hidden there (`sm:hidden`).
  */
-export default function ParallaxBackdrop({ src }: { src: string }) {
+export default function ParallaxBackdrop({ src, position = 'center' }: { src: string; position?: string }) {
   return (
     <div
       aria-hidden
-      className="sm:hidden sticky top-0 h-dvh bg-cover bg-center"
-      style={{ backgroundImage: `url('${src}')`, marginBottom: '-100dvh' }}
+      className="sm:hidden sticky top-0 h-dvh bg-cover"
+      style={{ backgroundImage: `url('${src}')`, backgroundPosition: position, marginBottom: '-100dvh' }}
     />
   );
 }
