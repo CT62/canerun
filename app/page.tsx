@@ -221,16 +221,16 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-14 items-start">
           <div>
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600 dark:text-emerald-400">About Us</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight mt-2">
-              Family owned
-            </h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm mt-6 leading-relaxed">
               Cane Run Enterprises was founded in 2022 by the Caldbeck family.
             </p>
             <p className="text-slate-600 dark:text-slate-400 text-sm mt-4 leading-relaxed">
-              We warehouse seed of all kinds — from pasture and hay mixes to specialty cover crops — and we
-              can clean and either bag or handle bulk seed depending on the season and our current cleaner
-              setup. Working on a CRP project? Give us a call — we can help you with the details.
+              Whether you need seed for forage, conservation, or cover cropping, we keep a diverse selection
+              ready to meet your needs. We also offer a variety of{' '}
+              <Link href="/services" className="text-emerald-600 dark:text-emerald-400 font-bold hover:underline">
+                custom seed processing services
+              </Link>
+              .
             </p>
           </div>
           <div>

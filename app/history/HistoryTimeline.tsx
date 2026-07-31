@@ -32,7 +32,7 @@ const TIMELINE = [
     era: '2022',
     title: 'Cane Run Enterprises',
     desc: "The property became part of Cane Run Enterprises, preserving a site that has supported local farmers and agricultural trade for nearly 150 years.",
-    img: '/images/site_images/front_enterance_v2.jpg',
+    img: '/images/site_images/front_enterance.jpg',
   },
 ];
 
