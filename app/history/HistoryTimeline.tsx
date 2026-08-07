@@ -23,6 +23,7 @@ const TIMELINE = [
     era: '1940',
     title: 'Campbell Seedhouse',
     desc: "Following a major fire, the site transitioned from grain storage and milling into the seed business with Campbell Seedhouse, continuing West Salem's long tradition of agricultural commerce.",
+    thumb: '/images/campbell_seedhouse.jpeg',
   },
   {
     era: '1981',
