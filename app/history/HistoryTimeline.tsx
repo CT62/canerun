@@ -77,8 +77,8 @@ export default function HistoryTimeline() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="relative flex-1 mb-10 p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all"
             >
-              <div className="flex items-start justify-between gap-5">
-                <div>
+              <div className="flex flex-col-reverse sm:flex-row sm:items-start sm:justify-between gap-5">
+                <div className="flex-1 min-w-0">
                   <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">
                     {item.era}
                   </span>
