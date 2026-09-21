@@ -65,7 +65,7 @@ export default function CompareModal({ seeds, onClose }: { seeds: Seed[]; onClos
                 <td className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide py-3 pr-4">From</td>
                 {seeds.map((seed) => (
                   <td key={seed.id} className="py-3 px-3 text-sm font-black text-slate-900 dark:text-white">
-                    ${(calculateTieredPrice(seed.bulkPrice50lb, 5) / 5).toFixed(2)}/lb
+                    ${(calculateTieredPrice(seed.bulkPrice50lb, 50) / 50).toFixed(2)}/lb
                   </td>
                 ))}
               </tr>

@@ -111,7 +111,7 @@ export default function StorePage() {
         <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
             {products.map((seed: Seed) => {
-              const startingPrice = calculateTieredPrice(seed.bulkPrice50lb, 5) / 5;
+              const startingPrice = calculateTieredPrice(seed.bulkPrice50lb, 50) / 50;
               const rate = seed.specs?.lbsAcre ? `${seed.specs.lbsAcre} lbs/acre` : seed.specs?.rate;
               const cycle = seed.specs?.cycle || seed.specs?.type;
               const hasImage = seed.img && seed.img !== '/images/black.png';
